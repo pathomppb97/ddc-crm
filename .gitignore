@@ -1,0 +1,57 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# editors
+.idea/
+*.iml
+.vscode/
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+/.vitest/
+__screenshots__
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+.eslintcache
+npm-debug.log*
+/vite-local.log
+/vite-local-error.log
+yarn-debug.log*
+dist/
+dist-admin/
+.env
+*storybook.log
+
+# Shadcn Registry
+public/r/
+
+!supabase/functions/.env
+.claude/settings.local.json
+
+# Harness scratch
+.promote.lock
+/.harness/
+
+# Playwright
+.playwright-mcp/
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+*.lock
+/.lan-demo/
+node_modules
