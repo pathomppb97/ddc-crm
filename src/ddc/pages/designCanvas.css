@@ -1,0 +1,102 @@
+.ddc-design-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483600;
+  pointer-events: none;
+}
+.ddc-design-layer button {
+  position: absolute;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+  background: transparent;
+  border: 1px dashed #59927b;
+  border-radius: 4px;
+  padding: 0;
+}
+.ddc-design-layer button:hover,
+.ddc-design-layer button:focus-visible {
+  background: #16865912;
+  outline: 2px solid #288364;
+  outline-offset: -2px;
+}
+.ddc-design-layer button[aria-pressed="true"] {
+  background: #16865913;
+  border: 2px solid #16764f;
+}
+.ddc-design-layer.dragging button {
+  cursor: grabbing;
+}
+.ddc-design-drop {
+  position: absolute;
+  background: #08714c;
+  box-shadow: 0 0 0 1px white;
+  z-index: 1;
+  pointer-events: none;
+}
+.ddc-size-grip {
+  position: absolute;
+  z-index: 2;
+  width: 22px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+  touch-action: none;
+  cursor: ew-resize;
+}
+.ddc-size-grip[hidden] {
+  display: none;
+}
+.ddc-size-grip::before {
+  content: "";
+  width: 10px;
+  height: 18px;
+  border: 2px solid white;
+  border-radius: 4px;
+  background: #126d4b;
+  box-shadow: 0 0 0 1px #126d4b;
+}
+.ddc-size-grip:focus-visible {
+  outline: 2px solid #126d4b;
+  border-radius: 4px;
+}
+.ddc-height-grip {
+  width: 26px;
+  height: 18px;
+  cursor: ns-resize;
+}
+.ddc-height-grip::before {
+  width: 18px;
+  height: 9px;
+}
+.ddc-both-grip {
+  width: 18px;
+  height: 18px;
+  cursor: nwse-resize;
+}
+.ddc-both-grip::before {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+.ddc-width-grip {
+  height: 20px;
+}
+.ddc-sized-field
+  > [data-slot="form-item"]:has(
+    > :is(input, textarea)[data-slot="form-control"]
+  ) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.ddc-sized-field
+  > [data-slot="form-item"]
+  > :is(input, textarea)[data-slot="form-control"] {
+  flex: 1 1 auto;
+  min-height: 1.5rem;
+}

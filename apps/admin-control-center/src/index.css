@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --ddc-brand-primary: #0f4c3a;
+  --ddc-brand-secondary: #1e293b;
+  --ddc-surface: #f8fafc;
+  --ddc-card: #ffffff;
+  --ddc-border: #e2e8f0;
+}
+
+body {
+  font-family:
+    "IBM Plex Sans Thai",
+    "Inter Variable",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: var(--ddc-surface);
+}

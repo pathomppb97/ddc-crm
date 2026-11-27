@@ -1,0 +1,7898 @@
+{
+  "ddc_roles": [
+    {
+      "key": "data_admin",
+      "name": "ผู้ดูแลข้อมูล",
+      "name_en": "Data Admin",
+      "description": "Manages master data governance, bulk imports/exports, query builder, and backup verification",
+      "is_system": true,
+      "sort_order": 18,
+      "id": "data_admin"
+    },
+    {
+      "key": "engineering",
+      "name": "วิศวกรรม",
+      "name_en": "Engineering",
+      "description": "Products, machine applications, RFQ engineering review, development projects",
+      "is_system": true,
+      "sort_order": 60,
+      "id": "engineering"
+    },
+    {
+      "key": "executive_viewer",
+      "name": "ผู้บริหารดูรายงาน",
+      "name_en": "Executive Viewer",
+      "description": "Read-only executive visibility into dashboards, KPIs, forecasts, targets, and audit summaries",
+      "is_system": true,
+      "sort_order": 25,
+      "id": "executive_viewer"
+    },
+    {
+      "key": "finance",
+      "name": "การเงิน",
+      "name_en": "Finance",
+      "description": "Reads commercial data and ERP documents, commercial approval",
+      "is_system": true,
+      "sort_order": 80,
+      "id": "finance"
+    },
+    {
+      "key": "management",
+      "name": "ผู้บริหาร",
+      "name_en": "Management",
+      "description": "Read access to all business data and reports, commercial approval",
+      "is_system": true,
+      "sort_order": 20,
+      "id": "management"
+    },
+    {
+      "key": "marketing",
+      "name": "การตลาด",
+      "name_en": "Marketing",
+      "description": "Leads, activities and aftermarket network",
+      "is_system": true,
+      "sort_order": 50,
+      "id": "marketing"
+    },
+    {
+      "key": "quality",
+      "name": "คุณภาพ",
+      "name_en": "Quality",
+      "description": "Complaints and service cases",
+      "is_system": true,
+      "sort_order": 70,
+      "id": "quality"
+    },
+    {
+      "key": "read_only",
+      "name": "อ่านอย่างเดียว",
+      "name_en": "Read-Only",
+      "description": "Read access to business data",
+      "is_system": true,
+      "sort_order": 90,
+      "id": "read_only"
+    },
+    {
+      "key": "release_manager",
+      "name": "ผู้จัดการการปล่อยระบบ",
+      "name_en": "Release Manager",
+      "description": "Manages immutable releases, staging/production deployments, feature flags, and UI publish approvals",
+      "is_system": true,
+      "sort_order": 15,
+      "id": "release_manager"
+    },
+    {
+      "key": "sales_manager",
+      "name": "ผู้จัดการฝ่ายขาย",
+      "name_en": "Sales Manager",
+      "description": "Manages all sales records, approves quotations",
+      "is_system": true,
+      "sort_order": 30,
+      "id": "sales_manager"
+    },
+    {
+      "key": "sales_rep",
+      "name": "พนักงานขาย",
+      "name_en": "Sales Representative",
+      "description": "Creates records and updates the records they own",
+      "is_system": true,
+      "sort_order": 40,
+      "id": "sales_rep"
+    },
+    {
+      "key": "super_admin",
+      "name": "ผู้ดูแลระบบสูงสุด",
+      "name_en": "Super Admin",
+      "description": "Unrestricted enterprise platform governance and security control",
+      "is_system": true,
+      "sort_order": 5,
+      "id": "super_admin"
+    },
+    {
+      "key": "system_admin",
+      "name": "ผู้ดูแลระบบ",
+      "name_en": "System Administrator",
+      "description": "Full access, including configuration",
+      "is_system": true,
+      "sort_order": 10,
+      "id": "system_admin"
+    }
+  ],
+  "permission_resources": [
+    {
+      "key": "activities",
+      "name": "กิจกรรมและการเข้าพบ",
+      "name_en": "Activities and visits",
+      "sort_order": 50,
+      "id": "activities"
+    },
+    {
+      "key": "admin_console",
+      "name": "ศูนย์ควบคุมผู้ดูแลระบบ",
+      "name_en": "Admin control center",
+      "sort_order": 200,
+      "id": "admin_console"
+    },
+    {
+      "key": "aftermarket",
+      "name": "OBM และ Aftermarket",
+      "name_en": "OBM and aftermarket",
+      "sort_order": 120,
+      "id": "aftermarket"
+    },
+    {
+      "key": "api_management",
+      "name": "การจัดการ API และคีย์",
+      "name_en": "API and key management",
+      "sort_order": 230,
+      "id": "api_management"
+    },
+    {
+      "key": "audit_log",
+      "name": "บันทึกการตรวจสอบ",
+      "name_en": "Audit log",
+      "sort_order": 180,
+      "id": "audit_log"
+    },
+    {
+      "key": "backups",
+      "name": "การสำรองและกู้คืนข้อมูล",
+      "name_en": "Backup and recovery",
+      "sort_order": 290,
+      "id": "backups"
+    },
+    {
+      "key": "contacts",
+      "name": "ผู้ติดต่อ",
+      "name_en": "Contacts",
+      "sort_order": 20,
+      "id": "contacts"
+    },
+    {
+      "key": "customers",
+      "name": "ลูกค้า",
+      "name_en": "Customers",
+      "sort_order": 10,
+      "id": "customers"
+    },
+    {
+      "key": "data_management",
+      "name": "การจัดการข้อมูลและคิวรี",
+      "name_en": "Data management and queries",
+      "sort_order": 220,
+      "id": "data_management"
+    },
+    {
+      "key": "deployments",
+      "name": "การจัดการการ Deploy",
+      "name_en": "Deployment management",
+      "sort_order": 270,
+      "id": "deployments"
+    },
+    {
+      "key": "dev_projects",
+      "name": "โครงการพัฒนา OEM/ODM",
+      "name_en": "OEM/ODM development projects",
+      "sort_order": 110,
+      "id": "dev_projects"
+    },
+    {
+      "key": "erp_documents",
+      "name": "เอกสารจาก ERP",
+      "name_en": "ERP documents",
+      "sort_order": 160,
+      "id": "erp_documents"
+    },
+    {
+      "key": "erp_integration",
+      "name": "การเชื่อมต่อ ERP",
+      "name_en": "ERP integration",
+      "sort_order": 170,
+      "id": "erp_integration"
+    },
+    {
+      "key": "feature_flags",
+      "name": "การจัดการ Feature Flags",
+      "name_en": "Feature flag management",
+      "sort_order": 250,
+      "id": "feature_flags"
+    },
+    {
+      "key": "jobs",
+      "name": "งานเบื้องหลังและตัวตั้งเวลา",
+      "name_en": "Background jobs and scheduler",
+      "sort_order": 280,
+      "id": "jobs"
+    },
+    {
+      "key": "leads",
+      "name": "ลีด",
+      "name_en": "Leads",
+      "sort_order": 30,
+      "id": "leads"
+    },
+    {
+      "key": "machine_applications",
+      "name": "การใช้งานกับเครื่องจักรการเกษตร",
+      "name_en": "Agricultural machine applications",
+      "sort_order": 80,
+      "id": "machine_applications"
+    },
+    {
+      "key": "master_data",
+      "name": "ข้อมูลหลัก",
+      "name_en": "Master data",
+      "sort_order": 140,
+      "id": "master_data"
+    },
+    {
+      "key": "mcp_access",
+      "name": "การเชื่อมต่อ AI / MCP",
+      "name_en": "AI / MCP channel access",
+      "sort_order": 310,
+      "id": "mcp_access"
+    },
+    {
+      "key": "mcp_admin",
+      "name": "การจัดการแพลตฟอร์ม AI และ MCP",
+      "name_en": "AI & MCP platform administration",
+      "sort_order": 320,
+      "id": "mcp_admin"
+    },
+    {
+      "key": "mcp_approvals",
+      "name": "การอนุมัติคำสั่ง AI ความเสี่ยงสูง",
+      "name_en": "High-risk AI operation approvals",
+      "sort_order": 330,
+      "id": "mcp_approvals"
+    },
+    {
+      "key": "opportunities",
+      "name": "โอกาสการขาย",
+      "name_en": "Opportunities",
+      "sort_order": 40,
+      "id": "opportunities"
+    },
+    {
+      "key": "products",
+      "name": "สินค้า",
+      "name_en": "Products",
+      "sort_order": 70,
+      "id": "products"
+    },
+    {
+      "key": "quotations",
+      "name": "ใบเสนอราคา",
+      "name_en": "Quotations",
+      "sort_order": 100,
+      "id": "quotations"
+    },
+    {
+      "key": "releases",
+      "name": "การจัดการเวอร์ชัน (Release)",
+      "name_en": "Release management",
+      "sort_order": 260,
+      "id": "releases"
+    },
+    {
+      "key": "reports",
+      "name": "แดชบอร์ดและรายงาน",
+      "name_en": "Dashboards and reports",
+      "sort_order": 150,
+      "id": "reports"
+    },
+    {
+      "key": "rfqs",
+      "name": "RFQ",
+      "name_en": "RFQs",
+      "sort_order": 90,
+      "id": "rfqs"
+    },
+    {
+      "key": "roles",
+      "name": "บทบาทและสิทธิ์การใช้งาน",
+      "name_en": "Roles and permissions",
+      "sort_order": 210,
+      "id": "roles"
+    },
+    {
+      "key": "sales_orders",
+      "name": "ใบสั่งขาย (CRM)",
+      "name_en": "Sales orders (CRM)",
+      "sort_order": 105,
+      "id": "sales_orders"
+    },
+    {
+      "key": "service_cases",
+      "name": "ข้อร้องเรียนและงานบริการ",
+      "name_en": "Complaints and service cases",
+      "sort_order": 130,
+      "id": "service_cases"
+    },
+    {
+      "key": "system_settings",
+      "name": "การตั้งค่าระบบองค์กร",
+      "name_en": "System settings",
+      "sort_order": 300,
+      "id": "system_settings"
+    },
+    {
+      "key": "tasks",
+      "name": "งาน",
+      "name_en": "Tasks",
+      "sort_order": 60,
+      "id": "tasks"
+    },
+    {
+      "key": "ui_config",
+      "name": "การตั้งค่าหน้าเว็บและธีม",
+      "name_en": "Configuration-driven UI",
+      "sort_order": 240,
+      "id": "ui_config"
+    },
+    {
+      "key": "users",
+      "name": "ผู้ใช้งาน",
+      "name_en": "Users",
+      "sort_order": 190,
+      "id": "users"
+    }
+  ],
+  "role_permissions": [
+    {
+      "id": 1,
+      "role_key": "system_admin",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 2,
+      "role_key": "system_admin",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 3,
+      "role_key": "system_admin",
+      "resource": "leads",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 4,
+      "role_key": "system_admin",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 5,
+      "role_key": "system_admin",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 6,
+      "role_key": "system_admin",
+      "resource": "tasks",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 7,
+      "role_key": "system_admin",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 8,
+      "role_key": "system_admin",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 9,
+      "role_key": "system_admin",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 10,
+      "role_key": "system_admin",
+      "resource": "quotations",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 11,
+      "role_key": "system_admin",
+      "resource": "dev_projects",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 12,
+      "role_key": "system_admin",
+      "resource": "aftermarket",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 13,
+      "role_key": "system_admin",
+      "resource": "service_cases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 14,
+      "role_key": "system_admin",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 15,
+      "role_key": "system_admin",
+      "resource": "reports",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 16,
+      "role_key": "system_admin",
+      "resource": "erp_documents",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 17,
+      "role_key": "system_admin",
+      "resource": "erp_integration",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 18,
+      "role_key": "system_admin",
+      "resource": "audit_log",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 19,
+      "role_key": "system_admin",
+      "resource": "users",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 20,
+      "role_key": "system_admin",
+      "resource": "customers",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 21,
+      "role_key": "system_admin",
+      "resource": "contacts",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 22,
+      "role_key": "system_admin",
+      "resource": "leads",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 23,
+      "role_key": "system_admin",
+      "resource": "opportunities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 24,
+      "role_key": "system_admin",
+      "resource": "activities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 25,
+      "role_key": "system_admin",
+      "resource": "tasks",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 26,
+      "role_key": "system_admin",
+      "resource": "products",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 27,
+      "role_key": "system_admin",
+      "resource": "machine_applications",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 28,
+      "role_key": "system_admin",
+      "resource": "rfqs",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 29,
+      "role_key": "system_admin",
+      "resource": "quotations",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 30,
+      "role_key": "system_admin",
+      "resource": "dev_projects",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 31,
+      "role_key": "system_admin",
+      "resource": "aftermarket",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 32,
+      "role_key": "system_admin",
+      "resource": "service_cases",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 33,
+      "role_key": "system_admin",
+      "resource": "master_data",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 34,
+      "role_key": "system_admin",
+      "resource": "reports",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 35,
+      "role_key": "system_admin",
+      "resource": "erp_documents",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 36,
+      "role_key": "system_admin",
+      "resource": "erp_integration",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 37,
+      "role_key": "system_admin",
+      "resource": "audit_log",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 38,
+      "role_key": "system_admin",
+      "resource": "users",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 39,
+      "role_key": "system_admin",
+      "resource": "customers",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 40,
+      "role_key": "system_admin",
+      "resource": "contacts",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 41,
+      "role_key": "system_admin",
+      "resource": "leads",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 42,
+      "role_key": "system_admin",
+      "resource": "opportunities",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 43,
+      "role_key": "system_admin",
+      "resource": "activities",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 44,
+      "role_key": "system_admin",
+      "resource": "tasks",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 45,
+      "role_key": "system_admin",
+      "resource": "products",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 46,
+      "role_key": "system_admin",
+      "resource": "machine_applications",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 47,
+      "role_key": "system_admin",
+      "resource": "rfqs",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 48,
+      "role_key": "system_admin",
+      "resource": "quotations",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 49,
+      "role_key": "system_admin",
+      "resource": "dev_projects",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 50,
+      "role_key": "system_admin",
+      "resource": "aftermarket",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 51,
+      "role_key": "system_admin",
+      "resource": "service_cases",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 52,
+      "role_key": "system_admin",
+      "resource": "master_data",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 53,
+      "role_key": "system_admin",
+      "resource": "reports",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 54,
+      "role_key": "system_admin",
+      "resource": "erp_documents",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 55,
+      "role_key": "system_admin",
+      "resource": "erp_integration",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 56,
+      "role_key": "system_admin",
+      "resource": "audit_log",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 57,
+      "role_key": "system_admin",
+      "resource": "users",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 58,
+      "role_key": "system_admin",
+      "resource": "customers",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 59,
+      "role_key": "system_admin",
+      "resource": "contacts",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 60,
+      "role_key": "system_admin",
+      "resource": "leads",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 61,
+      "role_key": "system_admin",
+      "resource": "opportunities",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 62,
+      "role_key": "system_admin",
+      "resource": "activities",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 63,
+      "role_key": "system_admin",
+      "resource": "tasks",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 64,
+      "role_key": "system_admin",
+      "resource": "products",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 65,
+      "role_key": "system_admin",
+      "resource": "machine_applications",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 66,
+      "role_key": "system_admin",
+      "resource": "rfqs",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 67,
+      "role_key": "system_admin",
+      "resource": "quotations",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 68,
+      "role_key": "system_admin",
+      "resource": "dev_projects",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 69,
+      "role_key": "system_admin",
+      "resource": "aftermarket",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 70,
+      "role_key": "system_admin",
+      "resource": "service_cases",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 71,
+      "role_key": "system_admin",
+      "resource": "master_data",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 72,
+      "role_key": "system_admin",
+      "resource": "reports",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 73,
+      "role_key": "system_admin",
+      "resource": "erp_documents",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 74,
+      "role_key": "system_admin",
+      "resource": "erp_integration",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 75,
+      "role_key": "system_admin",
+      "resource": "audit_log",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 76,
+      "role_key": "system_admin",
+      "resource": "users",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 77,
+      "role_key": "system_admin",
+      "resource": "customers",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 78,
+      "role_key": "system_admin",
+      "resource": "contacts",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 79,
+      "role_key": "system_admin",
+      "resource": "leads",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 80,
+      "role_key": "system_admin",
+      "resource": "opportunities",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 81,
+      "role_key": "system_admin",
+      "resource": "activities",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 82,
+      "role_key": "system_admin",
+      "resource": "tasks",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 83,
+      "role_key": "system_admin",
+      "resource": "products",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 84,
+      "role_key": "system_admin",
+      "resource": "machine_applications",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 85,
+      "role_key": "system_admin",
+      "resource": "rfqs",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 86,
+      "role_key": "system_admin",
+      "resource": "quotations",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 87,
+      "role_key": "system_admin",
+      "resource": "dev_projects",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 88,
+      "role_key": "system_admin",
+      "resource": "aftermarket",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 89,
+      "role_key": "system_admin",
+      "resource": "service_cases",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 90,
+      "role_key": "system_admin",
+      "resource": "master_data",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 91,
+      "role_key": "system_admin",
+      "resource": "reports",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 92,
+      "role_key": "system_admin",
+      "resource": "erp_documents",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 93,
+      "role_key": "system_admin",
+      "resource": "erp_integration",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 94,
+      "role_key": "system_admin",
+      "resource": "audit_log",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 95,
+      "role_key": "system_admin",
+      "resource": "users",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 96,
+      "role_key": "system_admin",
+      "resource": "customers",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 97,
+      "role_key": "system_admin",
+      "resource": "contacts",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 98,
+      "role_key": "system_admin",
+      "resource": "leads",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 99,
+      "role_key": "system_admin",
+      "resource": "opportunities",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 100,
+      "role_key": "system_admin",
+      "resource": "activities",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 101,
+      "role_key": "system_admin",
+      "resource": "tasks",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 102,
+      "role_key": "system_admin",
+      "resource": "products",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 103,
+      "role_key": "system_admin",
+      "resource": "machine_applications",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 104,
+      "role_key": "system_admin",
+      "resource": "rfqs",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 105,
+      "role_key": "system_admin",
+      "resource": "quotations",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 106,
+      "role_key": "system_admin",
+      "resource": "dev_projects",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 107,
+      "role_key": "system_admin",
+      "resource": "aftermarket",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 108,
+      "role_key": "system_admin",
+      "resource": "service_cases",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 109,
+      "role_key": "system_admin",
+      "resource": "master_data",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 110,
+      "role_key": "system_admin",
+      "resource": "reports",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 111,
+      "role_key": "system_admin",
+      "resource": "erp_documents",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 112,
+      "role_key": "system_admin",
+      "resource": "erp_integration",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 113,
+      "role_key": "system_admin",
+      "resource": "audit_log",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 114,
+      "role_key": "system_admin",
+      "resource": "users",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 115,
+      "role_key": "system_admin",
+      "resource": "customers",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 116,
+      "role_key": "system_admin",
+      "resource": "contacts",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 117,
+      "role_key": "system_admin",
+      "resource": "leads",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 118,
+      "role_key": "system_admin",
+      "resource": "opportunities",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 119,
+      "role_key": "system_admin",
+      "resource": "activities",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 120,
+      "role_key": "system_admin",
+      "resource": "tasks",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 121,
+      "role_key": "system_admin",
+      "resource": "products",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 122,
+      "role_key": "system_admin",
+      "resource": "machine_applications",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 123,
+      "role_key": "system_admin",
+      "resource": "rfqs",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 124,
+      "role_key": "system_admin",
+      "resource": "quotations",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 125,
+      "role_key": "system_admin",
+      "resource": "dev_projects",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 126,
+      "role_key": "system_admin",
+      "resource": "aftermarket",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 127,
+      "role_key": "system_admin",
+      "resource": "service_cases",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 128,
+      "role_key": "system_admin",
+      "resource": "master_data",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 129,
+      "role_key": "system_admin",
+      "resource": "reports",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 130,
+      "role_key": "system_admin",
+      "resource": "erp_documents",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 131,
+      "role_key": "system_admin",
+      "resource": "erp_integration",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 132,
+      "role_key": "system_admin",
+      "resource": "audit_log",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 133,
+      "role_key": "system_admin",
+      "resource": "users",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 134,
+      "role_key": "management",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 135,
+      "role_key": "management",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 136,
+      "role_key": "management",
+      "resource": "leads",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 137,
+      "role_key": "management",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 138,
+      "role_key": "management",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 139,
+      "role_key": "management",
+      "resource": "tasks",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 140,
+      "role_key": "management",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 141,
+      "role_key": "management",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 142,
+      "role_key": "management",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 143,
+      "role_key": "management",
+      "resource": "quotations",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 144,
+      "role_key": "management",
+      "resource": "dev_projects",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 145,
+      "role_key": "management",
+      "resource": "aftermarket",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 146,
+      "role_key": "management",
+      "resource": "service_cases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 147,
+      "role_key": "management",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 148,
+      "role_key": "management",
+      "resource": "reports",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 149,
+      "role_key": "management",
+      "resource": "erp_documents",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 150,
+      "role_key": "management",
+      "resource": "audit_log",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 151,
+      "role_key": "management",
+      "resource": "customers",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 152,
+      "role_key": "management",
+      "resource": "leads",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 153,
+      "role_key": "management",
+      "resource": "opportunities",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 154,
+      "role_key": "management",
+      "resource": "quotations",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 155,
+      "role_key": "management",
+      "resource": "reports",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 156,
+      "role_key": "management",
+      "resource": "quotations",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 157,
+      "role_key": "sales_manager",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 158,
+      "role_key": "sales_manager",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 159,
+      "role_key": "sales_manager",
+      "resource": "leads",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 160,
+      "role_key": "sales_manager",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 161,
+      "role_key": "sales_manager",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 162,
+      "role_key": "sales_manager",
+      "resource": "tasks",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 163,
+      "role_key": "sales_manager",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 164,
+      "role_key": "sales_manager",
+      "resource": "quotations",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 165,
+      "role_key": "sales_manager",
+      "resource": "aftermarket",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 166,
+      "role_key": "sales_manager",
+      "resource": "customers",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 167,
+      "role_key": "sales_manager",
+      "resource": "contacts",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 168,
+      "role_key": "sales_manager",
+      "resource": "leads",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 169,
+      "role_key": "sales_manager",
+      "resource": "opportunities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 170,
+      "role_key": "sales_manager",
+      "resource": "activities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 171,
+      "role_key": "sales_manager",
+      "resource": "tasks",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 172,
+      "role_key": "sales_manager",
+      "resource": "rfqs",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 173,
+      "role_key": "sales_manager",
+      "resource": "quotations",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 174,
+      "role_key": "sales_manager",
+      "resource": "aftermarket",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 175,
+      "role_key": "sales_manager",
+      "resource": "customers",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 176,
+      "role_key": "sales_manager",
+      "resource": "contacts",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 177,
+      "role_key": "sales_manager",
+      "resource": "leads",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 178,
+      "role_key": "sales_manager",
+      "resource": "opportunities",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 179,
+      "role_key": "sales_manager",
+      "resource": "activities",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 180,
+      "role_key": "sales_manager",
+      "resource": "tasks",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 181,
+      "role_key": "sales_manager",
+      "resource": "rfqs",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 182,
+      "role_key": "sales_manager",
+      "resource": "quotations",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 183,
+      "role_key": "sales_manager",
+      "resource": "aftermarket",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 184,
+      "role_key": "sales_manager",
+      "resource": "customers",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 185,
+      "role_key": "sales_manager",
+      "resource": "contacts",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 186,
+      "role_key": "sales_manager",
+      "resource": "leads",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 187,
+      "role_key": "sales_manager",
+      "resource": "opportunities",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 188,
+      "role_key": "sales_manager",
+      "resource": "activities",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 189,
+      "role_key": "sales_manager",
+      "resource": "tasks",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 190,
+      "role_key": "sales_manager",
+      "resource": "rfqs",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 191,
+      "role_key": "sales_manager",
+      "resource": "quotations",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 192,
+      "role_key": "sales_manager",
+      "resource": "aftermarket",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 193,
+      "role_key": "sales_manager",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 194,
+      "role_key": "sales_manager",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 195,
+      "role_key": "sales_manager",
+      "resource": "dev_projects",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 196,
+      "role_key": "sales_manager",
+      "resource": "service_cases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 197,
+      "role_key": "sales_manager",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 198,
+      "role_key": "sales_manager",
+      "resource": "reports",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 199,
+      "role_key": "sales_manager",
+      "resource": "erp_documents",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 200,
+      "role_key": "sales_manager",
+      "resource": "service_cases",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 201,
+      "role_key": "sales_manager",
+      "resource": "service_cases",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 202,
+      "role_key": "sales_manager",
+      "resource": "quotations",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 203,
+      "role_key": "sales_manager",
+      "resource": "customers",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 204,
+      "role_key": "sales_manager",
+      "resource": "contacts",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 205,
+      "role_key": "sales_manager",
+      "resource": "leads",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 206,
+      "role_key": "sales_manager",
+      "resource": "customers",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 207,
+      "role_key": "sales_manager",
+      "resource": "contacts",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 208,
+      "role_key": "sales_manager",
+      "resource": "leads",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 209,
+      "role_key": "sales_manager",
+      "resource": "opportunities",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 210,
+      "role_key": "sales_manager",
+      "resource": "quotations",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 211,
+      "role_key": "sales_manager",
+      "resource": "reports",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 212,
+      "role_key": "sales_rep",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 213,
+      "role_key": "sales_rep",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 214,
+      "role_key": "sales_rep",
+      "resource": "leads",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 215,
+      "role_key": "sales_rep",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 216,
+      "role_key": "sales_rep",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 217,
+      "role_key": "sales_rep",
+      "resource": "tasks",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 218,
+      "role_key": "sales_rep",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 219,
+      "role_key": "sales_rep",
+      "resource": "quotations",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 220,
+      "role_key": "sales_rep",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 221,
+      "role_key": "sales_rep",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 222,
+      "role_key": "sales_rep",
+      "resource": "dev_projects",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 223,
+      "role_key": "sales_rep",
+      "resource": "service_cases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 224,
+      "role_key": "sales_rep",
+      "resource": "aftermarket",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 225,
+      "role_key": "sales_rep",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 226,
+      "role_key": "sales_rep",
+      "resource": "reports",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 227,
+      "role_key": "sales_rep",
+      "resource": "customers",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 228,
+      "role_key": "sales_rep",
+      "resource": "contacts",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 229,
+      "role_key": "sales_rep",
+      "resource": "leads",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 230,
+      "role_key": "sales_rep",
+      "resource": "opportunities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 231,
+      "role_key": "sales_rep",
+      "resource": "activities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 232,
+      "role_key": "sales_rep",
+      "resource": "tasks",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 233,
+      "role_key": "sales_rep",
+      "resource": "rfqs",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 234,
+      "role_key": "sales_rep",
+      "resource": "quotations",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 235,
+      "role_key": "sales_rep",
+      "resource": "service_cases",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 236,
+      "role_key": "sales_rep",
+      "resource": "customers",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 237,
+      "role_key": "sales_rep",
+      "resource": "contacts",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 238,
+      "role_key": "sales_rep",
+      "resource": "leads",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 239,
+      "role_key": "sales_rep",
+      "resource": "opportunities",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 240,
+      "role_key": "sales_rep",
+      "resource": "activities",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 241,
+      "role_key": "sales_rep",
+      "resource": "tasks",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 242,
+      "role_key": "sales_rep",
+      "resource": "rfqs",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 243,
+      "role_key": "sales_rep",
+      "resource": "quotations",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 244,
+      "role_key": "sales_rep",
+      "resource": "service_cases",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 245,
+      "role_key": "sales_rep",
+      "resource": "activities",
+      "action": "delete",
+      "scope": "own"
+    },
+    {
+      "id": 246,
+      "role_key": "sales_rep",
+      "resource": "tasks",
+      "action": "delete",
+      "scope": "own"
+    },
+    {
+      "id": 247,
+      "role_key": "marketing",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 248,
+      "role_key": "marketing",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 249,
+      "role_key": "marketing",
+      "resource": "leads",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 250,
+      "role_key": "marketing",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 251,
+      "role_key": "marketing",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 252,
+      "role_key": "marketing",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 253,
+      "role_key": "marketing",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 254,
+      "role_key": "marketing",
+      "resource": "aftermarket",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 255,
+      "role_key": "marketing",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 256,
+      "role_key": "marketing",
+      "resource": "reports",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 257,
+      "role_key": "marketing",
+      "resource": "leads",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 258,
+      "role_key": "marketing",
+      "resource": "leads",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 259,
+      "role_key": "marketing",
+      "resource": "leads",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 260,
+      "role_key": "marketing",
+      "resource": "aftermarket",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 261,
+      "role_key": "marketing",
+      "resource": "aftermarket",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 262,
+      "role_key": "marketing",
+      "resource": "aftermarket",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 263,
+      "role_key": "marketing",
+      "resource": "activities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 264,
+      "role_key": "marketing",
+      "resource": "activities",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 265,
+      "role_key": "marketing",
+      "resource": "activities",
+      "action": "delete",
+      "scope": "own"
+    },
+    {
+      "id": 266,
+      "role_key": "marketing",
+      "resource": "leads",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 267,
+      "role_key": "marketing",
+      "resource": "customers",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 268,
+      "role_key": "marketing",
+      "resource": "leads",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 269,
+      "role_key": "marketing",
+      "resource": "reports",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 270,
+      "role_key": "engineering",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 271,
+      "role_key": "engineering",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 272,
+      "role_key": "engineering",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 273,
+      "role_key": "engineering",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 274,
+      "role_key": "engineering",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 275,
+      "role_key": "engineering",
+      "resource": "quotations",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 276,
+      "role_key": "engineering",
+      "resource": "service_cases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 277,
+      "role_key": "engineering",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 278,
+      "role_key": "engineering",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 279,
+      "role_key": "engineering",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 280,
+      "role_key": "engineering",
+      "resource": "dev_projects",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 281,
+      "role_key": "engineering",
+      "resource": "products",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 282,
+      "role_key": "engineering",
+      "resource": "products",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 283,
+      "role_key": "engineering",
+      "resource": "products",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 284,
+      "role_key": "engineering",
+      "resource": "machine_applications",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 285,
+      "role_key": "engineering",
+      "resource": "machine_applications",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 286,
+      "role_key": "engineering",
+      "resource": "machine_applications",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 287,
+      "role_key": "engineering",
+      "resource": "dev_projects",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 288,
+      "role_key": "engineering",
+      "resource": "dev_projects",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 289,
+      "role_key": "engineering",
+      "resource": "dev_projects",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 290,
+      "role_key": "engineering",
+      "resource": "rfqs",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 291,
+      "role_key": "engineering",
+      "resource": "activities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 292,
+      "role_key": "engineering",
+      "resource": "activities",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 293,
+      "role_key": "engineering",
+      "resource": "products",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 294,
+      "role_key": "engineering",
+      "resource": "products",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 295,
+      "role_key": "quality",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 296,
+      "role_key": "quality",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 297,
+      "role_key": "quality",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 298,
+      "role_key": "quality",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 299,
+      "role_key": "quality",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 300,
+      "role_key": "quality",
+      "resource": "dev_projects",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 301,
+      "role_key": "quality",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 302,
+      "role_key": "quality",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 303,
+      "role_key": "quality",
+      "resource": "service_cases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 304,
+      "role_key": "quality",
+      "resource": "service_cases",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 305,
+      "role_key": "quality",
+      "resource": "service_cases",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 306,
+      "role_key": "quality",
+      "resource": "service_cases",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 307,
+      "role_key": "quality",
+      "resource": "service_cases",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 308,
+      "role_key": "quality",
+      "resource": "activities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 309,
+      "role_key": "quality",
+      "resource": "activities",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 310,
+      "role_key": "finance",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 311,
+      "role_key": "finance",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 312,
+      "role_key": "finance",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 313,
+      "role_key": "finance",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 314,
+      "role_key": "finance",
+      "resource": "quotations",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 315,
+      "role_key": "finance",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 316,
+      "role_key": "finance",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 317,
+      "role_key": "finance",
+      "resource": "reports",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 318,
+      "role_key": "finance",
+      "resource": "erp_documents",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 319,
+      "role_key": "finance",
+      "resource": "erp_integration",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 320,
+      "role_key": "finance",
+      "resource": "quotations",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 321,
+      "role_key": "finance",
+      "resource": "quotations",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 322,
+      "role_key": "finance",
+      "resource": "reports",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 323,
+      "role_key": "read_only",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 324,
+      "role_key": "read_only",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 325,
+      "role_key": "read_only",
+      "resource": "leads",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 326,
+      "role_key": "read_only",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 327,
+      "role_key": "read_only",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 328,
+      "role_key": "read_only",
+      "resource": "tasks",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 329,
+      "role_key": "read_only",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 330,
+      "role_key": "read_only",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 331,
+      "role_key": "read_only",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 332,
+      "role_key": "read_only",
+      "resource": "quotations",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 333,
+      "role_key": "read_only",
+      "resource": "dev_projects",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 334,
+      "role_key": "read_only",
+      "resource": "aftermarket",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 335,
+      "role_key": "read_only",
+      "resource": "service_cases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 336,
+      "role_key": "read_only",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 337,
+      "role_key": "read_only",
+      "resource": "reports",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 338,
+      "role_key": "read_only",
+      "resource": "erp_documents",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 339,
+      "role_key": "super_admin",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 340,
+      "role_key": "super_admin",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 341,
+      "role_key": "super_admin",
+      "resource": "leads",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 342,
+      "role_key": "super_admin",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 343,
+      "role_key": "super_admin",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 344,
+      "role_key": "super_admin",
+      "resource": "tasks",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 345,
+      "role_key": "super_admin",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 346,
+      "role_key": "super_admin",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 347,
+      "role_key": "super_admin",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 348,
+      "role_key": "super_admin",
+      "resource": "quotations",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 349,
+      "role_key": "super_admin",
+      "resource": "sales_orders",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 350,
+      "role_key": "super_admin",
+      "resource": "dev_projects",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 351,
+      "role_key": "super_admin",
+      "resource": "aftermarket",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 352,
+      "role_key": "super_admin",
+      "resource": "service_cases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 353,
+      "role_key": "super_admin",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 354,
+      "role_key": "super_admin",
+      "resource": "reports",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 355,
+      "role_key": "super_admin",
+      "resource": "erp_documents",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 356,
+      "role_key": "super_admin",
+      "resource": "erp_integration",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 357,
+      "role_key": "super_admin",
+      "resource": "audit_log",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 358,
+      "role_key": "super_admin",
+      "resource": "users",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 359,
+      "role_key": "super_admin",
+      "resource": "admin_console",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 360,
+      "role_key": "super_admin",
+      "resource": "roles",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 361,
+      "role_key": "super_admin",
+      "resource": "data_management",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 362,
+      "role_key": "super_admin",
+      "resource": "api_management",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 363,
+      "role_key": "super_admin",
+      "resource": "ui_config",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 364,
+      "role_key": "super_admin",
+      "resource": "feature_flags",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 365,
+      "role_key": "super_admin",
+      "resource": "releases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 366,
+      "role_key": "super_admin",
+      "resource": "deployments",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 367,
+      "role_key": "super_admin",
+      "resource": "jobs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 368,
+      "role_key": "super_admin",
+      "resource": "backups",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 369,
+      "role_key": "super_admin",
+      "resource": "system_settings",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 370,
+      "role_key": "super_admin",
+      "resource": "customers",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 371,
+      "role_key": "super_admin",
+      "resource": "contacts",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 372,
+      "role_key": "super_admin",
+      "resource": "leads",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 373,
+      "role_key": "super_admin",
+      "resource": "opportunities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 374,
+      "role_key": "super_admin",
+      "resource": "activities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 375,
+      "role_key": "super_admin",
+      "resource": "tasks",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 376,
+      "role_key": "super_admin",
+      "resource": "products",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 377,
+      "role_key": "super_admin",
+      "resource": "machine_applications",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 378,
+      "role_key": "super_admin",
+      "resource": "rfqs",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 379,
+      "role_key": "super_admin",
+      "resource": "quotations",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 380,
+      "role_key": "super_admin",
+      "resource": "sales_orders",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 381,
+      "role_key": "super_admin",
+      "resource": "dev_projects",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 382,
+      "role_key": "super_admin",
+      "resource": "aftermarket",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 383,
+      "role_key": "super_admin",
+      "resource": "service_cases",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 384,
+      "role_key": "super_admin",
+      "resource": "master_data",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 385,
+      "role_key": "super_admin",
+      "resource": "reports",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 386,
+      "role_key": "super_admin",
+      "resource": "erp_documents",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 387,
+      "role_key": "super_admin",
+      "resource": "erp_integration",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 388,
+      "role_key": "super_admin",
+      "resource": "audit_log",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 389,
+      "role_key": "super_admin",
+      "resource": "users",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 390,
+      "role_key": "super_admin",
+      "resource": "admin_console",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 391,
+      "role_key": "super_admin",
+      "resource": "roles",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 392,
+      "role_key": "super_admin",
+      "resource": "data_management",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 393,
+      "role_key": "super_admin",
+      "resource": "api_management",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 394,
+      "role_key": "super_admin",
+      "resource": "ui_config",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 395,
+      "role_key": "super_admin",
+      "resource": "feature_flags",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 396,
+      "role_key": "super_admin",
+      "resource": "releases",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 397,
+      "role_key": "super_admin",
+      "resource": "deployments",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 398,
+      "role_key": "super_admin",
+      "resource": "jobs",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 399,
+      "role_key": "super_admin",
+      "resource": "backups",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 400,
+      "role_key": "super_admin",
+      "resource": "system_settings",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 401,
+      "role_key": "super_admin",
+      "resource": "customers",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 402,
+      "role_key": "super_admin",
+      "resource": "contacts",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 403,
+      "role_key": "super_admin",
+      "resource": "leads",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 404,
+      "role_key": "super_admin",
+      "resource": "opportunities",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 405,
+      "role_key": "super_admin",
+      "resource": "activities",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 406,
+      "role_key": "super_admin",
+      "resource": "tasks",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 407,
+      "role_key": "super_admin",
+      "resource": "products",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 408,
+      "role_key": "super_admin",
+      "resource": "machine_applications",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 409,
+      "role_key": "super_admin",
+      "resource": "rfqs",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 410,
+      "role_key": "super_admin",
+      "resource": "quotations",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 411,
+      "role_key": "super_admin",
+      "resource": "sales_orders",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 412,
+      "role_key": "super_admin",
+      "resource": "dev_projects",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 413,
+      "role_key": "super_admin",
+      "resource": "aftermarket",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 414,
+      "role_key": "super_admin",
+      "resource": "service_cases",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 415,
+      "role_key": "super_admin",
+      "resource": "master_data",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 416,
+      "role_key": "super_admin",
+      "resource": "reports",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 417,
+      "role_key": "super_admin",
+      "resource": "erp_documents",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 418,
+      "role_key": "super_admin",
+      "resource": "erp_integration",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 419,
+      "role_key": "super_admin",
+      "resource": "audit_log",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 420,
+      "role_key": "super_admin",
+      "resource": "users",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 421,
+      "role_key": "super_admin",
+      "resource": "admin_console",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 422,
+      "role_key": "super_admin",
+      "resource": "roles",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 423,
+      "role_key": "super_admin",
+      "resource": "data_management",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 424,
+      "role_key": "super_admin",
+      "resource": "api_management",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 425,
+      "role_key": "super_admin",
+      "resource": "ui_config",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 426,
+      "role_key": "super_admin",
+      "resource": "feature_flags",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 427,
+      "role_key": "super_admin",
+      "resource": "releases",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 428,
+      "role_key": "super_admin",
+      "resource": "deployments",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 429,
+      "role_key": "super_admin",
+      "resource": "jobs",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 430,
+      "role_key": "super_admin",
+      "resource": "backups",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 431,
+      "role_key": "super_admin",
+      "resource": "system_settings",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 432,
+      "role_key": "super_admin",
+      "resource": "customers",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 433,
+      "role_key": "super_admin",
+      "resource": "contacts",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 434,
+      "role_key": "super_admin",
+      "resource": "leads",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 435,
+      "role_key": "super_admin",
+      "resource": "opportunities",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 436,
+      "role_key": "super_admin",
+      "resource": "activities",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 437,
+      "role_key": "super_admin",
+      "resource": "tasks",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 438,
+      "role_key": "super_admin",
+      "resource": "products",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 439,
+      "role_key": "super_admin",
+      "resource": "machine_applications",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 440,
+      "role_key": "super_admin",
+      "resource": "rfqs",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 441,
+      "role_key": "super_admin",
+      "resource": "quotations",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 442,
+      "role_key": "super_admin",
+      "resource": "sales_orders",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 443,
+      "role_key": "super_admin",
+      "resource": "dev_projects",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 444,
+      "role_key": "super_admin",
+      "resource": "aftermarket",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 445,
+      "role_key": "super_admin",
+      "resource": "service_cases",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 446,
+      "role_key": "super_admin",
+      "resource": "master_data",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 447,
+      "role_key": "super_admin",
+      "resource": "reports",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 448,
+      "role_key": "super_admin",
+      "resource": "erp_documents",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 449,
+      "role_key": "super_admin",
+      "resource": "erp_integration",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 450,
+      "role_key": "super_admin",
+      "resource": "audit_log",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 451,
+      "role_key": "super_admin",
+      "resource": "users",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 452,
+      "role_key": "super_admin",
+      "resource": "admin_console",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 453,
+      "role_key": "super_admin",
+      "resource": "roles",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 454,
+      "role_key": "super_admin",
+      "resource": "data_management",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 455,
+      "role_key": "super_admin",
+      "resource": "api_management",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 456,
+      "role_key": "super_admin",
+      "resource": "ui_config",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 457,
+      "role_key": "super_admin",
+      "resource": "feature_flags",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 458,
+      "role_key": "super_admin",
+      "resource": "releases",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 459,
+      "role_key": "super_admin",
+      "resource": "deployments",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 460,
+      "role_key": "super_admin",
+      "resource": "jobs",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 461,
+      "role_key": "super_admin",
+      "resource": "backups",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 462,
+      "role_key": "super_admin",
+      "resource": "system_settings",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 463,
+      "role_key": "super_admin",
+      "resource": "customers",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 464,
+      "role_key": "super_admin",
+      "resource": "contacts",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 465,
+      "role_key": "super_admin",
+      "resource": "leads",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 466,
+      "role_key": "super_admin",
+      "resource": "opportunities",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 467,
+      "role_key": "super_admin",
+      "resource": "activities",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 468,
+      "role_key": "super_admin",
+      "resource": "tasks",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 469,
+      "role_key": "super_admin",
+      "resource": "products",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 470,
+      "role_key": "super_admin",
+      "resource": "machine_applications",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 471,
+      "role_key": "super_admin",
+      "resource": "rfqs",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 472,
+      "role_key": "super_admin",
+      "resource": "quotations",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 473,
+      "role_key": "super_admin",
+      "resource": "sales_orders",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 474,
+      "role_key": "super_admin",
+      "resource": "dev_projects",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 475,
+      "role_key": "super_admin",
+      "resource": "aftermarket",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 476,
+      "role_key": "super_admin",
+      "resource": "service_cases",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 477,
+      "role_key": "super_admin",
+      "resource": "master_data",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 478,
+      "role_key": "super_admin",
+      "resource": "reports",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 479,
+      "role_key": "super_admin",
+      "resource": "erp_documents",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 480,
+      "role_key": "super_admin",
+      "resource": "erp_integration",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 481,
+      "role_key": "super_admin",
+      "resource": "audit_log",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 482,
+      "role_key": "super_admin",
+      "resource": "users",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 483,
+      "role_key": "super_admin",
+      "resource": "admin_console",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 484,
+      "role_key": "super_admin",
+      "resource": "roles",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 485,
+      "role_key": "super_admin",
+      "resource": "data_management",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 486,
+      "role_key": "super_admin",
+      "resource": "api_management",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 487,
+      "role_key": "super_admin",
+      "resource": "ui_config",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 488,
+      "role_key": "super_admin",
+      "resource": "feature_flags",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 489,
+      "role_key": "super_admin",
+      "resource": "releases",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 490,
+      "role_key": "super_admin",
+      "resource": "deployments",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 491,
+      "role_key": "super_admin",
+      "resource": "jobs",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 492,
+      "role_key": "super_admin",
+      "resource": "backups",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 493,
+      "role_key": "super_admin",
+      "resource": "system_settings",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 494,
+      "role_key": "super_admin",
+      "resource": "customers",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 495,
+      "role_key": "super_admin",
+      "resource": "contacts",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 496,
+      "role_key": "super_admin",
+      "resource": "leads",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 497,
+      "role_key": "super_admin",
+      "resource": "opportunities",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 498,
+      "role_key": "super_admin",
+      "resource": "activities",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 499,
+      "role_key": "super_admin",
+      "resource": "tasks",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 500,
+      "role_key": "super_admin",
+      "resource": "products",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 501,
+      "role_key": "super_admin",
+      "resource": "machine_applications",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 502,
+      "role_key": "super_admin",
+      "resource": "rfqs",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 503,
+      "role_key": "super_admin",
+      "resource": "quotations",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 504,
+      "role_key": "super_admin",
+      "resource": "sales_orders",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 505,
+      "role_key": "super_admin",
+      "resource": "dev_projects",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 506,
+      "role_key": "super_admin",
+      "resource": "aftermarket",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 507,
+      "role_key": "super_admin",
+      "resource": "service_cases",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 508,
+      "role_key": "super_admin",
+      "resource": "master_data",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 509,
+      "role_key": "super_admin",
+      "resource": "reports",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 510,
+      "role_key": "super_admin",
+      "resource": "erp_documents",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 511,
+      "role_key": "super_admin",
+      "resource": "erp_integration",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 512,
+      "role_key": "super_admin",
+      "resource": "audit_log",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 513,
+      "role_key": "super_admin",
+      "resource": "users",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 514,
+      "role_key": "super_admin",
+      "resource": "admin_console",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 515,
+      "role_key": "super_admin",
+      "resource": "roles",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 516,
+      "role_key": "super_admin",
+      "resource": "data_management",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 517,
+      "role_key": "super_admin",
+      "resource": "api_management",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 518,
+      "role_key": "super_admin",
+      "resource": "ui_config",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 519,
+      "role_key": "super_admin",
+      "resource": "feature_flags",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 520,
+      "role_key": "super_admin",
+      "resource": "releases",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 521,
+      "role_key": "super_admin",
+      "resource": "deployments",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 522,
+      "role_key": "super_admin",
+      "resource": "jobs",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 523,
+      "role_key": "super_admin",
+      "resource": "backups",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 524,
+      "role_key": "super_admin",
+      "resource": "system_settings",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 525,
+      "role_key": "super_admin",
+      "resource": "customers",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 526,
+      "role_key": "super_admin",
+      "resource": "contacts",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 527,
+      "role_key": "super_admin",
+      "resource": "leads",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 528,
+      "role_key": "super_admin",
+      "resource": "opportunities",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 529,
+      "role_key": "super_admin",
+      "resource": "activities",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 530,
+      "role_key": "super_admin",
+      "resource": "tasks",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 531,
+      "role_key": "super_admin",
+      "resource": "products",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 532,
+      "role_key": "super_admin",
+      "resource": "machine_applications",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 533,
+      "role_key": "super_admin",
+      "resource": "rfqs",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 534,
+      "role_key": "super_admin",
+      "resource": "quotations",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 535,
+      "role_key": "super_admin",
+      "resource": "sales_orders",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 536,
+      "role_key": "super_admin",
+      "resource": "dev_projects",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 537,
+      "role_key": "super_admin",
+      "resource": "aftermarket",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 538,
+      "role_key": "super_admin",
+      "resource": "service_cases",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 539,
+      "role_key": "super_admin",
+      "resource": "master_data",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 540,
+      "role_key": "super_admin",
+      "resource": "reports",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 541,
+      "role_key": "super_admin",
+      "resource": "erp_documents",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 542,
+      "role_key": "super_admin",
+      "resource": "erp_integration",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 543,
+      "role_key": "super_admin",
+      "resource": "audit_log",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 544,
+      "role_key": "super_admin",
+      "resource": "users",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 545,
+      "role_key": "super_admin",
+      "resource": "admin_console",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 546,
+      "role_key": "super_admin",
+      "resource": "roles",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 547,
+      "role_key": "super_admin",
+      "resource": "data_management",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 548,
+      "role_key": "super_admin",
+      "resource": "api_management",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 549,
+      "role_key": "super_admin",
+      "resource": "ui_config",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 550,
+      "role_key": "super_admin",
+      "resource": "feature_flags",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 551,
+      "role_key": "super_admin",
+      "resource": "releases",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 552,
+      "role_key": "super_admin",
+      "resource": "deployments",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 553,
+      "role_key": "super_admin",
+      "resource": "jobs",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 554,
+      "role_key": "super_admin",
+      "resource": "backups",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 555,
+      "role_key": "super_admin",
+      "resource": "system_settings",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 556,
+      "role_key": "system_admin",
+      "resource": "sales_orders",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 557,
+      "role_key": "system_admin",
+      "resource": "admin_console",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 558,
+      "role_key": "system_admin",
+      "resource": "data_management",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 559,
+      "role_key": "system_admin",
+      "resource": "api_management",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 560,
+      "role_key": "system_admin",
+      "resource": "ui_config",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 561,
+      "role_key": "system_admin",
+      "resource": "feature_flags",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 562,
+      "role_key": "system_admin",
+      "resource": "jobs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 563,
+      "role_key": "system_admin",
+      "resource": "backups",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 564,
+      "role_key": "system_admin",
+      "resource": "system_settings",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 565,
+      "role_key": "system_admin",
+      "resource": "sales_orders",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 566,
+      "role_key": "system_admin",
+      "resource": "admin_console",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 567,
+      "role_key": "system_admin",
+      "resource": "data_management",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 568,
+      "role_key": "system_admin",
+      "resource": "api_management",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 569,
+      "role_key": "system_admin",
+      "resource": "ui_config",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 570,
+      "role_key": "system_admin",
+      "resource": "feature_flags",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 571,
+      "role_key": "system_admin",
+      "resource": "jobs",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 572,
+      "role_key": "system_admin",
+      "resource": "backups",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 573,
+      "role_key": "system_admin",
+      "resource": "system_settings",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 574,
+      "role_key": "system_admin",
+      "resource": "sales_orders",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 575,
+      "role_key": "system_admin",
+      "resource": "admin_console",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 576,
+      "role_key": "system_admin",
+      "resource": "data_management",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 577,
+      "role_key": "system_admin",
+      "resource": "api_management",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 578,
+      "role_key": "system_admin",
+      "resource": "ui_config",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 579,
+      "role_key": "system_admin",
+      "resource": "feature_flags",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 580,
+      "role_key": "system_admin",
+      "resource": "jobs",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 581,
+      "role_key": "system_admin",
+      "resource": "backups",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 582,
+      "role_key": "system_admin",
+      "resource": "system_settings",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 583,
+      "role_key": "system_admin",
+      "resource": "sales_orders",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 584,
+      "role_key": "system_admin",
+      "resource": "admin_console",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 585,
+      "role_key": "system_admin",
+      "resource": "data_management",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 586,
+      "role_key": "system_admin",
+      "resource": "api_management",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 587,
+      "role_key": "system_admin",
+      "resource": "ui_config",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 588,
+      "role_key": "system_admin",
+      "resource": "feature_flags",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 589,
+      "role_key": "system_admin",
+      "resource": "jobs",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 590,
+      "role_key": "system_admin",
+      "resource": "backups",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 591,
+      "role_key": "system_admin",
+      "resource": "system_settings",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 592,
+      "role_key": "system_admin",
+      "resource": "sales_orders",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 593,
+      "role_key": "system_admin",
+      "resource": "admin_console",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 594,
+      "role_key": "system_admin",
+      "resource": "data_management",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 595,
+      "role_key": "system_admin",
+      "resource": "api_management",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 596,
+      "role_key": "system_admin",
+      "resource": "ui_config",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 597,
+      "role_key": "system_admin",
+      "resource": "feature_flags",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 598,
+      "role_key": "system_admin",
+      "resource": "jobs",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 599,
+      "role_key": "system_admin",
+      "resource": "backups",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 600,
+      "role_key": "system_admin",
+      "resource": "system_settings",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 601,
+      "role_key": "system_admin",
+      "resource": "sales_orders",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 602,
+      "role_key": "system_admin",
+      "resource": "admin_console",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 603,
+      "role_key": "system_admin",
+      "resource": "data_management",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 604,
+      "role_key": "system_admin",
+      "resource": "api_management",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 605,
+      "role_key": "system_admin",
+      "resource": "ui_config",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 606,
+      "role_key": "system_admin",
+      "resource": "feature_flags",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 607,
+      "role_key": "system_admin",
+      "resource": "jobs",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 608,
+      "role_key": "system_admin",
+      "resource": "backups",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 609,
+      "role_key": "system_admin",
+      "resource": "system_settings",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 610,
+      "role_key": "system_admin",
+      "resource": "sales_orders",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 611,
+      "role_key": "system_admin",
+      "resource": "admin_console",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 612,
+      "role_key": "system_admin",
+      "resource": "data_management",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 613,
+      "role_key": "system_admin",
+      "resource": "api_management",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 614,
+      "role_key": "system_admin",
+      "resource": "ui_config",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 615,
+      "role_key": "system_admin",
+      "resource": "feature_flags",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 616,
+      "role_key": "system_admin",
+      "resource": "jobs",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 617,
+      "role_key": "system_admin",
+      "resource": "backups",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 618,
+      "role_key": "system_admin",
+      "resource": "system_settings",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 619,
+      "role_key": "system_admin",
+      "resource": "roles",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 620,
+      "role_key": "system_admin",
+      "resource": "roles",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 621,
+      "role_key": "system_admin",
+      "resource": "roles",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 622,
+      "role_key": "system_admin",
+      "resource": "releases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 623,
+      "role_key": "system_admin",
+      "resource": "deployments",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 624,
+      "role_key": "release_manager",
+      "resource": "admin_console",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 625,
+      "role_key": "release_manager",
+      "resource": "audit_log",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 626,
+      "role_key": "release_manager",
+      "resource": "releases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 627,
+      "role_key": "release_manager",
+      "resource": "releases",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 628,
+      "role_key": "release_manager",
+      "resource": "releases",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 629,
+      "role_key": "release_manager",
+      "resource": "releases",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 630,
+      "role_key": "release_manager",
+      "resource": "deployments",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 631,
+      "role_key": "release_manager",
+      "resource": "deployments",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 632,
+      "role_key": "release_manager",
+      "resource": "deployments",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 633,
+      "role_key": "release_manager",
+      "resource": "deployments",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 634,
+      "role_key": "release_manager",
+      "resource": "feature_flags",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 635,
+      "role_key": "release_manager",
+      "resource": "feature_flags",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 636,
+      "role_key": "release_manager",
+      "resource": "feature_flags",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 637,
+      "role_key": "release_manager",
+      "resource": "feature_flags",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 638,
+      "role_key": "release_manager",
+      "resource": "ui_config",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 639,
+      "role_key": "release_manager",
+      "resource": "ui_config",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 640,
+      "role_key": "release_manager",
+      "resource": "jobs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 641,
+      "role_key": "release_manager",
+      "resource": "jobs",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 642,
+      "role_key": "data_admin",
+      "resource": "admin_console",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 643,
+      "role_key": "data_admin",
+      "resource": "users",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 644,
+      "role_key": "data_admin",
+      "resource": "audit_log",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 645,
+      "role_key": "data_admin",
+      "resource": "erp_documents",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 646,
+      "role_key": "data_admin",
+      "resource": "audit_log",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 647,
+      "role_key": "data_admin",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 648,
+      "role_key": "data_admin",
+      "resource": "customers",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 649,
+      "role_key": "data_admin",
+      "resource": "customers",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 650,
+      "role_key": "data_admin",
+      "resource": "customers",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 651,
+      "role_key": "data_admin",
+      "resource": "customers",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 652,
+      "role_key": "data_admin",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 653,
+      "role_key": "data_admin",
+      "resource": "contacts",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 654,
+      "role_key": "data_admin",
+      "resource": "contacts",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 655,
+      "role_key": "data_admin",
+      "resource": "contacts",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 656,
+      "role_key": "data_admin",
+      "resource": "contacts",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 657,
+      "role_key": "data_admin",
+      "resource": "leads",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 658,
+      "role_key": "data_admin",
+      "resource": "leads",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 659,
+      "role_key": "data_admin",
+      "resource": "leads",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 660,
+      "role_key": "data_admin",
+      "resource": "leads",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 661,
+      "role_key": "data_admin",
+      "resource": "leads",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 662,
+      "role_key": "data_admin",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 663,
+      "role_key": "data_admin",
+      "resource": "opportunities",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 664,
+      "role_key": "data_admin",
+      "resource": "opportunities",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 665,
+      "role_key": "data_admin",
+      "resource": "opportunities",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 666,
+      "role_key": "data_admin",
+      "resource": "opportunities",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 667,
+      "role_key": "data_admin",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 668,
+      "role_key": "data_admin",
+      "resource": "products",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 669,
+      "role_key": "data_admin",
+      "resource": "products",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 670,
+      "role_key": "data_admin",
+      "resource": "products",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 671,
+      "role_key": "data_admin",
+      "resource": "products",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 672,
+      "role_key": "data_admin",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 673,
+      "role_key": "data_admin",
+      "resource": "machine_applications",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 674,
+      "role_key": "data_admin",
+      "resource": "machine_applications",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 675,
+      "role_key": "data_admin",
+      "resource": "machine_applications",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 676,
+      "role_key": "data_admin",
+      "resource": "machine_applications",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 677,
+      "role_key": "data_admin",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 678,
+      "role_key": "data_admin",
+      "resource": "master_data",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 679,
+      "role_key": "data_admin",
+      "resource": "master_data",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 680,
+      "role_key": "data_admin",
+      "resource": "master_data",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 681,
+      "role_key": "data_admin",
+      "resource": "master_data",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 682,
+      "role_key": "data_admin",
+      "resource": "data_management",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 683,
+      "role_key": "data_admin",
+      "resource": "data_management",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 684,
+      "role_key": "data_admin",
+      "resource": "data_management",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 685,
+      "role_key": "data_admin",
+      "resource": "data_management",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 686,
+      "role_key": "data_admin",
+      "resource": "data_management",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 687,
+      "role_key": "data_admin",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 688,
+      "role_key": "data_admin",
+      "resource": "activities",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 689,
+      "role_key": "data_admin",
+      "resource": "tasks",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 690,
+      "role_key": "data_admin",
+      "resource": "tasks",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 691,
+      "role_key": "data_admin",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 692,
+      "role_key": "data_admin",
+      "resource": "rfqs",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 693,
+      "role_key": "data_admin",
+      "resource": "quotations",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 694,
+      "role_key": "data_admin",
+      "resource": "quotations",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 695,
+      "role_key": "data_admin",
+      "resource": "sales_orders",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 696,
+      "role_key": "data_admin",
+      "resource": "sales_orders",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 697,
+      "role_key": "data_admin",
+      "resource": "dev_projects",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 698,
+      "role_key": "data_admin",
+      "resource": "dev_projects",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 699,
+      "role_key": "data_admin",
+      "resource": "aftermarket",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 700,
+      "role_key": "data_admin",
+      "resource": "aftermarket",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 701,
+      "role_key": "data_admin",
+      "resource": "service_cases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 702,
+      "role_key": "data_admin",
+      "resource": "service_cases",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 703,
+      "role_key": "data_admin",
+      "resource": "reports",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 704,
+      "role_key": "data_admin",
+      "resource": "reports",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 705,
+      "role_key": "data_admin",
+      "resource": "jobs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 706,
+      "role_key": "data_admin",
+      "resource": "jobs",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 707,
+      "role_key": "data_admin",
+      "resource": "jobs",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 708,
+      "role_key": "data_admin",
+      "resource": "backups",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 709,
+      "role_key": "data_admin",
+      "resource": "backups",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 710,
+      "role_key": "executive_viewer",
+      "resource": "customers",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 711,
+      "role_key": "executive_viewer",
+      "resource": "contacts",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 712,
+      "role_key": "executive_viewer",
+      "resource": "leads",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 713,
+      "role_key": "executive_viewer",
+      "resource": "opportunities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 714,
+      "role_key": "executive_viewer",
+      "resource": "activities",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 715,
+      "role_key": "executive_viewer",
+      "resource": "products",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 716,
+      "role_key": "executive_viewer",
+      "resource": "machine_applications",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 717,
+      "role_key": "executive_viewer",
+      "resource": "rfqs",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 718,
+      "role_key": "executive_viewer",
+      "resource": "quotations",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 719,
+      "role_key": "executive_viewer",
+      "resource": "sales_orders",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 720,
+      "role_key": "executive_viewer",
+      "resource": "dev_projects",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 721,
+      "role_key": "executive_viewer",
+      "resource": "aftermarket",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 722,
+      "role_key": "executive_viewer",
+      "resource": "service_cases",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 723,
+      "role_key": "executive_viewer",
+      "resource": "master_data",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 724,
+      "role_key": "executive_viewer",
+      "resource": "reports",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 725,
+      "role_key": "executive_viewer",
+      "resource": "erp_documents",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 726,
+      "role_key": "executive_viewer",
+      "resource": "audit_log",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 727,
+      "role_key": "executive_viewer",
+      "resource": "customers",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 728,
+      "role_key": "executive_viewer",
+      "resource": "opportunities",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 729,
+      "role_key": "executive_viewer",
+      "resource": "quotations",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 730,
+      "role_key": "executive_viewer",
+      "resource": "sales_orders",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 731,
+      "role_key": "executive_viewer",
+      "resource": "reports",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 732,
+      "role_key": "management",
+      "resource": "sales_orders",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 733,
+      "role_key": "management",
+      "resource": "sales_orders",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 734,
+      "role_key": "sales_manager",
+      "resource": "sales_orders",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 735,
+      "role_key": "sales_manager",
+      "resource": "sales_orders",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 736,
+      "role_key": "sales_manager",
+      "resource": "sales_orders",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 737,
+      "role_key": "sales_manager",
+      "resource": "sales_orders",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 738,
+      "role_key": "sales_rep",
+      "resource": "sales_orders",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 739,
+      "role_key": "sales_rep",
+      "resource": "sales_orders",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 740,
+      "role_key": "sales_rep",
+      "resource": "sales_orders",
+      "action": "update",
+      "scope": "own"
+    },
+    {
+      "id": 741,
+      "role_key": "engineering",
+      "resource": "sales_orders",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 742,
+      "role_key": "finance",
+      "resource": "sales_orders",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 743,
+      "role_key": "finance",
+      "resource": "sales_orders",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 744,
+      "role_key": "read_only",
+      "resource": "sales_orders",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 745,
+      "role_key": "super_admin",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 746,
+      "role_key": "super_admin",
+      "resource": "mcp_access",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 747,
+      "role_key": "super_admin",
+      "resource": "mcp_access",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 748,
+      "role_key": "super_admin",
+      "resource": "mcp_access",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 749,
+      "role_key": "super_admin",
+      "resource": "mcp_access",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 750,
+      "role_key": "super_admin",
+      "resource": "mcp_access",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 751,
+      "role_key": "super_admin",
+      "resource": "mcp_access",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 752,
+      "role_key": "super_admin",
+      "resource": "mcp_admin",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 753,
+      "role_key": "super_admin",
+      "resource": "mcp_admin",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 754,
+      "role_key": "super_admin",
+      "resource": "mcp_admin",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 755,
+      "role_key": "super_admin",
+      "resource": "mcp_admin",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 756,
+      "role_key": "super_admin",
+      "resource": "mcp_admin",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 757,
+      "role_key": "super_admin",
+      "resource": "mcp_admin",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 758,
+      "role_key": "super_admin",
+      "resource": "mcp_admin",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 759,
+      "role_key": "super_admin",
+      "resource": "mcp_approvals",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 760,
+      "role_key": "super_admin",
+      "resource": "mcp_approvals",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 761,
+      "role_key": "super_admin",
+      "resource": "mcp_approvals",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 762,
+      "role_key": "super_admin",
+      "resource": "mcp_approvals",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 763,
+      "role_key": "super_admin",
+      "resource": "mcp_approvals",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 764,
+      "role_key": "super_admin",
+      "resource": "mcp_approvals",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 765,
+      "role_key": "super_admin",
+      "resource": "mcp_approvals",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 766,
+      "role_key": "system_admin",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 767,
+      "role_key": "system_admin",
+      "resource": "mcp_access",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 768,
+      "role_key": "system_admin",
+      "resource": "mcp_access",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 769,
+      "role_key": "system_admin",
+      "resource": "mcp_access",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 770,
+      "role_key": "system_admin",
+      "resource": "mcp_access",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 771,
+      "role_key": "system_admin",
+      "resource": "mcp_access",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 772,
+      "role_key": "system_admin",
+      "resource": "mcp_access",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 773,
+      "role_key": "system_admin",
+      "resource": "mcp_admin",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 774,
+      "role_key": "system_admin",
+      "resource": "mcp_admin",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 775,
+      "role_key": "system_admin",
+      "resource": "mcp_admin",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 776,
+      "role_key": "system_admin",
+      "resource": "mcp_admin",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 777,
+      "role_key": "system_admin",
+      "resource": "mcp_admin",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 778,
+      "role_key": "system_admin",
+      "resource": "mcp_admin",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 779,
+      "role_key": "system_admin",
+      "resource": "mcp_admin",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 780,
+      "role_key": "system_admin",
+      "resource": "mcp_approvals",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 781,
+      "role_key": "system_admin",
+      "resource": "mcp_approvals",
+      "action": "create",
+      "scope": "all"
+    },
+    {
+      "id": 782,
+      "role_key": "system_admin",
+      "resource": "mcp_approvals",
+      "action": "update",
+      "scope": "all"
+    },
+    {
+      "id": 783,
+      "role_key": "system_admin",
+      "resource": "mcp_approvals",
+      "action": "delete",
+      "scope": "all"
+    },
+    {
+      "id": 784,
+      "role_key": "system_admin",
+      "resource": "mcp_approvals",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 785,
+      "role_key": "system_admin",
+      "resource": "mcp_approvals",
+      "action": "export",
+      "scope": "all"
+    },
+    {
+      "id": 786,
+      "role_key": "system_admin",
+      "resource": "mcp_approvals",
+      "action": "import",
+      "scope": "all"
+    },
+    {
+      "id": 787,
+      "role_key": "release_manager",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 788,
+      "role_key": "release_manager",
+      "resource": "mcp_approvals",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 789,
+      "role_key": "release_manager",
+      "resource": "mcp_approvals",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 790,
+      "role_key": "data_admin",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 791,
+      "role_key": "data_admin",
+      "resource": "mcp_approvals",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 792,
+      "role_key": "management",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 793,
+      "role_key": "management",
+      "resource": "mcp_approvals",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 794,
+      "role_key": "management",
+      "resource": "mcp_approvals",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 795,
+      "role_key": "executive_viewer",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 796,
+      "role_key": "sales_manager",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 797,
+      "role_key": "sales_manager",
+      "resource": "mcp_approvals",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 798,
+      "role_key": "sales_manager",
+      "resource": "mcp_approvals",
+      "action": "approve",
+      "scope": "all"
+    },
+    {
+      "id": 799,
+      "role_key": "sales_rep",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 800,
+      "role_key": "marketing",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 801,
+      "role_key": "engineering",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 802,
+      "role_key": "quality",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 803,
+      "role_key": "finance",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    },
+    {
+      "id": 804,
+      "role_key": "read_only",
+      "resource": "mcp_access",
+      "action": "read",
+      "scope": "all"
+    }
+  ],
+  "business_models": [
+    {
+      "id": 1,
+      "code": "OEM",
+      "name": "OEM",
+      "name_en": "OEM",
+      "description": "Original Equipment Manufacturer",
+      "is_active": true,
+      "sort_order": 10
+    },
+    {
+      "id": 2,
+      "code": "ODM",
+      "name": "ODM",
+      "name_en": "ODM",
+      "description": "Original Design Manufacturer",
+      "is_active": true,
+      "sort_order": 20
+    },
+    {
+      "id": 3,
+      "code": "OBM",
+      "name": "OBM",
+      "name_en": "OBM",
+      "description": "Own Brand Manufacturer",
+      "is_active": true,
+      "sort_order": 30
+    },
+    {
+      "id": 4,
+      "code": "DEALER",
+      "name": "ตัวแทนจำหน่าย",
+      "name_en": "Dealer",
+      "description": null,
+      "is_active": true,
+      "sort_order": 40
+    },
+    {
+      "id": 5,
+      "code": "DISTRIBUTOR",
+      "name": "ผู้กระจายสินค้า",
+      "name_en": "Distributor",
+      "description": null,
+      "is_active": true,
+      "sort_order": 50
+    },
+    {
+      "id": 6,
+      "code": "WHOLESALER",
+      "name": "ผู้ค้าส่ง",
+      "name_en": "Wholesaler",
+      "description": null,
+      "is_active": true,
+      "sort_order": 60
+    },
+    {
+      "id": 7,
+      "code": "RETAILER",
+      "name": "ผู้ค้าปลีก",
+      "name_en": "Retailer",
+      "description": null,
+      "is_active": true,
+      "sort_order": 70
+    },
+    {
+      "id": 8,
+      "code": "EXPORT",
+      "name": "ลูกค้าส่งออก",
+      "name_en": "Export Customer",
+      "description": null,
+      "is_active": true,
+      "sort_order": 80
+    },
+    {
+      "id": 9,
+      "code": "IMPORTER",
+      "name": "ผู้นำเข้า",
+      "name_en": "Importer",
+      "description": null,
+      "is_active": true,
+      "sort_order": 90
+    },
+    {
+      "id": 10,
+      "code": "INDUSTRIAL",
+      "name": "ลูกค้าอุตสาหกรรม",
+      "name_en": "Industrial Customer",
+      "description": null,
+      "is_active": true,
+      "sort_order": 100
+    }
+  ],
+  "option_categories": [
+    {
+      "key": "activity_type",
+      "name": "ประเภทกิจกรรม",
+      "name_en": "Activity type",
+      "description": null,
+      "id": "activity_type"
+    },
+    {
+      "key": "complaint_category",
+      "name": "ประเภทข้อร้องเรียน",
+      "name_en": "Complaint category",
+      "description": null,
+      "id": "complaint_category"
+    },
+    {
+      "key": "customer_category",
+      "name": "ประเภทลูกค้า",
+      "name_en": "Customer category",
+      "description": null,
+      "id": "customer_category"
+    },
+    {
+      "key": "customer_group",
+      "name": "กลุ่มลูกค้า",
+      "name_en": "Customer group",
+      "description": "5 DDC Agriculture field sales customer groups",
+      "id": "customer_group"
+    },
+    {
+      "key": "customer_lifecycle_status",
+      "name": "สถานะลูกค้า",
+      "name_en": "Customer lifecycle status",
+      "description": null,
+      "id": "customer_lifecycle_status"
+    },
+    {
+      "key": "department",
+      "name": "แผนก",
+      "name_en": "Department",
+      "description": null,
+      "id": "department"
+    },
+    {
+      "key": "document_type",
+      "name": "ประเภทเอกสาร",
+      "name_en": "Document type",
+      "description": null,
+      "id": "document_type"
+    },
+    {
+      "key": "equipment_type",
+      "name": "ประเภทเครื่องจักร",
+      "name_en": "Equipment type",
+      "description": null,
+      "id": "equipment_type"
+    },
+    {
+      "key": "lead_source",
+      "name": "แหล่งที่มาของลีด",
+      "name_en": "Lead source",
+      "description": null,
+      "id": "lead_source"
+    },
+    {
+      "key": "loss_reason",
+      "name": "เหตุผลที่ไม่ได้งาน",
+      "name_en": "Loss reason",
+      "description": null,
+      "id": "loss_reason"
+    },
+    {
+      "key": "product_lifecycle_status",
+      "name": "สถานะสินค้า",
+      "name_en": "Product lifecycle status",
+      "description": null,
+      "id": "product_lifecycle_status"
+    },
+    {
+      "key": "sales_channel",
+      "name": "ช่องทางการขาย",
+      "name_en": "Sales channel",
+      "description": null,
+      "id": "sales_channel"
+    }
+  ],
+  "master_options": [
+    {
+      "id": 1,
+      "category": "customer_lifecycle_status",
+      "code": "prospect",
+      "name": "ลูกค้ามุ่งหวัง",
+      "name_en": "Prospect",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 2,
+      "category": "customer_lifecycle_status",
+      "code": "active",
+      "name": "ใช้งานอยู่",
+      "name_en": "Active",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 3,
+      "category": "customer_lifecycle_status",
+      "code": "on_hold",
+      "name": "พักการติดต่อ",
+      "name_en": "On hold",
+      "sort_order": 30,
+      "is_active": true
+    },
+    {
+      "id": 4,
+      "category": "customer_lifecycle_status",
+      "code": "inactive",
+      "name": "ไม่เคลื่อนไหว",
+      "name_en": "Inactive",
+      "sort_order": 40,
+      "is_active": true
+    },
+    {
+      "id": 5,
+      "category": "customer_lifecycle_status",
+      "code": "lost",
+      "name": "สูญเสียลูกค้า",
+      "name_en": "Lost",
+      "sort_order": 50,
+      "is_active": true
+    },
+    {
+      "id": 6,
+      "category": "customer_category",
+      "code": "key_account",
+      "name": "ลูกค้ารายสำคัญ",
+      "name_en": "Key account",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 7,
+      "category": "customer_category",
+      "code": "standard",
+      "name": "ลูกค้าทั่วไป",
+      "name_en": "Standard",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 8,
+      "category": "sales_channel",
+      "code": "direct",
+      "name": "ขายตรง",
+      "name_en": "Direct",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 9,
+      "category": "sales_channel",
+      "code": "distribution",
+      "name": "ผ่านผู้กระจายสินค้า",
+      "name_en": "Distribution",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 10,
+      "category": "sales_channel",
+      "code": "dealer_network",
+      "name": "เครือข่ายตัวแทน",
+      "name_en": "Dealer network",
+      "sort_order": 30,
+      "is_active": true
+    },
+    {
+      "id": 11,
+      "category": "sales_channel",
+      "code": "export",
+      "name": "ส่งออก",
+      "name_en": "Export",
+      "sort_order": 40,
+      "is_active": true
+    },
+    {
+      "id": 12,
+      "category": "sales_channel",
+      "code": "online",
+      "name": "ออนไลน์",
+      "name_en": "Online",
+      "sort_order": 50,
+      "is_active": true
+    },
+    {
+      "id": 13,
+      "category": "lead_source",
+      "code": "exhibition",
+      "name": "งานแสดงสินค้า",
+      "name_en": "Exhibition / trade show",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 14,
+      "category": "lead_source",
+      "code": "referral",
+      "name": "การแนะนำ",
+      "name_en": "Referral",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 15,
+      "category": "lead_source",
+      "code": "website",
+      "name": "เว็บไซต์",
+      "name_en": "Website",
+      "sort_order": 30,
+      "is_active": true
+    },
+    {
+      "id": 16,
+      "category": "lead_source",
+      "code": "outbound",
+      "name": "ติดต่อออกไปเอง",
+      "name_en": "Outbound contact",
+      "sort_order": 40,
+      "is_active": true
+    },
+    {
+      "id": 17,
+      "category": "lead_source",
+      "code": "existing_customer",
+      "name": "ลูกค้าเดิม",
+      "name_en": "Existing customer",
+      "sort_order": 50,
+      "is_active": true
+    },
+    {
+      "id": 18,
+      "category": "lead_source",
+      "code": "other",
+      "name": "อื่น ๆ",
+      "name_en": "Other",
+      "sort_order": 90,
+      "is_active": true
+    },
+    {
+      "id": 19,
+      "category": "loss_reason",
+      "code": "price",
+      "name": "ราคา",
+      "name_en": "Price",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 20,
+      "category": "loss_reason",
+      "code": "lead_time",
+      "name": "ระยะเวลาส่งมอบ",
+      "name_en": "Lead time",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 21,
+      "category": "loss_reason",
+      "code": "specification",
+      "name": "ข้อกำหนดทางเทคนิค",
+      "name_en": "Specification",
+      "sort_order": 30,
+      "is_active": true
+    },
+    {
+      "id": 22,
+      "category": "loss_reason",
+      "code": "competitor",
+      "name": "คู่แข่ง",
+      "name_en": "Competitor",
+      "sort_order": 40,
+      "is_active": true
+    },
+    {
+      "id": 23,
+      "category": "loss_reason",
+      "code": "customer_cancelled",
+      "name": "ลูกค้ายกเลิก",
+      "name_en": "Cancelled by customer",
+      "sort_order": 50,
+      "is_active": true
+    },
+    {
+      "id": 24,
+      "category": "loss_reason",
+      "code": "other",
+      "name": "อื่น ๆ",
+      "name_en": "Other",
+      "sort_order": 90,
+      "is_active": true
+    },
+    {
+      "id": 25,
+      "category": "activity_type",
+      "code": "onsite_visit",
+      "name": "เข้าพบลูกค้า",
+      "name_en": "Onsite visit",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 26,
+      "category": "activity_type",
+      "code": "dealer_visit",
+      "name": "เยี่ยมตัวแทนจำหน่าย",
+      "name_en": "Dealer visit",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 27,
+      "category": "activity_type",
+      "code": "meeting",
+      "name": "ประชุมกับลูกค้า",
+      "name_en": "Customer meeting",
+      "sort_order": 30,
+      "is_active": true
+    },
+    {
+      "id": 28,
+      "category": "activity_type",
+      "code": "phone_call",
+      "name": "โทรศัพท์",
+      "name_en": "Telephone call",
+      "sort_order": 40,
+      "is_active": true
+    },
+    {
+      "id": 29,
+      "category": "activity_type",
+      "code": "email",
+      "name": "อีเมล",
+      "name_en": "Email",
+      "sort_order": 50,
+      "is_active": true
+    },
+    {
+      "id": 30,
+      "category": "activity_type",
+      "code": "technical_discussion",
+      "name": "หารือทางเทคนิค",
+      "name_en": "Technical discussion",
+      "sort_order": 60,
+      "is_active": true
+    },
+    {
+      "id": 31,
+      "category": "activity_type",
+      "code": "exhibition",
+      "name": "งานนิทรรศการ",
+      "name_en": "Exhibition",
+      "sort_order": 70,
+      "is_active": true
+    },
+    {
+      "id": 32,
+      "category": "activity_type",
+      "code": "trade_show",
+      "name": "งานแสดงสินค้า",
+      "name_en": "Trade show",
+      "sort_order": 80,
+      "is_active": true
+    },
+    {
+      "id": 33,
+      "category": "activity_type",
+      "code": "follow_up",
+      "name": "ติดตามผล",
+      "name_en": "Follow-up",
+      "sort_order": 90,
+      "is_active": true
+    },
+    {
+      "id": 34,
+      "category": "complaint_category",
+      "code": "product_quality",
+      "name": "คุณภาพสินค้า",
+      "name_en": "Product quality",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 35,
+      "category": "complaint_category",
+      "code": "delivery",
+      "name": "การส่งมอบ",
+      "name_en": "Delivery",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 36,
+      "category": "complaint_category",
+      "code": "packaging",
+      "name": "บรรจุภัณฑ์",
+      "name_en": "Packaging",
+      "sort_order": 30,
+      "is_active": true
+    },
+    {
+      "id": 37,
+      "category": "complaint_category",
+      "code": "documentation",
+      "name": "เอกสาร",
+      "name_en": "Documentation",
+      "sort_order": 40,
+      "is_active": true
+    },
+    {
+      "id": 38,
+      "category": "complaint_category",
+      "code": "service",
+      "name": "การบริการ",
+      "name_en": "Service",
+      "sort_order": 50,
+      "is_active": true
+    },
+    {
+      "id": 39,
+      "category": "complaint_category",
+      "code": "other",
+      "name": "อื่น ๆ",
+      "name_en": "Other",
+      "sort_order": 90,
+      "is_active": true
+    },
+    {
+      "id": 40,
+      "category": "department",
+      "code": "sales",
+      "name": "ฝ่ายขาย",
+      "name_en": "Sales",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 41,
+      "category": "department",
+      "code": "marketing",
+      "name": "การตลาด",
+      "name_en": "Marketing",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 42,
+      "category": "department",
+      "code": "engineering",
+      "name": "วิศวกรรม",
+      "name_en": "Engineering",
+      "sort_order": 30,
+      "is_active": true
+    },
+    {
+      "id": 43,
+      "category": "department",
+      "code": "production",
+      "name": "ฝ่ายผลิต",
+      "name_en": "Production",
+      "sort_order": 40,
+      "is_active": true
+    },
+    {
+      "id": 44,
+      "category": "department",
+      "code": "quality",
+      "name": "ประกันคุณภาพ",
+      "name_en": "Quality",
+      "sort_order": 50,
+      "is_active": true
+    },
+    {
+      "id": 45,
+      "category": "department",
+      "code": "purchasing",
+      "name": "จัดซื้อ",
+      "name_en": "Purchasing",
+      "sort_order": 60,
+      "is_active": true
+    },
+    {
+      "id": 46,
+      "category": "department",
+      "code": "finance",
+      "name": "การเงิน",
+      "name_en": "Finance",
+      "sort_order": 70,
+      "is_active": true
+    },
+    {
+      "id": 50,
+      "category": "equipment_type",
+      "code": "sugarcane_harvester",
+      "name": "รถตัดอ้อย",
+      "name_en": "Sugarcane harvester",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 51,
+      "category": "equipment_type",
+      "code": "tractor",
+      "name": "รถแทรกเตอร์",
+      "name_en": "Tractor",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 52,
+      "category": "equipment_type",
+      "code": "other",
+      "name": "อื่น ๆ",
+      "name_en": "Other",
+      "sort_order": 90,
+      "is_active": true
+    },
+    {
+      "id": 53,
+      "category": "product_lifecycle_status",
+      "code": "development",
+      "name": "อยู่ระหว่างพัฒนา",
+      "name_en": "In development",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 54,
+      "category": "product_lifecycle_status",
+      "code": "active",
+      "name": "จำหน่ายอยู่",
+      "name_en": "Active",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 55,
+      "category": "product_lifecycle_status",
+      "code": "phase_out",
+      "name": "ทยอยเลิกจำหน่าย",
+      "name_en": "Phase-out",
+      "sort_order": 30,
+      "is_active": true
+    },
+    {
+      "id": 56,
+      "category": "product_lifecycle_status",
+      "code": "obsolete",
+      "name": "เลิกจำหน่าย",
+      "name_en": "Obsolete",
+      "sort_order": 40,
+      "is_active": true
+    },
+    {
+      "id": 57,
+      "category": "document_type",
+      "code": "customer_drawing",
+      "name": "แบบจากลูกค้า",
+      "name_en": "Customer drawing",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 58,
+      "category": "document_type",
+      "code": "ddc_drawing",
+      "name": "แบบของ DDC",
+      "name_en": "DDC drawing",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 59,
+      "category": "document_type",
+      "code": "specification",
+      "name": "ข้อกำหนด",
+      "name_en": "Specification",
+      "sort_order": 30,
+      "is_active": true
+    },
+    {
+      "id": 60,
+      "category": "document_type",
+      "code": "feasibility_study",
+      "name": "ผลการประเมินความเป็นไปได้",
+      "name_en": "Feasibility study",
+      "sort_order": 40,
+      "is_active": true
+    },
+    {
+      "id": 61,
+      "category": "document_type",
+      "code": "sample_report",
+      "name": "รายงานตัวอย่าง",
+      "name_en": "Sample report",
+      "sort_order": 50,
+      "is_active": true
+    },
+    {
+      "id": 62,
+      "category": "document_type",
+      "code": "8d_report",
+      "name": "รายงาน 8D",
+      "name_en": "8D report",
+      "sort_order": 60,
+      "is_active": true
+    },
+    {
+      "id": 63,
+      "category": "document_type",
+      "code": "ncr",
+      "name": "NCR",
+      "name_en": "NCR",
+      "sort_order": 70,
+      "is_active": true
+    },
+    {
+      "id": 64,
+      "category": "document_type",
+      "code": "capa",
+      "name": "CAPA",
+      "name_en": "CAPA",
+      "sort_order": 80,
+      "is_active": true
+    },
+    {
+      "id": 65,
+      "category": "document_type",
+      "code": "contract",
+      "name": "สัญญา",
+      "name_en": "Contract",
+      "sort_order": 85,
+      "is_active": true
+    },
+    {
+      "id": 66,
+      "category": "document_type",
+      "code": "other",
+      "name": "อื่น ๆ",
+      "name_en": "Other",
+      "sort_order": 90,
+      "is_active": true
+    },
+    {
+      "id": 67,
+      "category": "customer_group",
+      "code": "sugar_mill",
+      "name": "โรงงานน้ำตาล",
+      "name_en": "Sugar mill",
+      "sort_order": 10,
+      "is_active": true
+    },
+    {
+      "id": 68,
+      "category": "customer_group",
+      "code": "dealer",
+      "name": "ดีลเลอร์",
+      "name_en": "Dealer",
+      "sort_order": 20,
+      "is_active": true
+    },
+    {
+      "id": 69,
+      "category": "customer_group",
+      "code": "repair_shop",
+      "name": "อู่ซ่อม",
+      "name_en": "Repair workshop",
+      "sort_order": 30,
+      "is_active": true
+    },
+    {
+      "id": 70,
+      "category": "customer_group",
+      "code": "parts_shop",
+      "name": "ร้านอะไหล่",
+      "name_en": "Spare parts shop",
+      "sort_order": 40,
+      "is_active": true
+    },
+    {
+      "id": 71,
+      "category": "customer_group",
+      "code": "farm_owner",
+      "name": "เจ้าของไร่",
+      "name_en": "Farm owner",
+      "sort_order": 50,
+      "is_active": true
+    },
+    {
+      "id": 72,
+      "category": "activity_type",
+      "code": "line_chat",
+      "name": "แชท LINE",
+      "name_en": "LINE chat",
+      "sort_order": 45,
+      "is_active": true
+    },
+    {
+      "id": 73,
+      "category": "activity_type",
+      "code": "sample_delivery",
+      "name": "ส่งตัวอย่างทดสอบ",
+      "name_en": "Sample delivery",
+      "sort_order": 55,
+      "is_active": true
+    }
+  ],
+  "product_hierarchy_nodes": [
+    {
+      "id": 4,
+      "parent_id": null,
+      "level": "family",
+      "code": "DRIVE_COMPONENT",
+      "name": "ชิ้นส่วนระบบขับเคลื่อน",
+      "name_en": "Drive components",
+      "is_active": true,
+      "sort_order": 40
+    },
+    {
+      "id": 5,
+      "parent_id": null,
+      "level": "family",
+      "code": "SPROCKET",
+      "name": "สเตอร์",
+      "name_en": "Sprockets",
+      "is_active": true,
+      "sort_order": 30
+    },
+    {
+      "id": 6,
+      "parent_id": null,
+      "level": "family",
+      "code": "CHOPPER_BLADE",
+      "name": "ใบมีดสับ",
+      "name_en": "Chopper blades",
+      "is_active": true,
+      "sort_order": 20
+    },
+    {
+      "id": 7,
+      "parent_id": null,
+      "level": "family",
+      "code": "BASE_CUTTER_BLADE",
+      "name": "ใบมีดตัดโคน",
+      "name_en": "Base cutter blades",
+      "is_active": true,
+      "sort_order": 10
+    }
+  ],
+  "pipelines": [
+    {
+      "id": 1,
+      "code": "STANDARD",
+      "name": "การขายทั่วไป",
+      "name_en": "Standard sales",
+      "business_model_id": null,
+      "is_default": true,
+      "is_active": true,
+      "sort_order": 10
+    },
+    {
+      "id": 2,
+      "code": "OEM_ODM",
+      "name": "พัฒนาลูกค้า OEM/ODM",
+      "name_en": "OEM/ODM development",
+      "business_model_id": null,
+      "is_default": false,
+      "is_active": true,
+      "sort_order": 20
+    }
+  ],
+  "pipeline_stages": [
+    {
+      "id": 1,
+      "pipeline_id": 1,
+      "code": "lost",
+      "name": "ไม่ได้งาน",
+      "name_en": "Lost",
+      "sort_order": 60,
+      "probability": 0,
+      "stage_type": "lost"
+    },
+    {
+      "id": 2,
+      "pipeline_id": 1,
+      "code": "won",
+      "name": "ได้งาน",
+      "name_en": "Won",
+      "sort_order": 50,
+      "probability": 100,
+      "stage_type": "won"
+    },
+    {
+      "id": 3,
+      "pipeline_id": 1,
+      "code": "in-negociation",
+      "name": "เจรจาต่อรอง",
+      "name_en": "Negotiation",
+      "sort_order": 40,
+      "probability": 70,
+      "stage_type": "open"
+    },
+    {
+      "id": 4,
+      "pipeline_id": 1,
+      "code": "proposal-sent",
+      "name": "เสนอราคาแล้ว",
+      "name_en": "Quotation sent",
+      "sort_order": 30,
+      "probability": 50,
+      "stage_type": "open"
+    },
+    {
+      "id": 5,
+      "pipeline_id": 1,
+      "code": "requirement",
+      "name": "รวบรวมความต้องการ",
+      "name_en": "Requirement",
+      "sort_order": 20,
+      "probability": 30,
+      "stage_type": "open"
+    },
+    {
+      "id": 6,
+      "pipeline_id": 1,
+      "code": "opportunity",
+      "name": "โอกาสใหม่",
+      "name_en": "New opportunity",
+      "sort_order": 10,
+      "probability": 10,
+      "stage_type": "open"
+    },
+    {
+      "id": 7,
+      "pipeline_id": 2,
+      "code": "lost",
+      "name": "ไม่ได้งาน",
+      "name_en": "Lost",
+      "sort_order": 70,
+      "probability": 0,
+      "stage_type": "lost"
+    },
+    {
+      "id": 8,
+      "pipeline_id": 2,
+      "code": "won",
+      "name": "ได้งาน",
+      "name_en": "Won",
+      "sort_order": 60,
+      "probability": 100,
+      "stage_type": "won"
+    },
+    {
+      "id": 9,
+      "pipeline_id": 2,
+      "code": "in-negociation",
+      "name": "เจรจาต่อรอง",
+      "name_en": "Negotiation",
+      "sort_order": 50,
+      "probability": 75,
+      "stage_type": "open"
+    },
+    {
+      "id": 10,
+      "pipeline_id": 2,
+      "code": "proposal-sent",
+      "name": "เสนอราคาแล้ว",
+      "name_en": "Quotation sent",
+      "sort_order": 40,
+      "probability": 60,
+      "stage_type": "open"
+    },
+    {
+      "id": 11,
+      "pipeline_id": 2,
+      "code": "sampling",
+      "name": "ตัวอย่าง/ต้นแบบ",
+      "name_en": "Sampling",
+      "sort_order": 30,
+      "probability": 45,
+      "stage_type": "open"
+    },
+    {
+      "id": 12,
+      "pipeline_id": 2,
+      "code": "feasibility",
+      "name": "ประเมินความเป็นไปได้",
+      "name_en": "Feasibility",
+      "sort_order": 20,
+      "probability": 25,
+      "stage_type": "open"
+    },
+    {
+      "id": 13,
+      "pipeline_id": 2,
+      "code": "inquiry",
+      "name": "รับคำขอพัฒนา",
+      "name_en": "Development inquiry",
+      "sort_order": 10,
+      "probability": 10,
+      "stage_type": "open"
+    }
+  ],
+  "app_settings": [
+    {
+      "key": "default_currency",
+      "value": "THB",
+      "description": "Default currency for new quotations and opportunities.",
+      "id": "default_currency"
+    },
+    {
+      "key": "quotation_allow_self_approval",
+      "value": false,
+      "description": "When false, the user who submitted a quotation cannot approve it. Requires DDC confirmation.",
+      "id": "quotation_allow_self_approval"
+    }
+  ],
+  "erp_connector_config": [
+    {
+      "id": 1,
+      "connector_type": "mock",
+      "environment_type": "mock",
+      "environment_url": null,
+      "is_enabled": false,
+      "approval_status": "not_requested",
+      "approved_by_name": null,
+      "approved_at": null,
+      "approval_reference": null,
+      "notes": "Real ERP integration is disabled. The identified ERP host (ddcthailand.operations.dynamics.com) has not been verified or contacted."
+    }
+  ],
+  "erp_entity_configs": [
+    {
+      "entity": "contacts",
+      "label": "Contacts",
+      "erp_entity_name": "ContactsV2",
+      "crm_table": "contacts",
+      "direction": "disabled",
+      "system_of_record": "undecided",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "To be confirmed.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 20,
+      "last_synced_at": null,
+      "id": "contacts"
+    },
+    {
+      "entity": "customers",
+      "label": "Customers",
+      "erp_entity_name": "CustomersV3",
+      "crm_table": "companies",
+      "direction": "inbound",
+      "system_of_record": "undecided",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "Proposed: ERP owns billing accounts, CRM owns prospects. To be confirmed.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 10,
+      "last_synced_at": null,
+      "id": "customers"
+    },
+    {
+      "entity": "deliveries",
+      "label": "Deliveries",
+      "erp_entity_name": "SalesPackingSlipHeadersV2",
+      "crm_table": "erp_deliveries",
+      "direction": "inbound",
+      "system_of_record": "erp",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "To be confirmed.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 100,
+      "last_synced_at": null,
+      "id": "deliveries"
+    },
+    {
+      "entity": "inventory_availability",
+      "label": "Inventory availability",
+      "erp_entity_name": "WarehousesOnHandV2",
+      "crm_table": "erp_inventory_availability",
+      "direction": "inbound",
+      "system_of_record": "erp",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "Read-only reference. To be confirmed.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 50,
+      "last_synced_at": null,
+      "id": "inventory_availability"
+    },
+    {
+      "entity": "invoices",
+      "label": "Invoices",
+      "erp_entity_name": "SalesInvoiceHeadersV2",
+      "crm_table": "erp_invoices",
+      "direction": "inbound",
+      "system_of_record": "erp",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "To be confirmed.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 110,
+      "last_synced_at": null,
+      "id": "invoices"
+    },
+    {
+      "entity": "price_lists",
+      "label": "Price lists",
+      "erp_entity_name": "SalesPriceAgreements",
+      "crm_table": "erp_price_list_entries",
+      "direction": "inbound",
+      "system_of_record": "erp",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "Read-only reference. To be confirmed.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 60,
+      "last_synced_at": null,
+      "id": "price_lists"
+    },
+    {
+      "entity": "products",
+      "label": "Products",
+      "erp_entity_name": "ProductsV2",
+      "crm_table": "products",
+      "direction": "inbound",
+      "system_of_record": "erp",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "Shared product definitions. To be confirmed.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 30,
+      "last_synced_at": null,
+      "id": "products"
+    },
+    {
+      "entity": "quotations",
+      "label": "Quotations",
+      "erp_entity_name": "SalesQuotationHeadersV2",
+      "crm_table": "quotations",
+      "direction": "disabled",
+      "system_of_record": "undecided",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "Whether CRM quotations are pushed to the ERP is undecided.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 70,
+      "last_synced_at": null,
+      "id": "quotations"
+    },
+    {
+      "entity": "released_products",
+      "label": "Released products",
+      "erp_entity_name": "ReleasedProductsV2",
+      "crm_table": "products",
+      "direction": "inbound",
+      "system_of_record": "erp",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "Per legal entity item master. To be confirmed.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 40,
+      "last_synced_at": null,
+      "id": "released_products"
+    },
+    {
+      "entity": "sales_order_lines",
+      "label": "Sales order lines",
+      "erp_entity_name": "SalesOrderLines",
+      "crm_table": "erp_sales_order_lines",
+      "direction": "inbound",
+      "system_of_record": "erp",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "To be confirmed.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 90,
+      "last_synced_at": null,
+      "id": "sales_order_lines"
+    },
+    {
+      "entity": "sales_orders",
+      "label": "Sales orders",
+      "erp_entity_name": "SalesOrderHeadersV2",
+      "crm_table": "erp_sales_orders",
+      "direction": "inbound",
+      "system_of_record": "erp",
+      "allowed_operations": ["read"],
+      "decision_status": "proposed",
+      "decision_note": "ERP is the expected system of record. To be confirmed.",
+      "is_enabled": false,
+      "page_size": 100,
+      "sort_order": 80,
+      "last_synced_at": null,
+      "id": "sales_orders"
+    }
+  ],
+  "erp_field_mappings": [
+    {
+      "id": 1,
+      "entity": "customers",
+      "crm_field": "erp_key",
+      "erp_field": "CustomerAccount",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Unique within a legal entity only"
+    },
+    {
+      "id": 2,
+      "entity": "customers",
+      "crm_field": "name",
+      "erp_field": "OrganizationName",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 3,
+      "entity": "customers",
+      "crm_field": "tax_identifier",
+      "erp_field": "TaxExemptNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Candidate field, unverified"
+    },
+    {
+      "id": 4,
+      "entity": "customers",
+      "crm_field": "phone_number",
+      "erp_field": "PrimaryContactPhone",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 5,
+      "entity": "customers",
+      "crm_field": "email",
+      "erp_field": "PrimaryContactEmail",
+      "transform": "lower",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 6,
+      "entity": "customers",
+      "crm_field": "address",
+      "erp_field": "AddressStreet",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 7,
+      "entity": "customers",
+      "crm_field": "city",
+      "erp_field": "AddressCity",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 8,
+      "entity": "customers",
+      "crm_field": "zipcode",
+      "erp_field": "AddressZipCode",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 9,
+      "entity": "customers",
+      "crm_field": "country",
+      "erp_field": "AddressCountryRegionId",
+      "transform": "upper",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 10,
+      "entity": "contacts",
+      "crm_field": "erp_key",
+      "erp_field": "ContactPersonId",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 11,
+      "entity": "contacts",
+      "crm_field": "first_name",
+      "erp_field": "FirstName",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 12,
+      "entity": "contacts",
+      "crm_field": "last_name",
+      "erp_field": "LastName",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 13,
+      "entity": "contacts",
+      "crm_field": "title",
+      "erp_field": "JobTitle",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Candidate field, unverified"
+    },
+    {
+      "id": 14,
+      "entity": "products",
+      "crm_field": "erp_key",
+      "erp_field": "ProductNumber",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 15,
+      "entity": "products",
+      "crm_field": "part_number",
+      "erp_field": "ProductNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 16,
+      "entity": "products",
+      "crm_field": "name",
+      "erp_field": "ProductName",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 17,
+      "entity": "released_products",
+      "crm_field": "erp_key",
+      "erp_field": "ItemNumber",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Unique within a legal entity only"
+    },
+    {
+      "id": 18,
+      "entity": "released_products",
+      "crm_field": "part_number",
+      "erp_field": "ItemNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 19,
+      "entity": "released_products",
+      "crm_field": "name",
+      "erp_field": "SearchName",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Candidate field, unverified"
+    },
+    {
+      "id": 20,
+      "entity": "released_products",
+      "crm_field": "uom",
+      "erp_field": "SalesUnitSymbol",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 21,
+      "entity": "inventory_availability",
+      "crm_field": "erp_key",
+      "erp_field": "ItemNumber",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Combined with site and warehouse"
+    },
+    {
+      "id": 22,
+      "entity": "inventory_availability",
+      "crm_field": "erp_item_number",
+      "erp_field": "ItemNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 23,
+      "entity": "inventory_availability",
+      "crm_field": "site_id",
+      "erp_field": "InventorySiteId",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Part of the key"
+    },
+    {
+      "id": 24,
+      "entity": "inventory_availability",
+      "crm_field": "warehouse_id",
+      "erp_field": "InventoryWarehouseId",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Part of the key"
+    },
+    {
+      "id": 25,
+      "entity": "inventory_availability",
+      "crm_field": "available_quantity",
+      "erp_field": "AvailableOnHandQuantity",
+      "transform": "number",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 26,
+      "entity": "inventory_availability",
+      "crm_field": "on_hand_quantity",
+      "erp_field": "OnHandQuantity",
+      "transform": "number",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 27,
+      "entity": "price_lists",
+      "crm_field": "erp_key",
+      "erp_field": "RecordId",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Candidate key, unverified"
+    },
+    {
+      "id": 28,
+      "entity": "price_lists",
+      "crm_field": "erp_item_number",
+      "erp_field": "ItemNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 29,
+      "entity": "price_lists",
+      "crm_field": "price_group",
+      "erp_field": "PriceCustomerGroupCode",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 30,
+      "entity": "price_lists",
+      "crm_field": "currency",
+      "erp_field": "PriceCurrencyCode",
+      "transform": "upper",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 31,
+      "entity": "price_lists",
+      "crm_field": "unit_price",
+      "erp_field": "Price",
+      "transform": "number",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 32,
+      "entity": "price_lists",
+      "crm_field": "quantity_from",
+      "erp_field": "FromQuantity",
+      "transform": "number",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 33,
+      "entity": "price_lists",
+      "crm_field": "valid_from",
+      "erp_field": "PriceApplicableFromDate",
+      "transform": "date",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 34,
+      "entity": "price_lists",
+      "crm_field": "valid_to",
+      "erp_field": "PriceApplicableToDate",
+      "transform": "date",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 35,
+      "entity": "quotations",
+      "crm_field": "erp_key",
+      "erp_field": "SalesQuotationNumber",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 36,
+      "entity": "sales_orders",
+      "crm_field": "erp_key",
+      "erp_field": "SalesOrderNumber",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Unique within a legal entity only"
+    },
+    {
+      "id": 37,
+      "entity": "sales_orders",
+      "crm_field": "sales_order_number",
+      "erp_field": "SalesOrderNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 38,
+      "entity": "sales_orders",
+      "crm_field": "erp_customer_account",
+      "erp_field": "OrderingCustomerAccountNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 39,
+      "entity": "sales_orders",
+      "crm_field": "order_date",
+      "erp_field": "OrderCreationDateTime",
+      "transform": "date",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Candidate field, unverified"
+    },
+    {
+      "id": 40,
+      "entity": "sales_orders",
+      "crm_field": "requested_ship_date",
+      "erp_field": "RequestedShippingDate",
+      "transform": "date",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 41,
+      "entity": "sales_orders",
+      "crm_field": "status",
+      "erp_field": "SalesOrderStatus",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 42,
+      "entity": "sales_orders",
+      "crm_field": "currency",
+      "erp_field": "CurrencyCode",
+      "transform": "upper",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 43,
+      "entity": "sales_orders",
+      "crm_field": "total_amount",
+      "erp_field": "OrderTotalAmount",
+      "transform": "number",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Candidate field, unverified"
+    },
+    {
+      "id": 44,
+      "entity": "sales_order_lines",
+      "crm_field": "erp_key",
+      "erp_field": "InventoryLotId",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Candidate key, unverified"
+    },
+    {
+      "id": 45,
+      "entity": "sales_order_lines",
+      "crm_field": "sales_order_number",
+      "erp_field": "SalesOrderNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 46,
+      "entity": "sales_order_lines",
+      "crm_field": "line_number",
+      "erp_field": "LineNumber",
+      "transform": "number",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 47,
+      "entity": "sales_order_lines",
+      "crm_field": "erp_item_number",
+      "erp_field": "ItemNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 48,
+      "entity": "sales_order_lines",
+      "crm_field": "quantity",
+      "erp_field": "OrderedSalesQuantity",
+      "transform": "number",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 49,
+      "entity": "sales_order_lines",
+      "crm_field": "uom",
+      "erp_field": "SalesUnitSymbol",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 50,
+      "entity": "sales_order_lines",
+      "crm_field": "unit_price",
+      "erp_field": "SalesPrice",
+      "transform": "number",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 51,
+      "entity": "sales_order_lines",
+      "crm_field": "line_amount",
+      "erp_field": "LineAmount",
+      "transform": "number",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 52,
+      "entity": "deliveries",
+      "crm_field": "erp_key",
+      "erp_field": "PackingSlipNumber",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Candidate key, unverified"
+    },
+    {
+      "id": 53,
+      "entity": "deliveries",
+      "crm_field": "delivery_number",
+      "erp_field": "PackingSlipNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 54,
+      "entity": "deliveries",
+      "crm_field": "sales_order_number",
+      "erp_field": "SalesOrderNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 55,
+      "entity": "deliveries",
+      "crm_field": "delivery_date",
+      "erp_field": "DeliveryDate",
+      "transform": "date",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 56,
+      "entity": "invoices",
+      "crm_field": "erp_key",
+      "erp_field": "InvoiceNumber",
+      "transform": "trim",
+      "is_key": true,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Unique within a legal entity only"
+    },
+    {
+      "id": 57,
+      "entity": "invoices",
+      "crm_field": "invoice_number",
+      "erp_field": "InvoiceNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 58,
+      "entity": "invoices",
+      "crm_field": "sales_order_number",
+      "erp_field": "SalesOrderNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 59,
+      "entity": "invoices",
+      "crm_field": "erp_customer_account",
+      "erp_field": "InvoiceCustomerAccountNumber",
+      "transform": "trim",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 60,
+      "entity": "invoices",
+      "crm_field": "invoice_date",
+      "erp_field": "InvoiceDate",
+      "transform": "date",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 61,
+      "entity": "invoices",
+      "crm_field": "due_date",
+      "erp_field": "PaymentDueDate",
+      "transform": "date",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": "Candidate field, unverified"
+    },
+    {
+      "id": 62,
+      "entity": "invoices",
+      "crm_field": "currency",
+      "erp_field": "CurrencyCode",
+      "transform": "upper",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    },
+    {
+      "id": 63,
+      "entity": "invoices",
+      "crm_field": "invoice_amount",
+      "erp_field": "TotalInvoiceAmount",
+      "transform": "number",
+      "is_key": false,
+      "is_active": true,
+      "is_verified": false,
+      "notes": null
+    }
+  ]
+}

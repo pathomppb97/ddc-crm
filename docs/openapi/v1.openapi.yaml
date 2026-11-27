@@ -1,0 +1,1284 @@
+openapi: 3.1.0
+info:
+  title: DDC Agriculture CRM — Enterprise Business, Admin & Integration API
+  version: 2.0.0
+  description: >
+    API-first versioned REST contract separating CRM Business APIs (/api/v1/*),
+    Administrative & MCP Governance APIs (/admin/v1/*), and External Application
+    Integration APIs (/integrations/v1/*). All channels share the same
+    authoritative Business Services, Centralized Authorization Policy Engine,
+    and PostgreSQL RLS policies. Dynamic queries use a strict allowlisted AST
+    (zero raw SQL execution). Remote AI clients connect over Streamable HTTP at
+    /mcp using OAuth 2.1 + PKCE + RFC 9728 Protected Resource Metadata.
+servers:
+  - url: https://{project}.supabase.co/functions/v1/api_v1
+    description: Supabase Edge Function Enterprise API Gateway
+    variables:
+      project:
+        default: local
+  - url: https://api.ddc.example.test
+    description: Production Enterprise API Gateway
+security:
+  - bearerAuth: []
+tags:
+  - name: System
+    description: Health, identity, and data-scope introspection
+  - name: Business CRM
+    description: Operational Agriculture CRM endpoints (/api/v1/*)
+  - name: Dynamic Query
+    description: Allowlisted Dynamic Query Builder & Saved Queries (zero raw SQL)
+  - name: Data Management & Jobs
+    description: Validated bulk operations, imports, exports, and durable background jobs
+  - name: Analytics & Reporting
+    description: Aggregated customer, machine, sales, and replacement demand summaries
+  - name: Integration API
+    description: External application & service-account endpoints (/integrations/v1/*)
+  - name: Admin Control Plane
+    description: Independent Admin Control Center endpoints (/admin/v1/*)
+  - name: Admin MCP Governance
+    description: Dynamic Remote MCP Tool Registry, Policies, Approvals & Security Center (/admin/v1/mcp/*)
+
+paths:
+  /api/v1/health:
+    get:
+      tags: [System]
+      summary: Service liveness, version, supported namespaces, and MCP protocol version
+      security: []
+      responses:
+        '200':
+          description: Healthy service response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /api/v1/me:
+    get:
+      tags: [System]
+      summary: Authenticated user profile, effective CRM permissions, and admin console access
+      responses:
+        '200':
+          description: Active user authorization context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /api/v1/data-scope:
+    get:
+      tags: [System]
+      summary: Authenticated user's organization, team, territory, and field-restriction summary
+      responses:
+        '200':
+          description: Effective data scope
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /api/v1/query:
+    post:
+      tags: [Dynamic Query]
+      summary: Execute an allowlisted structured query against a permitted CRM resource (zero raw SQL)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicQueryRequest'
+      responses:
+        '200':
+          description: Validated, field-masked, and paginated query result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+
+  /api/v1/saved-queries:
+    get:
+      tags: [Dynamic Query]
+      summary: List shared and user-owned saved queries
+      responses:
+        '200':
+          description: Saved queries list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+    post:
+      tags: [Dynamic Query]
+      summary: Save a validated structured query definition
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [resource, name, query_definition]
+              properties:
+                resource:
+                  type: string
+                name:
+                  type: string
+                description:
+                  type: string
+                query_definition:
+                  type: object
+                is_shared:
+                  type: boolean
+      responses:
+        '201':
+          description: Saved query created
+
+  /api/v1/customers:
+    get:
+      tags: [Business CRM]
+      summary: Search and paginate agricultural customers with field selection & PDPA masking
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: province
+          in: query
+          schema:
+            type: string
+        - name: customer_group
+          in: query
+          schema:
+            type: string
+            enum: [sugar_mill, dealer, repair_shop, parts_shop, farm_owner]
+        - name: fields
+          in: query
+          description: Comma-separated allowlisted field names
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 25
+      responses:
+        '200':
+          description: Paginated customer list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      tags: [Business CRM]
+      summary: Create a customer with duplicate protection and optional Idempotency-Key
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name:
+                  type: string
+                province:
+                  type: string
+                city:
+                  type: string
+                phone_number:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                customer_group_id:
+                  type: integer
+      responses:
+        '201':
+          description: Customer created
+        '409':
+          $ref: '#/components/responses/Conflict'
+
+  /api/v1/customers/{id}:
+    get:
+      tags: [Business CRM]
+      summary: Retrieve customer profile and contacts with field-level masking
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Customer detail
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      tags: [Business CRM]
+      summary: Update authorized customer fields with optimistic concurrency (If-Match / expected_version)
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+        - $ref: '#/components/parameters/IfMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Customer updated
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+
+  /api/v1/customers/{id}/contacts:
+    post:
+      tags: [Business CRM]
+      summary: Add a contact person (supporting Thai nickname and LINE ID) to a customer
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [first_name]
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                nickname:
+                  type: string
+                line_id:
+                  type: string
+                phone:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '201':
+          description: Contact created
+
+  /api/v1/customers/{id}/history:
+    get:
+      tags: [Business CRM]
+      summary: Customer chronological activity, opportunity, quotation, and service history
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Customer timeline
+
+  /api/v1/customers/{id}/machines:
+    get:
+      tags: [Business CRM]
+      summary: List agricultural machines registered to a customer
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Customer machine fleet
+
+  /api/v1/machines:
+    get:
+      tags: [Business CRM]
+      summary: Search agricultural machine models and registered customer fleets
+      responses:
+        '200':
+          description: Machine catalog and customer machines
+    post:
+      tags: [Business CRM]
+      summary: Register an agricultural machine to an authorized customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [company_id, machine_model_id]
+              properties:
+                company_id:
+                  type: integer
+                machine_model_id:
+                  type: integer
+                serial_number:
+                  type: string
+                unit_count:
+                  type: integer
+                operating_hours:
+                  type: number
+      responses:
+        '201':
+          description: Machine registered
+
+  /api/v1/machines/summary:
+    get:
+      tags: [Business CRM]
+      summary: Aggregate fleet summary across customer agricultural machines
+      responses:
+        '200':
+          description: Machine summary
+
+  /api/v1/machines/{id}:
+    get:
+      tags: [Business CRM]
+      summary: Get a registered customer agricultural machine
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Machine detail
+    patch:
+      tags: [Business CRM]
+      summary: Update operating hours, status, or notes on a registered machine
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+        - $ref: '#/components/parameters/IfMatch'
+      responses:
+        '200':
+          description: Machine updated
+
+  /api/v1/machines/{id}/service-history:
+    get:
+      tags: [Business CRM]
+      summary: Service cases and visit history for a registered machine
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Service history
+
+  /api/v1/products:
+    get:
+      tags: [Business CRM]
+      summary: Search DDC agricultural spare parts catalog
+      responses:
+        '200':
+          description: Product list
+
+  /api/v1/products/compatible-parts:
+    get:
+      tags: [Business CRM]
+      summary: Find engineering-verified compatible replacement parts for a machine model
+      parameters:
+        - name: machine_model_id
+          in: query
+          schema:
+            type: integer
+        - name: machine_model
+          in: query
+          schema:
+            type: string
+        - name: verified_only
+          in: query
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: Compatible parts list
+
+  /api/v1/products/{id}:
+    get:
+      tags: [Business CRM]
+      summary: Product detail and technical specifications
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Product detail
+
+  /api/v1/products/{id}/price:
+    get:
+      tags: [Business CRM]
+      summary: Official CRM price list lookup by product, quantity, and currency
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+        - name: quantity
+          in: query
+          schema:
+            type: number
+        - name: currency
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Price list entries
+
+  /api/v1/products/{id}/inventory:
+    get:
+      tags: [Business CRM]
+      summary: Synchronized ERP warehouse inventory availability (requires erp_documents:read)
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Inventory availability
+
+  /api/v1/opportunities:
+    get:
+      tags: [Business CRM]
+      summary: Search sales opportunities
+      responses:
+        '200':
+          description: Opportunity list
+    post:
+      tags: [Business CRM]
+      summary: Create sales opportunity (supports Idempotency-Key)
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '201':
+          description: Opportunity created
+
+  /api/v1/opportunities/{id}:
+    patch:
+      tags: [Business CRM]
+      summary: Update opportunity stage, amount, probability, or follow-up date
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+        - $ref: '#/components/parameters/IfMatch'
+      responses:
+        '200':
+          description: Opportunity updated
+
+  /api/v1/sales/pipeline:
+    get:
+      tags: [Business CRM]
+      summary: Aggregate sales pipeline by stage
+      responses:
+        '200':
+          description: Pipeline summary
+
+  /api/v1/sales/targets:
+    get:
+      tags: [Business CRM]
+      summary: Sales targets by period/salesperson
+      responses:
+        '200':
+          description: Targets list
+
+  /api/v1/sales/forecasts:
+    get:
+      tags: [Business CRM]
+      summary: Sales forecast records
+      responses:
+        '200':
+          description: Forecast list
+
+  /api/v1/visits:
+    get:
+      tags: [Business CRM]
+      summary: Customer visit history
+      responses:
+        '200':
+          description: Visit list
+    post:
+      tags: [Business CRM]
+      summary: Record a field sales customer visit report
+      responses:
+        '201':
+          description: Visit recorded
+
+  /api/v1/follow-ups:
+    post:
+      tags: [Business CRM]
+      summary: Create follow-up action item
+      responses:
+        '201':
+          description: Follow-up created
+
+  /api/v1/follow-ups/{id}/complete:
+    post:
+      tags: [Business CRM]
+      summary: Mark a follow-up action item as completed
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Follow-up completed
+
+  /api/v1/quotations:
+    post:
+      tags: [Business CRM]
+      summary: Create a draft quotation with line items (supports Idempotency-Key)
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '201':
+          description: Draft quotation created
+
+  /api/v1/quotations/{id}:
+    get:
+      tags: [Business CRM]
+      summary: Get quotation with line items and approval trail
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Quotation detail
+    patch:
+      tags: [Business CRM]
+      summary: Update draft quotation metadata with optimistic concurrency
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+        - $ref: '#/components/parameters/IfMatch'
+      responses:
+        '200':
+          description: Quotation updated
+
+  /api/v1/quotations/{id}/submit:
+    post:
+      tags: [Business CRM]
+      summary: Submit draft quotation into commercial approval workflow
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Quotation submitted
+
+  /api/v1/analytics/customers:
+    get:
+      tags: [Analytics & Reporting]
+      summary: Aggregated customer totals by group and province
+      responses:
+        '200':
+          description: Customer analytics summary
+
+  /api/v1/analytics/machines:
+    get:
+      tags: [Analytics & Reporting]
+      summary: Aggregated agricultural machine fleet counts by manufacturer/model
+      responses:
+        '200':
+          description: Machine analytics summary
+
+  /api/v1/analytics/sales:
+    get:
+      tags: [Analytics & Reporting]
+      summary: Aggregated sales pipeline and quotation status summary
+      responses:
+        '200':
+          description: Sales analytics summary
+
+  /api/v1/analytics/replacement-demand:
+    get:
+      tags: [Analytics & Reporting]
+      summary: Seasonal agricultural wear-part replacement demand analysis
+      responses:
+        '200':
+          description: Replacement demand summary
+
+  /api/v1/reports:
+    post:
+      tags: [Analytics & Reporting]
+      summary: Generate and store a structured snapshot report
+      responses:
+        '201':
+          description: Report generated
+
+  /api/v1/reports/{id}:
+    get:
+      tags: [Analytics & Reporting]
+      summary: Retrieve a saved report snapshot
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Saved report
+
+  /api/v1/data/imports/validate:
+    post:
+      tags: [Data Management & Jobs]
+      summary: Validate bulk import rows and return payload-bound confirmation token
+      responses:
+        '200':
+          description: Validation report and confirmation token
+
+  /api/v1/data/bulk-updates/preview:
+    post:
+      tags: [Data Management & Jobs]
+      summary: Preview before/after records for an allowlisted bulk update
+      responses:
+        '200':
+          description: Diff preview and confirmation token
+
+  /api/v1/data/exports:
+    post:
+      tags: [Data Management & Jobs]
+      summary: Queue a field-masked data export background job (confirmation required for >50 rows)
+      responses:
+        '202':
+          description: Export job queued
+
+  /api/v1/jobs:
+    get:
+      tags: [Data Management & Jobs]
+      summary: List automation and background jobs visible to the caller
+      responses:
+        '200':
+          description: Job list
+    post:
+      tags: [Data Management & Jobs]
+      summary: Enqueue an authorized automation job (permissions revalidated by worker)
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '201':
+          description: Job enqueued
+
+  /api/v1/jobs/{id}:
+    get:
+      tags: [Data Management & Jobs]
+      summary: Inspect status of an authorized background job
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Job status
+
+  /api/v1/jobs/{id}/cancel:
+    post:
+      tags: [Data Management & Jobs]
+      summary: Cancel a pending or scheduled authorized background job
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Job cancelled
+
+  /integrations/v1/health:
+    get:
+      tags: [Integration API]
+      summary: Integration gateway health
+      security: []
+      responses:
+        '200':
+          description: Healthy
+
+  /integrations/v1/customers:
+    get:
+      tags: [Integration API]
+      summary: Search customers via Service Account API key (X-Api-Key) or OAuth Bearer token
+      security:
+        - apiKeyAuth: []
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Customer list (RBAC + RLS + field masking enforced)
+    post:
+      tags: [Integration API]
+      summary: Create customer via authorized external integration (supports Idempotency-Key)
+      security:
+        - apiKeyAuth: []
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '201':
+          description: Customer created
+
+  /integrations/v1/products:
+    get:
+      tags: [Integration API]
+      summary: List products for authorized external integrations
+      security:
+        - apiKeyAuth: []
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Product list
+
+  /integrations/v1/products/{id}/inventory:
+    get:
+      tags: [Integration API]
+      summary: Read product ERP inventory availability for authorized external systems
+      security:
+        - apiKeyAuth: []
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Inventory availability
+
+  /integrations/v1/jobs/{id}:
+    get:
+      tags: [Integration API]
+      summary: Poll background job status from an external integration
+      security:
+        - apiKeyAuth: []
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Job status
+
+  /admin/v1/overview:
+    get:
+      tags: [Admin Control Plane]
+      summary: System overview metrics and live MCP posture
+      responses:
+        '200':
+          description: Admin system overview
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /admin/v1/users:
+    get:
+      tags: [Admin Control Plane]
+      summary: List CRM users within organization
+      responses:
+        '200':
+          description: User list
+
+  /admin/v1/roles:
+    get:
+      tags: [Admin Control Plane]
+      summary: List configured CRM roles
+      responses:
+        '200':
+          description: Role list
+
+  /admin/v1/permissions:
+    get:
+      tags: [Admin Control Plane]
+      summary: List role permission grants
+      responses:
+        '200':
+          description: Permission grants
+
+  /admin/v1/audit-logs:
+    get:
+      tags: [Admin Control Plane]
+      summary: Query immutable, secret-redacted, channel-attributed audit logs
+      parameters:
+        - name: table
+          in: query
+          schema:
+            type: string
+        - name: channel
+          in: query
+          schema:
+            type: string
+            enum: [web, rest_api, mcp, integration_api, worker, system]
+      responses:
+        '200':
+          description: Audit log entries
+
+  /admin/v1/query/execute:
+    post:
+      tags: [Admin Control Plane]
+      summary: Admin Dynamic Query Builder (allowlisted AST only — zero raw SQL)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicQueryRequest'
+      responses:
+        '200':
+          description: Query results
+
+  /admin/v1/mcp/overview:
+    get:
+      tags: [Admin MCP Governance]
+      summary: Live PostgreSQL MCP server overview, connections, request volume, denial/error rates, and latency
+      responses:
+        '200':
+          description: Real-time MCP telemetry
+
+  /admin/v1/mcp/organization-policy:
+    put:
+      tags: [Admin MCP Governance]
+      summary: Enable or disable MCP access globally for the organization (immediate cache invalidation)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mcpEnabled]
+              properties:
+                mcpEnabled:
+                  type: boolean
+      responses:
+        '200':
+          description: Policy updated
+
+  /admin/v1/mcp/tools:
+    get:
+      tags: [Admin MCP Governance]
+      summary: List server-side allowlisted MCP Tool Registry entries with usage statistics
+      responses:
+        '200':
+          description: Registered MCP tools
+
+  /admin/v1/mcp/tools/{toolName}:
+    patch:
+      tags: [Admin MCP Governance]
+      summary: Dynamically enable/disable a registered MCP tool or adjust rate limit / execution policy
+      parameters:
+        - name: toolName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tool configuration updated
+
+  /admin/v1/mcp/roles/{roleKey}/policy:
+    put:
+      tags: [Admin MCP Governance]
+      summary: Configure role-level MCP enablement, max risk level (L0-L5), OAuth scopes, and rate limit
+      parameters:
+        - name: roleKey
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Role MCP policy updated
+
+  /admin/v1/mcp/roles/{roleKey}/tools/{toolName}:
+    put:
+      tags: [Admin MCP Governance]
+      summary: Set role-tool ALLOW/DENY override, data scope, field restrictions, or approval requirement
+      parameters:
+        - name: roleKey
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: toolName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Override saved and policy version bumped
+
+  /admin/v1/mcp/roles/{roleKey}/preview:
+    get:
+      tags: [Admin MCP Governance]
+      summary: Preview effective 8-layer MCP tool access for a role
+      parameters:
+        - name: roleKey
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Effective tool permission preview
+
+  /admin/v1/mcp/users:
+    get:
+      tags: [Admin MCP Governance]
+      summary: List users with MCP policy status, active connection counts, and last activity
+      responses:
+        '200':
+          description: User MCP access directory
+
+  /admin/v1/mcp/users/{salesId}/policy:
+    put:
+      tags: [Admin MCP Governance]
+      summary: Enable/disable MCP access or set denied tools / rate limits for a specific user
+      parameters:
+        - name: salesId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User MCP policy updated
+
+  /admin/v1/mcp/users/{salesId}/revoke:
+    post:
+      tags: [Admin MCP Governance]
+      summary: Immediately revoke all active OAuth grants and MCP connections for a user
+      parameters:
+        - name: salesId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User MCP access revoked
+
+  /admin/v1/mcp/clients:
+    get:
+      tags: [Admin MCP Governance]
+      summary: List registered OAuth 2.1 AI clients
+      responses:
+        '200':
+          description: AI client list
+    post:
+      tags: [Admin MCP Governance]
+      summary: Register a new OAuth 2.1 AI client (enforces HTTPS/loopback redirect URIs and PKCE)
+      responses:
+        '201':
+          description: AI client registered
+
+  /admin/v1/mcp/clients/{clientId}/revoke:
+    post:
+      tags: [Admin MCP Governance]
+      summary: Revoke an AI client and terminate all active connections/grants issued to it
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: AI client revoked
+
+  /admin/v1/mcp/connections:
+    get:
+      tags: [Admin MCP Governance]
+      summary: List active and historical MCP connections
+      responses:
+        '200':
+          description: Connections list
+
+  /admin/v1/mcp/connections/{connectionUuid}/revoke:
+    post:
+      tags: [Admin MCP Governance]
+      summary: Immediately revoke an individual MCP connection
+      parameters:
+        - name: connectionUuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Connection revoked
+
+  /admin/v1/mcp/approvals:
+    get:
+      tags: [Admin MCP Governance]
+      summary: List L3-L5 AI approval requests (filterable by status)
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [pending, approved, rejected, expired, executed, cancelled]
+      responses:
+        '200':
+          description: Approval queue
+
+  /admin/v1/mcp/approvals/{id}/approve:
+    post:
+      tags: [Admin MCP Governance]
+      summary: Independently approve a pending L4/L5 request (DB blocks self-approval)
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Request approved
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /admin/v1/mcp/approvals/{id}/reject:
+    post:
+      tags: [Admin MCP Governance]
+      summary: Reject a pending L4/L5 request
+      parameters:
+        - $ref: '#/components/parameters/NumericId'
+      responses:
+        '200':
+          description: Request rejected
+
+  /admin/v1/mcp/logs:
+    get:
+      tags: [Admin MCP Governance]
+      summary: Query immutable MCP execution logs
+      parameters:
+        - name: tool
+          in: query
+          schema:
+            type: string
+        - name: result
+          in: query
+          schema:
+            type: string
+            enum: [success, blocked, error, pending_approval]
+      responses:
+        '200':
+          description: Execution logs
+
+  /admin/v1/mcp/security-events:
+    get:
+      tags: [Admin MCP Governance]
+      summary: Query MCP security center events (unauthorized tools, prompt injection, rate limits)
+      parameters:
+        - name: severity
+          in: query
+          schema:
+            type: string
+            enum: [low, medium, high, critical]
+        - name: type
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Security events
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.1 / Supabase Auth user JWT verified against JWKS, issuer, audience, and live sales.disabled status.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.1 Authorization Code + PKCE (S256) flow advertised via RFC 9728 / RFC 8414 metadata.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://{project}.supabase.co/auth/v1/oauth/authorize
+          tokenUrl: https://{project}.supabase.co/auth/v1/oauth/token
+          scopes:
+            mcp:read: Read-only CRM queries, analytics, and resources
+            mcp:write: Routine record creation and updates (L1-L3)
+            mcp:export: Authorized, field-masked data exports
+            mcp:admin: Administrative user/role/audit operations (L4 approval enforced)
+            mcp:config: Versioned UI configuration drafts and publish requests
+            mcp:release: Release inspection and L5 deployment/rollback requests
+            mcp:automation: Background automation job creation and cancellation
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: Scoped SHA-256 hashed Service Account API key for /integrations/v1/* endpoints.
+
+  parameters:
+    NumericId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: false
+      schema:
+        type: string
+        minLength: 4
+        maxLength: 128
+    IfMatch:
+      name: If-Match
+      in: header
+      required: false
+      description: Expected optimistic concurrency record version number
+      schema:
+        type: string
+
+  schemas:
+    HealthResponse:
+      type: object
+      required: [data, requestId]
+      properties:
+        data:
+          type: object
+          properties:
+            status:
+              type: string
+              example: ok
+            service:
+              type: string
+              example: ddc-crm-enterprise-api
+            version:
+              type: string
+              example: 2.0.0
+            mcpProtocolVersion:
+              type: string
+              example: '2025-11-25'
+            namespaces:
+              type: array
+              items:
+                type: string
+            utcTime:
+              type: string
+              format: date-time
+            displayTimezone:
+              type: string
+              example: Asia/Bangkok
+        requestId:
+          type: string
+
+    Envelope:
+      type: object
+      required: [data, requestId]
+      properties:
+        data: {}
+        meta:
+          type: object
+          additionalProperties: true
+        requestId:
+          type: string
+
+    ErrorEnvelope:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [code, message, requestId]
+          properties:
+            code:
+              type: string
+              enum:
+                - AUTHENTICATION_REQUIRED
+                - TOKEN_EXPIRED
+                - ACCOUNT_SUSPENDED
+                - MCP_ACCESS_DISABLED
+                - TOOL_DISABLED
+                - PERMISSION_DENIED
+                - DATA_SCOPE_DENIED
+                - FIELD_ACCESS_DENIED
+                - CONFIRMATION_REQUIRED
+                - APPROVAL_REQUIRED
+                - VALIDATION_FAILED
+                - VERSION_CONFLICT
+                - DUPLICATE_REQUEST
+                - RATE_LIMIT_EXCEEDED
+                - RESOURCE_NOT_AVAILABLE
+                - INTERNAL_ERROR
+            message:
+              type: string
+            details:
+              type: object
+              additionalProperties: true
+            retryable:
+              type: boolean
+            remediation:
+              type: string
+            requestId:
+              type: string
+
+    DynamicQueryRequest:
+      type: object
+      required: [resource]
+      properties:
+        resource:
+          type: string
+        select:
+          type: array
+          items:
+            type: string
+        filters:
+          type: array
+          maxItems: 25
+          items:
+            type: object
+            required: [field, op]
+            properties:
+              field:
+                type: string
+              op:
+                type: string
+                enum: [eq, neq, gt, gte, lt, lte, in, contains, starts_with, is_null, between]
+              value: {}
+        sort:
+          type: array
+          maxItems: 5
+          items:
+            type: object
+            required: [field, direction]
+            properties:
+              field:
+                type: string
+              direction:
+                type: string
+                enum: [asc, desc]
+        page:
+          type: integer
+          minimum: 1
+          default: 1
+        pageSize:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 25
+        includeDeleted:
+          type: boolean
+          default: false
+
+  responses:
+    ValidationError:
+      description: Input validation failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    Unauthorized:
+      description: Missing, invalid, expired token or revoked grant
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    Forbidden:
+      description: Authenticated caller lacks required server-side permission, scope, or approval
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    NotFound:
+      description: Resource not found or outside caller organization/scope
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    Conflict:
+      description: Optimistic concurrency mismatch, duplicate record, or idempotency conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    RateLimited:
+      description: Sliding-window rate limit exceeded
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
