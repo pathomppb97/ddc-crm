@@ -30,8 +30,8 @@ node scripts/check-public-demo.mjs --dist
 npm run preview -- --config vite.demo.config.ts
 ```
 
-If the repository's GitHub plan supports Pages, enable **GitHub Actions** as
-the Pages source in repository settings. Run **Deploy public CRM demo** from
-the Actions tab on `main`. The workflow builds and checks the static
-`dist/` directory before uploading it to GitHub Pages. Repository visibility
-and Pages site visibility are separate settings.
+**Deploy public CRM demo** builds and checks `dist/` on pushes to `main` and
+provides a downloadable artifact in Actions. If the repository's GitHub plan
+supports Pages, set the Pages publishing source to **GitHub Actions** and
+run the workflow on `main` to deploy. Repository visibility and Pages site
+visibility are separate settings.

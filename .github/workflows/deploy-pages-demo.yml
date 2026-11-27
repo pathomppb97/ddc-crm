@@ -16,6 +16,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    outputs:
+      pages-enabled: ${{ steps.pages.outputs.enabled }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,8 +50,36 @@ jobs:
         with:
           path: dist
 
+      - name: Check Pages publishing source
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          response="$(mktemp)"
+          status="$(curl --silent --show-error --output "$response" --write-out '%{http_code}' \
+            --header "Authorization: Bearer $GH_TOKEN" \
+            --header 'Accept: application/vnd.github+json' \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/pages")"
+
+          case "$status" in
+            200)
+              if jq -e '.build_type == "workflow"' "$response" >/dev/null; then
+                echo "enabled=true" >> "$GITHUB_OUTPUT"
+              else
+                echo "::notice::Set the Pages publishing source to GitHub Actions to deploy this artifact."
+              fi
+              ;;
+            404)
+              echo "::notice::Pages is unavailable or disabled. The build artifact is available in Actions."
+              ;;
+            *)
+              echo "::error::GitHub Pages lookup failed with HTTP $status."
+              exit 1
+              ;;
+          esac
+
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && needs.build.outputs.pages-enabled == 'true'
     needs: build
     runs-on: ubuntu-latest
     permissions:
