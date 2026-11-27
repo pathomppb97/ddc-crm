@@ -1,0 +1,9 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - `__dirname` (vite.demo.config.ts:52:25). Use `import.meta.dirname` instead
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+19:42:56 [vite] (client) [console.error] Base UI: A component that acts as a button expected a native <button> because the `nativeButton` prop is true. Rendering a non-<button> removes native button semantics, which can impact forms and accessibility. Use a real <button> in the `render` prop, or set `nativeButton` to `false`.
+    at Button (http://127.0.0.1:5180/src/components/ui/button.tsx:33:25)
+    at ActivityCalendar (http://127.0.0.1:5180/src/ddc/features/ActivityCalendar.tsx?t=1795610495189:176:31)
+    at DesktopAdmin (http://127.0.0.1:5180/src/components/atomic-crm/root/CRM.tsx?t=1795610495189:314:31)
+    at CRM (http://127.0.0.1:5180/src/components/atomic-crm/root/CRM.tsx:157:25)
+    at App (http://127.0.0.1:5180/demo/App.tsx:19:35)

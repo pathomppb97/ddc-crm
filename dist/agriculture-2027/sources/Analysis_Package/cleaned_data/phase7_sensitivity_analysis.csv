@@ -1,0 +1,25 @@
+﻿Scenario,Stress_Factor,Stress_Net_Rev,Stress_GP,Stress_GM_Pct,Stress_EBIT,EBIT_Impact_THB,EBIT_Impact_Pct,Stress_NOPAT,Profitable_Check,Basis
+Scenario_A_60M,Sales Volume -15% (Demand/Execution Lag),49980002.75,18706034.35,37.4,6806034.35,-3301064.88,-32.7,5444827.48,YES,Stress Test Assumption
+Scenario_A_60M,Sales Volume -25% (Severe Slippage),44100002.43,16505324.43,37.4,4605324.43,-5501774.8,-54.4,3684259.54,YES,Stress Test Assumption
+Scenario_A_60M,Selling Price -5% (Competitor Discounting),55860003.07,19067099.07,34.1,7167099.07,-2940000.16,-29.1,5733679.26,YES,Stress Test Assumption
+Scenario_A_60M,Selling Price +5% (Premium Mix),61740003.4,24947099.4,40.4,13047099.4,2940000.17,29.1,10437679.52,YES,Stress Test Assumption
+Scenario_A_60M,Material / Steel Cost +10% (30MnB5/D2 Surge),58800003.23,18327808.83,31.2,6427808.83,-3679290.4,-36.4,5142247.07,YES,Stress Test Assumption
+Scenario_A_60M,Material / Steel Cost +15% (FX/Import Shock),58800003.23,16488163.63,28.0,4588163.63,-5518935.6,-54.6,3670530.91,YES,Stress Test Assumption
+Scenario_A_60M,Customer Retention Drops -10% (of Base),57787293.97,21628072.16,37.4,9728072.16,-379027.07,-3.8,7782457.73,YES,Historical Churn Bound
+Scenario_A_60M,New Product Launch Delayed 3 Months (-35% W3),55095774.73,20233390.23,36.7,8333390.23,-1773709.0,-17.5,6666712.19,YES,Tooling/Supply Lead-Time Stress
+Scenario_B_80M,Sales Volume -15% (Demand/Execution Lag),66639974.22,25341612.42,38.0,9241612.42,-4472049.25,-32.6,7393289.93,YES,Stress Test Assumption
+Scenario_B_80M,Sales Volume -25% (Severe Slippage),58799977.25,22360246.25,38.0,6260246.25,-7453415.42,-54.4,5008197.0,YES,Stress Test Assumption
+Scenario_B_80M,Selling Price -5% (Competitor Discounting),74479971.19,25893663.19,34.8,9793663.19,-3919998.48,-28.6,7834930.55,YES,Stress Test Assumption
+Scenario_B_80M,Selling Price +5% (Premium Mix),82319968.15,33733660.15,41.0,17633660.15,3919998.48,28.6,14106928.12,YES,Stress Test Assumption
+Scenario_B_80M,Material / Steel Cost +10% (30MnB5/D2 Surge),78399969.67,24955030.87,31.8,8855030.87,-4858630.8,-35.4,7084024.7,YES,Stress Test Assumption
+Scenario_B_80M,Material / Steel Cost +15% (FX/Import Shock),78399969.67,22525715.47,28.7,6425715.47,-7287946.2,-53.1,5140572.38,YES,Stress Test Assumption
+Scenario_B_80M,Customer Retention Drops -10% (of Base),77387260.41,29428552.19,38.0,13328552.19,-385109.48,-2.8,10662841.75,YES,Historical Churn Bound
+Scenario_B_80M,New Product Launch Delayed 3 Months (-35% W3),72287538.17,26874515.67,37.2,10774515.67,-2939146.0,-21.4,8619612.54,YES,Tooling/Supply Lead-Time Stress
+Scenario_C_100M,Sales Volume -15% (Demand/Execution Lag),83300038.44,31749472.19,38.1,11649472.19,-5602848.04,-32.5,9319577.75,YES,Stress Test Assumption
+Scenario_C_100M,Sales Volume -25% (Severe Slippage),73500033.92,28014240.17,38.1,7914240.17,-9338080.06,-54.1,6331392.14,YES,Stress Test Assumption
+Scenario_C_100M,Selling Price -5% (Competitor Discounting),93100042.97,32452317.97,34.9,12352317.97,-4900002.26,-28.4,9881854.37,YES,Stress Test Assumption
+Scenario_C_100M,Selling Price +5% (Premium Mix),102900047.49,42252322.49,41.1,22152322.49,4900002.26,28.4,17721857.99,YES,Stress Test Assumption
+Scenario_C_100M,Material / Steel Cost +10% (30MnB5/D2 Surge),98000045.23,31287547.73,31.9,11187547.73,-6064772.5,-35.2,8950038.18,YES,Stress Test Assumption
+Scenario_C_100M,Material / Steel Cost +15% (FX/Import Shock),98000045.23,28255161.48,28.8,8155161.48,-9097158.75,-52.7,6524129.18,YES,Stress Test Assumption
+Scenario_C_100M,Customer Retention Drops -10% (of Base),96987335.96,36966330.19,38.1,16866330.19,-385990.04,-2.2,13493064.15,YES,Historical Churn Bound
+Scenario_C_100M,New Product Launch Delayed 3 Months (-35% W3),89864188.13,33455062.88,37.2,13355062.88,-3897257.35,-22.6,10684050.3,YES,Tooling/Supply Lead-Time Stress

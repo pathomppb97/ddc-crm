@@ -1,0 +1,17 @@
+{
+  "tot_actual_jan_oct_rev": 6285889.6,
+  "tot_est_fy2026_rev": 10333767.71,
+  "active_customers_jan_oct": 43,
+  "new_so_only_customers_nov_dec": 9,
+  "top1_share_pct": 16.35,
+  "top3_share_pct": 38.84,
+  "top5_share_pct": 54.31,
+  "top10_share_pct": 78.58,
+  "hhi_index": 812.0,
+  "repeat_rate_pct": 51.2,
+  "cross_sell_rate_pct": 16.3,
+  "known_cost_coverage_pct": 98.1,
+  "est_2026_blended_gm_pct": 36.0,
+  "est_2026_gp_known_cost": 2222470.24,
+  "credit_note_rate_of_gross_pct": 9.64
+}

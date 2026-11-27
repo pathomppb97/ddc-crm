@@ -1,0 +1,9 @@
+﻿Criteria,Proposed_Weight_Pct,Score_60M,Weighted_60M,Score_80M,Weighted_80M,Score_100M,Weighted_100M,Evidence_Basis
+Market Demand & Opportunity,20.0,4.5,0.9,4.0,0.8,3.2,0.64,60M needs 12.3% BC / 14.3% Chopper / 12.9% Fan TAM; 100M needs 28.6% Chopper & Fan TAM in Y1
+Customer & Sales Readiness,20.0,3.8,0.76,2.7,0.54,1.8,0.36,Only 43 active accounts & 36 days to Q1-27; 60M leverages 129 surveyed pipeline (118.4k PO); 100M requires 2x field coverage
+Forecast Reliability,15.0,3.6,0.54,2.4,0.36,1.4,0.21,Base Stat Forecast=19.01M; Uncovered gap=6.7% (60M) vs 14.5% (80M) vs 22.9% (100M)
+Profitability,15.0,4.0,0.6,4.5,0.675,4.8,0.72,"60M NOPAT 8.8M (15.0% NM, 45% ROIC); 80M NOPAT 12.9M; 100M NOPAT 17.4M (conditional on achieving volume)"
+Operational Readiness,10.0,3.8,0.38,2.6,0.26,1.7,0.17,Hybrid Make+Outsource fits 60M; 100M risks heat-treat capacity & 60-day steel import delays in Calendar 2027
+Investment Requirement (5=Lower),10.0,4.0,0.4,2.8,0.28,1.8,0.18,CapEx+Peak WC: 60M=19.5M THB (7.5M+12M) vs 80M=27.5M vs 100M=34.5M THB
+Risk Level (5=Lower Risk),10.0,3.8,0.38,2.5,0.25,1.5,0.15,60M survives -25% volume shock profitably; 100M suffers severe calendar-year execution & cash-trough exposure
+TOTAL WEIGHTED SCORE (Max 5.00),100.0,,3.96,,3.165,,2.43,RANK 1: Scenario A (60M) — Recommended Official 2027 Budget | Secondary Stretch: 80M (Gate-Triggered) | 100M Deferred to Crop Season 2027/28 (Apr 27–Apr 28)

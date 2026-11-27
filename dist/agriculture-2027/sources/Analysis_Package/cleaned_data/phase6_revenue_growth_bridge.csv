@@ -1,0 +1,31 @@
+﻿Scenario,Opp_ID,Bridge_Component,Amount_THB,Share_of_Target_Pct,DataClass
+Scenario_A_60M,BASE-2026,FY2026 Estimated Full-Year Baseline (Act 6.29M + Nov-Dec SO 4.05M),10333767.71,17.22,Actual + Confirmed SO
+Scenario_A_60M,OPP-001,Customer Attrition / Churn Provision (-5.0% Conservative Buffer),-516688.39,-0.86,Assumption (Prudent Risk)
+Scenario_A_60M,OPP-002,Existing Customer Volume Growth (Verified 26-27 PO Pipeline 118.4k pcs),10405587.11,17.34,Identified Opportunity (Pipeline)
+Scenario_A_60M,OPP-003,"At-Risk & H1-Only Customer Reactivation (e.g. Phitsanulok Sugar, PowerTeam)",2190649.92,3.65,Identified Opportunity (CRM)
+Scenario_A_60M,OPP-004,"Cross-Selling High-Margin Spares (Adaptor, Sprocket, Shear Plate, Fan) to 36 Single-SKU Buyers",6571949.76,10.95,Identified Opportunity (Cross-Sell)
+Scenario_A_60M,OPP-005,New Customer Acquisition (Top Sugar Mills & 35-40 Regional Dealers),6024287.28,10.04,New Activity Required
+Scenario_A_60M,OPP-006,Geographic Expansion (Eastern Region from 0 THB + Deep NE Penetration),2190649.91,3.65,New Activity Required
+Scenario_A_60M,OPP-007,New Product Launch Wave 1: Chopper Blade D2 (Anchored by Dec-26 240-pc Pilot SO),12000300.0,20.0,New Product (Pilot Confirmed)
+Scenario_A_60M,OPP-008,"New Product Launch Wave 2: Overhaul Portfolio (Hardox Disc, Chain, Bolt, Safety, Liner, Gear — Apr-Dec)",10799500.0,18.0,New Product (Requires CapEx/Sourcing)
+Scenario_A_60M,OPP-009,Price Increase Adjustment (Zero Arbitrary Price Inflation Policy),0.0,0.0,Policy Constraint (0 THB)
+Scenario_B_80M,BASE-2026,FY2026 Estimated Full-Year Baseline (Act 6.29M + Nov-Dec SO 4.05M),10333767.71,12.92,Actual + Confirmed SO
+Scenario_B_80M,OPP-001,Customer Attrition / Churn Provision (-5.0% Conservative Buffer),-516688.39,-0.65,Assumption (Prudent Risk)
+Scenario_B_80M,OPP-002,Existing Customer Volume Growth (Verified 26-27 PO Pipeline 118.4k pcs),12023178.51,15.03,Identified Opportunity (Pipeline)
+Scenario_B_80M,OPP-003,"At-Risk & H1-Only Customer Reactivation (e.g. Phitsanulok Sugar, PowerTeam)",2475360.28,3.09,Identified Opportunity (CRM)
+Scenario_B_80M,OPP-004,"Cross-Selling High-Margin Spares (Adaptor, Sprocket, Shear Plate, Fan) to 36 Single-SKU Buyers",8840572.43,11.05,Identified Opportunity (Cross-Sell)
+Scenario_B_80M,OPP-005,New Customer Acquisition (Top Sugar Mills & 35-40 Regional Dealers),8486949.54,10.61,New Activity Required
+Scenario_B_80M,OPP-006,Geographic Expansion (Eastern Region from 0 THB + Deep NE Penetration),3536228.97,4.42,New Activity Required
+Scenario_B_80M,OPP-007,New Product Launch Wave 1: Chopper Blade D2 (Anchored by Dec-26 240-pc Pilot SO),17000100.0,21.25,New Product (Pilot Confirmed)
+Scenario_B_80M,OPP-008,"New Product Launch Wave 2: Overhaul Portfolio (Hardox Disc, Chain, Bolt, Safety, Liner, Gear — Apr-Dec)",17820500.0,22.28,New Product (Requires CapEx/Sourcing)
+Scenario_B_80M,OPP-009,Price Increase Adjustment (Zero Arbitrary Price Inflation Policy),0.0,0.0,Policy Constraint (0 THB)
+Scenario_C_100M,BASE-2026,FY2026 Estimated Full-Year Baseline (Act 6.29M + Nov-Dec SO 4.05M),10333767.71,10.33,Actual + Confirmed SO
+Scenario_C_100M,OPP-001,Customer Attrition / Churn Provision (-5.0% Conservative Buffer),-516688.39,-0.52,Assumption (Prudent Risk)
+Scenario_C_100M,OPP-002,Existing Customer Volume Growth (Verified 26-27 PO Pipeline 118.4k pcs),13473535.22,13.47,Identified Opportunity (Pipeline)
+Scenario_C_100M,OPP-003,"At-Risk & H1-Only Customer Reactivation (e.g. Phitsanulok Sugar, PowerTeam)",2607781.01,2.61,Identified Opportunity (CRM)
+Scenario_C_100M,OPP-004,"Cross-Selling High-Margin Spares (Adaptor, Sprocket, Shear Plate, Fan) to 36 Single-SKU Buyers",10431124.04,10.43,Identified Opportunity (Cross-Sell)
+Scenario_C_100M,OPP-005,New Customer Acquisition (Top Sugar Mills & 35-40 Regional Dealers),11735014.54,11.74,New Activity Required
+Scenario_C_100M,OPP-006,Geographic Expansion (Eastern Region from 0 THB + Deep NE Penetration),5215562.02,5.22,New Activity Required
+Scenario_C_100M,OPP-007,New Product Launch Wave 1: Chopper Blade D2 (Anchored by Dec-26 240-pc Pilot SO),23000250.0,23.0,New Product (Pilot Confirmed)
+Scenario_C_100M,OPP-008,"New Product Launch Wave 2: Overhaul Portfolio (Hardox Disc, Chain, Bolt, Safety, Liner, Gear — Apr-Dec)",23719700.0,23.72,New Product (Requires CapEx/Sourcing)
+Scenario_C_100M,OPP-009,Price Increase Adjustment (Zero Arbitrary Price Inflation Policy),0.0,0.0,Policy Constraint (0 THB)

@@ -1,0 +1,10 @@
+﻿ID,Assumption,Value Used,Rationale / Anchor,Sensitivity / Impact,Data Class,Editable Sheet
+ASM-01,Natural Customer Attrition on 2026 Base,-5.0% / yr,Prudent industrial B2B retention benchmark (2026 repeat rate = 51.2%),Each 5% churn = -0.52M base rev,Assumption,13_Revenue_Growth_Bridge
+ASM-02,Unpriced Nov-Dec 2026 SO Valuation Proxy,1.82M THB (22 lines),ERP SO export lacks price column; mapped to 2026 equivalent SKU ASP / 650 THB Chopper,Verify ERP SO unit prices before invoicing,Assumption,01_Data_Audit
+ASM-03,Warranty & Field Claim Reserve,2.0% of Gross Sales,"Audited operational policy (defect-only coverage, 7-14d lab SLA)",Each +1% claims = -0.60M EBIT (60M),Assumption,15_Financial_Analysis
+ASM-04,OpEx Structure (60M / 80M / 100M),10.4M / 14.0M / 17.6M,Scaled proportionally from audited 100M P&L (16.2M OpEx in research/executive_summary.md),Directly drives Break-even (30.4M @ 60M),Assumption,15_Financial_Analysis
+ASM-05,Hybrid CapEx & 5-Year Depreciation,7.5M / 10.5M / 12.5M,Hybrid Make+Outsource avoids 74.2M greenfield CapEx; 5-yr straight-line dep,Payback 0.78 yrs @ 60M,Assumption,15_Financial_Analysis
+ASM-06,Working Capital Peak (3-Tranche JIT),12.0M / 17.0M / 22.0M,Assumes 60-90d supplier credit & 3 staggered deliveries (Oct/Dec/Feb),"Without credit terms, peak WC doubles",Assumption,15_Financial_Analysis
+ASM-07,Corporate Income Tax (Thailand),20.0% of EBIT,Standard Thai corporate tax rate,Scales NOPAT linearly,Statutory,15_Financial_Analysis
+ASM-08,Blended Forecast Monthly Seasonality,50% Obs 2026 + 50% Cycle,Prevents overfitting 1-year single-order noise while honoring crushing/overhaul physics,Affects Q1–Q4 cash flow timing,Assumption,06_Seasonality
+ASM-09,Decision Matrix Proposed Weights,20/20/15/15/10/10/10%,Management decision framework proposed in Master Prompt (tested across 4 alt schemes),60M wins #1 under all 4 weight schemes,Proposed Criteria,17_Decision_Matrix

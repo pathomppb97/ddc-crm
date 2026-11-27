@@ -1,0 +1,44 @@
+﻿Source,Row,Severity,Type,Detail
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,2,Medium,Region vs Province Mismatch,IV2600060 | อำนาจ ศรีกล่ำพึ่ง: ERP Region=เหนือ vs Province=นครปฐม -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,3,Medium,Historical Non-Box Packing Qty,IV2600112 | 1DD05011 (ใบมีดตัดโคนอ้อย 90x260x4mm 20°): qty=40 not multiple of 25
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,4,Medium,Historical Non-Box Packing Qty,IV2600204 | 1DD05014 (ใบมีดตัดโคนอ้อย 90x260x4.5mm 20°): qty=90 not multiple of 20
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,13,Medium,Region vs Province Mismatch,IV2600245 | อำนาจ ศรีกล่ำพึ่ง: ERP Region=เหนือ vs Province=นครปฐม -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,14,Medium,Region vs Province Mismatch,IV2600245 | อำนาจ ศรีกล่ำพึ่ง: ERP Region=เหนือ vs Province=นครปฐม -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,15,Medium,Region vs Province Mismatch,IV2600245 | อำนาจ ศรีกล่ำพึ่ง: ERP Region=เหนือ vs Province=นครปฐม -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,20,Medium,Region vs Province Mismatch,IV2600301 | บริษัท พาวเวอร์ทีม โปรดักส์ชั่น จำกัด: ERP Region=กรุงเทพและปริมณฑล vs Province=นนทบุรี -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,21,Medium,Region vs Province Mismatch,IV2600301 | บริษัท พาวเวอร์ทีม โปรดักส์ชั่น จำกัด: ERP Region=กรุงเทพและปริมณฑล vs Province=นนทบุรี -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,25,Medium,Historical Non-Box Packing Qty,IV2600408 | 1DD05014 (ใบมีดตัดโคนอ้อย 90x260x4.5mm 20°): qty=170 not multiple of 20
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,32,Medium,Historical Non-Box Packing Qty,IV2600526 | 1DD05011 (ใบมีดตัดโคนอ้อย 90x260x4mm 20°): qty=80 not multiple of 25
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,36,Medium,Region vs Province Mismatch,IV2600639 | บริษัท พาวเวอร์ทีม โปรดักส์ชั่น จำกัด: ERP Region=กรุงเทพและปริมณฑล vs Province=นนทบุรี -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,39,Medium,Historical Non-Box Packing Qty,IV2600699 | 1DD05007 (ใบมีดตัดโคนอ้อย 90x266x5mm 16° *): qty=30 not multiple of 20
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,40,Info,Credit Note / Return,"CN2600021 | บริษัท พาวเวอร์ทีม โปรดักส์ชั่น จำกัด | 1SP05002 | qty=-400 | net=-41,120.00"
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,40,Medium,Region vs Province Mismatch,CN2600021 | บริษัท พาวเวอร์ทีม โปรดักส์ชั่น จำกัด: ERP Region=กรุงเทพและปริมณฑล vs Province=นนทบุรี -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,41,Medium,Region vs Province Mismatch,IV2600709 | บริษัท พาวเวอร์ทีม โปรดักส์ชั่น จำกัด: ERP Region=กรุงเทพและปริมณฑล vs Province=นนทบุรี -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,42,Medium,Historical Non-Box Packing Qty,IV2600710 | 1DD05011 (ใบมีดตัดโคนอ้อย 90x260x4mm 20°): qty=60 not multiple of 25
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,50,Medium,Region vs Province Mismatch,IV2600818 | บริษัท พาวเวอร์ทีม โปรดักส์ชั่น จำกัด: ERP Region=กรุงเทพและปริมณฑล vs Province=นนทบุรี -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,57,Medium,Region vs Province Mismatch,IV2600999 | บริษัท พาวเวอร์ทีม โปรดักส์ชั่น จำกัด: ERP Region=กรุงเทพและปริมณฑล vs Province=นนทบุรี -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,59,Medium,Historical Non-Box Packing Qty,IV2601084 | 1DD05011 (ใบมีดตัดโคนอ้อย 90x260x4mm 20°): qty=40 not multiple of 25
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,60,Medium,Region vs Province Mismatch,IV2601108 | บริษัท พาวเวอร์ทีม โปรดักส์ชั่น จำกัด: ERP Region=กรุงเทพและปริมณฑล vs Province=นนทบุรี -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,63,Medium,Region vs Province Mismatch,IV2601218 | บริษัท มิตรเกษตร อุทัยธานี จำกัด: ERP Region=กลาง vs Province=อุทัยธานี -> Corrected to เหนือ
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,64,Medium,Region vs Province Mismatch,IV2601241 | บริษัท พาวเวอร์ทีม โปรดักส์ชั่น จำกัด: ERP Region=กรุงเทพและปริมณฑล vs Province=นนทบุรี -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,67,Medium,Region vs Province Mismatch,IV2601395 | บริษัท มิตรเกษตร อุทัยธานี จำกัด: ERP Region=กลาง vs Province=อุทัยธานี -> Corrected to เหนือ
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,72,Info,Line Discount,IV2601666 | 1DD02646 | disc=322.43 (already netted in ERP Total)
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,73,Info,Line Discount,IV2601666 | 1DD02647 | disc=265.42 (already netted in ERP Total)
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,74,Info,Line Discount,IV2601666 | 1DD02648 | disc=154.21 (already netted in ERP Total)
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,79,Medium,Region vs Province Mismatch,IV2602636 | บริษัท จีอาร์ ไบโอเอนเนอร์จี จำกัด: ERP Region=กรุงเทพและปริมณฑล vs Province=สมุทรปราการ -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,80,Medium,Region vs Province Mismatch,IV2602715 | อำนาจ ศรีกล่ำพึ่ง: ERP Region=เหนือ vs Province=นครปฐม -> Corrected to กลาง
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,85,Info,Credit Note / Return,"CN2600075 | บริษัท ที. เค. อีควิปเมนท์ จำกัด | 1JD17001 | qty=-50 | net=-39,000.00"
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,86,Info,Credit Note / Return,"CN2600075 | บริษัท ที. เค. อีควิปเมนท์ จำกัด | 1JD17002 | qty=-50 | net=-39,000.00"
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,87,Info,Credit Note / Return,"CN2600075 | บริษัท ที. เค. อีควิปเมนท์ จำกัด | 1JD17003 | qty=-50 | net=-45,000.00"
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,93,Info,Line Discount,"IV2602868 | 1DD17004 | disc=1,435.00 (already netted in ERP Total)"
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,99,Info,Credit Note / Return,"CN2600092 | ห้างหุ้นส่วนจำกัด ดับบลิว.เอ.เซลส์ แอนด์ เซอร์วิส 2018 | 1DD17005 | qty=-100 | net=-70,094.00"
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,101,Medium,Region vs Province Mismatch,IB2600528 | รณชัย รื่นรมณ์: ERP Region=เหนือ vs Province=ขอนแก่น -> Corrected to อีสาน
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,105,Medium,Historical Non-Box Packing Qty,IB2600650 | 1DD05014 (ใบมีดตัดโคนอ้อย 90x260x4.5mm 20°): qty=150 not multiple of 20
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,106,Medium,Historical Non-Box Packing Qty,IB2600650 | 1DD05012 (ใบมีดตัดโคนอ้อย 90x260x5mm 16°): qty=50 not multiple of 20
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,115,Medium,Historical Non-Box Packing Qty,IB2600770 | 1DD05012 (ใบมีดตัดโคนอ้อย 90x260x5mm 16°): qty=3725 not multiple of 20
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,118,Info,Credit Note / Return,"CB2600025 | บริษัท น้ำตาลสุรินทร์ จำกัด | 1DD17626 | qty=-22 | net=-15,400.00"
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,119,Info,Credit Note / Return,"CB2600025 | บริษัท น้ำตาลสุรินทร์ จำกัด | 1DD05012 | qty=-3,725 | net=-420,925.00"
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,121,Medium,Historical Non-Box Packing Qty,IB2600781 | 1DD05012 (ใบมีดตัดโคนอ้อย 90x260x5mm 16°): qty=3725 not multiple of 20
+ยอดขาย_agriculture_เดือน_1-10_Y'26.xlsx,127,Info,Summary Total Row Excluded,"Row 127 is bottom Grand Total row (Qty=49,473, Total=6,285,889.60); excluded from transaction records to prevent 2x double counting."
+Update_SO.xlsx,0,Info,Non-Agriculture Scope Exclusion,Excluded 541 non-Agriculture SO rows (motorcycle sprockets 01/02/03 & automotive OEM stampings 1CA/1TS/1MU/1AB/1TH) from 587 total rows; retained 45 verified Agriculture SO rows.
+Customer_List.xlsx (Uploaded vs Workspace),0,Medium,Source Version Conflict Resolved,"Uploaded Customer_List.xlsx has 129 accounts (fleet=1,521, BC demand=515,700) vs Workspace older copy (115 accounts, 2026-08-24). Selected newer Uploaded Customer_List.xlsx as Master Pipeline."

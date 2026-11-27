@@ -1,0 +1,5 @@
+﻿Weight_Scheme,Score_60M,Score_80M,Score_100M,Winner
+Proposed Balanced Weights,3.96,3.165,2.43,Scenario A (60M)
+Profit & Growth Aggressive (+Profit/Market),4.03,3.522,2.982,Scenario A (60M)
+Risk-Averse / Capital Preservation,3.875,2.922,2.108,Scenario A (60M)
+Execution-First (Sales & Ops Heavy),3.91,3.008,2.212,Scenario A (60M)

@@ -1,0 +1,13 @@
+﻿Month,MonthName,Quarter,Obs_2026_Weight_Pct,Industry_Cycle_Weight_Pct,Blended_Forecast_Weight_Pct,FY2026_Est_Rev,Forecast_2027_Downside,Forecast_2027_Base,Forecast_2027_Upside,DataClass
+1,Jan,Q1,9.37,11.5,10.43,968225.04,1335649.66,1983439.74,3025037.78,Forecast (Preliminary)
+2,Feb,Q1,7.36,10.5,8.93,760648.6,1143091.59,1697491.01,2588923.84,Forecast (Preliminary)
+3,Mar,Q1,10.94,11.0,10.97,1130961.0,1404436.72,2085588.53,3180829.74,Forecast (Preliminary)
+4,Apr,Q2,3.29,5.5,4.39,339614.01,562332.74,835064.12,1273595.79,Forecast (Preliminary)
+5,May,Q2,1.11,3.5,2.3,114211.16,294734.26,437680.38,667527.05,Forecast (Preliminary)
+6,Jun,Q2,0.0,3.0,1.5,104.67,192064.83,285216.27,434996.82,Forecast (Preliminary)
+7,Jul,Q3,4.06,4.5,4.28,419742.84,547958.83,813718.86,1241041.13,Forecast (Preliminary)
+8,Aug,Q3,1.68,5.5,3.59,173397.22,459389.89,682193.99,1040446.33,Forecast (Preliminary)
+9,Sep,Q3,10.84,9.5,10.17,1120223.4,1301786.62,1933153.13,2948343.29,Forecast (Preliminary)
+10,Oct,Q4,12.18,10.5,11.34,1258761.66,1451587.35,2155607.22,3287618.55,Forecast (Preliminary)
+11,Nov,Q4,3.14,12.5,7.82,324555.76,1001006.73,1486495.0,2267123.84,Forecast (Preliminary)
+12,Dec,Q4,36.03,12.5,24.27,3723322.35,3105960.78,4612351.76,7034515.86,Forecast (Preliminary)

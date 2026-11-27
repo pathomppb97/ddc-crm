@@ -1,0 +1,24 @@
+
+  VITE v8.3.5  ready in 1754 ms
+
+  ➜  Local:   http://127.0.0.1:5180/
+19:41:35 [vite] (client) hmr update /src/index.css, /src/ddc/pages/pageDesign.tsx
+19:41:40 [vite] (client) hmr invalidate /src/ddc/pages/pageDesign.tsx Could not Fast Refresh ("arrange" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:41:40 [vite] (client) hmr update /src/components/atomic-crm/root/CRM.tsx, /src/components/atomic-crm/settings/SettingsPage.tsx, /src/components/atomic-crm/settings/ProfilePage.tsx, /src/components/atomic-crm/contacts/ContactList.tsx, /src/components/atomic-crm/misc/ImportPage.tsx, /src/ddc/features/ActivityCalendar.tsx, /src/ddc/features/PermissionsPage.tsx, /src/ddc/features/DdcDashboard.tsx, /src/ddc/features/ErpAdminPage.tsx, /src/components/atomic-crm/settings/SettingsTags.tsx and 6 more
+19:41:42 [vite] (client) hmr invalidate /src/components/atomic-crm/settings/SettingsPage.tsx Could not Fast Refresh ("validateItemsInUse" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:41:42 [vite] (client) hmr update /src/components/atomic-crm/root/CRM.tsx
+19:41:42 [vite] (client) hmr invalidate /src/ddc/ui/GenericResource.tsx Could not Fast Refresh ("ParentLockedContext" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:41:42 [vite] (client) hmr update /src/components/atomic-crm/root/CRM.tsx, /src/ddc/ui/ChildSection.tsx, /src/ddc/ui/AuditSection.tsx, /src/ddc/ui/DocumentsSection.tsx
+19:42:58 [vite] (client) [optimizer] bundling dependencies...
+19:42:59 [vite] (client) dependency optimized: @hello-pangea/dnd
+19:42:59 [vite] (client) optimized dependencies changed. reloading
+19:52:25 [vite] (client) hmr update /src/index.css
+19:52:27 [vite] (client) hmr update /src/index.css
+19:52:52 [vite] (client) hmr update /src/index.css
+19:52:54 [vite] (client) hmr update /src/index.css
+19:53:55 [vite] (client) hmr update /src/index.css
+19:55:06 [vite] (client) hmr update /src/index.css
+19:55:14 [vite] (client) hmr update /src/index.css
+19:55:37 [vite] (client) hmr update /src/index.css
+19:56:51 [vite] (client) hmr update /src/index.css
+19:56:53 [vite] (client) hmr update /src/index.css

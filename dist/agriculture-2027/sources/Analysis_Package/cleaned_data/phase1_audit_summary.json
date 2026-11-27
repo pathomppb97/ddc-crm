@@ -1,0 +1,33 @@
+{
+  "as_of_date": "2026-11-26",
+  "actual_jan_oct_rows": 125,
+  "actual_jan_oct_qty": 49473.0,
+  "actual_jan_oct_rev_ex_vat": 6285889.6,
+  "actual_jan_oct_gross_pos": 6958605.66,
+  "actual_jan_oct_cn_val": -670539.0,
+  "actual_jan_oct_disc": 2177.06,
+  "nov_dec_so_priced_rev": 2226464.93,
+  "nov_dec_so_priced_qty": 19734.0,
+  "nov_dec_so_unpriced_est_rev": 1821413.18,
+  "nov_dec_so_unpriced_qty": 12572.0,
+  "oct_open_remainder_rev": 6300.0,
+  "fy2026_verified_baseline_rev": 8512354.53,
+  "fy2026_est_full_year_rev": 10340067.71,
+  "so_2027_confirmed_qty": 7200.0,
+  "so_2027_confirmed_priced_rev": 249482.89,
+  "so_2027_confirmed_unpriced_est_rev": 554598.67,
+  "pipeline_accounts": 129,
+  "pipeline_fleet": 1521,
+  "pipeline_bc_demand": 515700.0,
+  "pipeline_po_25_26": 9790.0,
+  "pipeline_po_26_27": 118400.0,
+  "qa_issue_counts": {
+    "Region vs Province Mismatch": 18,
+    "Historical Non-Box Packing Qty": 11,
+    "Credit Note / Return": 7,
+    "Line Discount": 4,
+    "Summary Total Row Excluded": 1,
+    "Non-Agriculture Scope Exclusion": 1,
+    "Source Version Conflict Resolved": 1
+  }
+}
