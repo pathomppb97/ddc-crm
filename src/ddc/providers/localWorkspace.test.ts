@@ -113,4 +113,54 @@ describe("Local workspace persistence", () => {
       (await restored.getOne("products", { id: 1 })).data.description,
     ).toBe("Saved by first tab");
   });
+
+  it("non-destructively heals legacy snapshots missing new collections while preserving edits", async () => {
+    const name = `ddc-legacy-heal-${crypto.randomUUID()}`;
+    const seed = generateDdcDemoData();
+    const partialSeed = structuredClone(seed);
+    for (const collection of [
+      "customer_source_rows",
+      "customer_fleets",
+      "customer_requirements",
+      "customer_samples",
+      "customer_purchase_history",
+      "customer_capacity_profiles",
+      "customer_part_usage",
+      "activity_photos",
+    ]) {
+      delete partialSeed[collection];
+    }
+
+    const legacyProvider = await openLocalWorkspace(
+      partialSeed,
+      sourceVersion,
+      name,
+    );
+    const company = (await legacyProvider.getOne("companies", { id: 1 })).data;
+    await legacyProvider.update("companies", {
+      id: 1,
+      previousData: company,
+      data: { name: "Existing Customer Preserved" },
+    });
+
+    const healed = await openLocalWorkspace(seed, sourceVersion, name);
+    expect((await healed.getOne("companies", { id: 1 })).data.name).toBe(
+      "Existing Customer Preserved",
+    );
+    const sourceRows = await healed.getList("customer_source_rows", {
+      pagination: { page: 1, perPage: 25 },
+      sort: { field: "id", order: "ASC" },
+      filter: {},
+    });
+    expect(sourceRows.data.length).toBeGreaterThan(0);
+
+    // Verify the healed snapshot was persisted into IndexedDB
+    const reopened = await openLocalWorkspace(seed, sourceVersion, name);
+    const persistedRows = await reopened.getList("customer_source_rows", {
+      pagination: { page: 1, perPage: 25 },
+      sort: { field: "id", order: "ASC" },
+      filter: {},
+    });
+    expect(persistedRows.data.length).toBe(sourceRows.data.length);
+  });
 });

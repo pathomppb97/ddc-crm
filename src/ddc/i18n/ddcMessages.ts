@@ -11,6 +11,13 @@ const th = {
     no_history: "ยังไม่มีประวัติ",
     no_records: "ไม่มีข้อมูล",
     open_document: "เปิดเอกสาร",
+    retry: "ลองใหม่",
+  },
+  error: {
+    section_title: "ไม่สามารถโหลดข้อมูลส่วนนี้ได้",
+    page_title: "เกิดข้อผิดพลาดในหน้านี้",
+    page_hint: "คุณสามารถย้อนกลับหรือรีเฟรชเพื่อใช้งานส่วนอื่นต่อได้",
+    ref_label: "รหัสอ้างอิง",
   },
   validation: {
     json: "รูปแบบ JSON ไม่ถูกต้อง",
@@ -277,6 +284,13 @@ const en: Catalog = {
     no_history: "No history yet",
     no_records: "No records",
     open_document: "Open document",
+    retry: "Retry",
+  },
+  error: {
+    section_title: "Could not load this section",
+    page_title: "Something went wrong on this page",
+    page_hint: "You can go back or refresh to continue using other modules.",
+    ref_label: "Ref",
   },
   validation: {
     json: "Invalid JSON",

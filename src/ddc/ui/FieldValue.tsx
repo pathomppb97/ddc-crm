@@ -143,7 +143,7 @@ export const FieldValue = ({ field }: { field: FieldDef }) => {
       );
     case "email":
       return value ? (
-        <a href={`mailto:${String(value)}`} className="underline">
+        <a href={`mailto:${String(value)}`} className="underline break-all">
           {String(value)}
         </a>
       ) : (
@@ -153,7 +153,7 @@ export const FieldValue = ({ field }: { field: FieldDef }) => {
       return value == null ? (
         <span className="text-muted-foreground">—</span>
       ) : (
-        <pre className="max-h-64 overflow-auto rounded bg-muted p-2 text-xs whitespace-pre-wrap">
+        <pre className="max-h-64 overflow-auto rounded bg-muted p-2 text-xs whitespace-pre-wrap break-words">
           {Array.isArray(value) && value.every((v) => typeof v !== "object")
             ? value.join(", ")
             : JSON.stringify(value, null, 2)}
@@ -163,7 +163,7 @@ export const FieldValue = ({ field }: { field: FieldDef }) => {
       return value == null || value === "" ? (
         <span className="text-muted-foreground">—</span>
       ) : (
-        <span className="whitespace-pre-wrap">{String(value)}</span>
+        <span className="whitespace-pre-wrap break-words">{String(value)}</span>
       );
   }
 };

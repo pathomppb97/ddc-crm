@@ -5,6 +5,7 @@ import {
   type Identifier,
 } from "ra-core";
 import { SectionCard } from "./GenericResource";
+import { SectionErrorState } from "./SectionErrorState";
 import { useDdcLocale } from "./labels";
 
 const ACTION_LABELS = {
@@ -26,7 +27,12 @@ export const AuditSection = ({
     resource: "audit_log",
     action: "list",
   });
-  const { data = [], isPending } = useGetList(
+  const {
+    data = [],
+    isPending,
+    error,
+    refetch,
+  } = useGetList(
     "audit_log",
     {
       filter: { table_name: table, record_id: String(recordId) },
@@ -39,7 +45,14 @@ export const AuditSection = ({
 
   return (
     <SectionCard title={translate("ddc.common.history")}>
-      {isPending ? null : data.length === 0 ? (
+      {error ? (
+        <SectionErrorState
+          error={error}
+          resource="audit_log"
+          operation="list"
+          onRetry={() => refetch()}
+        />
+      ) : isPending ? null : data.length === 0 ? (
         <p className="text-sm text-muted-foreground">
           {translate("ddc.common.no_history")}
         </p>

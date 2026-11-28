@@ -164,11 +164,11 @@ export const ShowView = ({
       )}
       <div
         className={cn(
-          "flex justify-between items-start flex-wrap gap-2 my-2",
+          "flex justify-between items-start flex-wrap gap-2 my-2 min-w-0",
           className,
         )}
       >
-        <h2 className="text-2xl font-bold tracking-tight">
+        <h2 className="min-w-0 break-words text-xl sm:text-2xl font-bold tracking-tight">
           {title !== undefined ? title : context.defaultTitle}
         </h2>
         {actions ?? (

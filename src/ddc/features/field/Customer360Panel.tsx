@@ -39,6 +39,8 @@ import {
   type CustomerGroupCode,
   type FleetEntry,
 } from "../../domain/fieldSales";
+import { formatUserErrorMessage, logCrmError } from "../../errors/crmError";
+import { SectionErrorState } from "../../ui/SectionErrorState";
 import { useDdcLocale } from "../../ui/labels";
 import {
   CustomerGroupBadge,
@@ -68,7 +70,11 @@ export const Customer360Panel = () => {
 
   const companyId = record?.id;
 
-  const { data: contacts = [], refetch: refetchContacts } = useGetList(
+  const {
+    data: contacts = [],
+    error: contactsError,
+    refetch: refetchContacts,
+  } = useGetList(
     "contacts",
     {
       filter: companyId != null ? { company_id: companyId } : {},
@@ -77,7 +83,11 @@ export const Customer360Panel = () => {
     },
     { enabled: companyId != null },
   );
-  const { data: activities = [] } = useGetList(
+  const {
+    data: activities = [],
+    error: activitiesError,
+    refetch: refetchActivities,
+  } = useGetList(
     "activities",
     {
       filter: companyId != null ? { company_id: companyId } : {},
@@ -86,15 +96,20 @@ export const Customer360Panel = () => {
     },
     { enabled: companyId != null },
   );
-  const { data: activityProducts = [] } = useGetList("activity_products", {
-    pagination: { page: 1, perPage: 1000 },
-    sort: { field: "id", order: "ASC" },
-  });
+  const { data: activityProducts = [], error: activityProductsError } =
+    useGetList("activity_products", {
+      pagination: { page: 1, perPage: 1000 },
+      sort: { field: "id", order: "ASC" },
+    });
   const { data: products = [] } = useGetList("products", {
     pagination: { page: 1, perPage: 1000 },
     sort: { field: "id", order: "ASC" },
   });
-  const { data: photos = [] } = useGetList(
+  const {
+    data: photos = [],
+    error: photosError,
+    refetch: refetchPhotos,
+  } = useGetList(
     "activity_photos",
     {
       filter: companyId != null ? { company_id: companyId } : {},
@@ -103,7 +118,11 @@ export const Customer360Panel = () => {
     },
     { enabled: companyId != null },
   );
-  const { data: capacities = [] } = useGetList(
+  const {
+    data: capacities = [],
+    error: capacitiesError,
+    refetch: refetchCapacities,
+  } = useGetList(
     "customer_capacity_profiles",
     {
       filter: companyId != null ? { company_id: companyId } : {},
@@ -112,7 +131,11 @@ export const Customer360Panel = () => {
     },
     { enabled: companyId != null },
   );
-  const { data: partUsages = [] } = useGetList(
+  const {
+    data: partUsages = [],
+    error: partUsagesError,
+    refetch: refetchPartUsages,
+  } = useGetList(
     "customer_part_usage",
     {
       filter: companyId != null ? { company_id: companyId } : {},
@@ -121,7 +144,11 @@ export const Customer360Panel = () => {
     },
     { enabled: companyId != null },
   );
-  const { data: excelFleets = [] } = useGetList(
+  const {
+    data: excelFleets = [],
+    error: excelFleetsError,
+    refetch: refetchExcelFleets,
+  } = useGetList(
     "customer_fleets",
     {
       filter: companyId != null ? { company_id: companyId } : {},
@@ -130,7 +157,11 @@ export const Customer360Panel = () => {
     },
     { enabled: companyId != null },
   );
-  const { data: excelReqs = [] } = useGetList(
+  const {
+    data: excelReqs = [],
+    error: excelReqsError,
+    refetch: refetchExcelReqs,
+  } = useGetList(
     "customer_requirements",
     {
       filter: companyId != null ? { company_id: companyId } : {},
@@ -221,7 +252,11 @@ export const Customer360Panel = () => {
         { type: "success" },
       );
     } catch (error) {
-      notify(error instanceof Error ? error.message : String(error), {
+      const normalized = logCrmError(error, {
+        resource: "companies",
+        operation: "update",
+      });
+      notify(formatUserErrorMessage(normalized, locale), {
         type: "error",
       });
     }
@@ -267,7 +302,11 @@ export const Customer360Panel = () => {
         type: "success",
       });
     } catch (error) {
-      notify(error instanceof Error ? error.message : String(error), {
+      const normalized = logCrmError(error, {
+        resource: "contacts",
+        operation: "create",
+      });
+      notify(formatUserErrorMessage(normalized, locale), {
         type: "error",
       });
     } finally {
@@ -276,11 +315,11 @@ export const Customer360Panel = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="min-w-0 space-y-3 sm:space-y-4">
       {/* Customer 360 Header Card */}
-      <Card>
-        <CardContent className="space-y-3 pt-5">
-          <div className="flex flex-wrap items-start justify-between gap-3">
+      <Card className="min-w-0 overflow-hidden">
+        <CardContent className="min-w-0 space-y-2.5 px-3.5 pt-4 pb-4 sm:space-y-3 sm:px-6 sm:pt-5 sm:pb-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0 space-y-1">
               <div className="flex flex-wrap items-center gap-2">
                 {record.customer_code && (
@@ -295,10 +334,12 @@ export const Customer360Panel = () => {
                   />
                 )}
               </div>
-              <h2 className="text-xl font-bold">{record.name}</h2>
+              <h2 className="break-words text-lg font-bold sm:text-xl">
+                {record.name}
+              </h2>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-1">
-                  <MapPin className="size-3.5" />
+                <span className="inline-flex min-w-0 items-center gap-1 break-words">
+                  <MapPin className="size-3.5 shrink-0" />
                   {[
                     record.city ? `อ.${record.city}` : null,
                     record.province ? `จ.${record.province}` : null,
@@ -322,7 +363,7 @@ export const Customer360Panel = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-10"
+                  className="min-h-11 flex-1 sm:min-h-10 sm:flex-initial"
                   render={
                     <a
                       href={mapsUrl}
@@ -337,7 +378,7 @@ export const Customer360Panel = () => {
               )}
               <Button
                 size="sm"
-                className="h-10 font-semibold"
+                className="min-h-11 flex-1 font-semibold sm:min-h-10 sm:flex-initial"
                 render={<Link to={`/field-visit?companyId=${record.id}`} />}
               >
                 <Plus className="size-4" />
@@ -360,7 +401,7 @@ export const Customer360Panel = () => {
                     key={g.code}
                     type="button"
                     onClick={() => handleAssignGroup(g.code)}
-                    className="inline-flex min-h-8 items-center gap-1 rounded-lg border bg-background px-2.5 py-1 text-xs font-medium hover:bg-secondary"
+                    className="inline-flex min-h-11 items-center gap-1 rounded-lg border bg-background px-2.5 py-1 text-xs font-medium hover:bg-secondary sm:min-h-9"
                   >
                     <CustomerGroupIcon code={g.code} className="size-3.5" />
                     <span>
@@ -373,30 +414,66 @@ export const Customer360Panel = () => {
           )}
 
           {/* 4-Tab Customer 360° Workspace */}
-          <Tabs defaultValue="timeline" className="w-full pt-1">
+          <Tabs defaultValue="timeline" className="w-full min-w-0 pt-1">
             <TabsList className="grid h-auto! w-full grid-cols-2 gap-1 p-1 sm:grid-cols-4">
-              <TabsTrigger value="timeline" className="min-h-9 gap-1.5 text-xs">
-                <Clock className="size-3.5" />
-                {locale === "th" ? "ไทม์ไลน์" : "Timeline"} (
-                {sortedActivities.length})
+              <TabsTrigger
+                value="timeline"
+                className="min-h-11 gap-1 px-2 text-xs sm:min-h-9"
+              >
+                <Clock className="size-3.5 shrink-0" />
+                <span className="truncate">
+                  {locale === "th" ? "ไทม์ไลน์" : "Timeline"} (
+                  {sortedActivities.length})
+                </span>
               </TabsTrigger>
-              <TabsTrigger value="contacts" className="min-h-9 gap-1.5 text-xs">
-                <Users className="size-3.5" />
-                {locale === "th" ? "ผู้ติดต่อ" : "Contacts"} ({contacts.length})
+              <TabsTrigger
+                value="contacts"
+                className="min-h-11 gap-1 px-2 text-xs sm:min-h-9"
+              >
+                <Users className="size-3.5 shrink-0" />
+                <span className="truncate">
+                  {locale === "th" ? "ผู้ติดต่อ" : "Contacts"} (
+                  {contacts.length})
+                </span>
               </TabsTrigger>
-              <TabsTrigger value="capacity" className="min-h-9 gap-1.5 text-xs">
-                <Tractor className="size-3.5" />
-                Cap. ({capacities.length + excelFleets.length})
+              <TabsTrigger
+                value="capacity"
+                className="min-h-11 gap-1 px-2 text-xs sm:min-h-9"
+              >
+                <Tractor className="size-3.5 shrink-0" />
+                <span className="truncate">
+                  Cap. ({capacities.length + excelFleets.length})
+                </span>
               </TabsTrigger>
-              <TabsTrigger value="photos" className="min-h-9 gap-1.5 text-xs">
-                <Camera className="size-3.5" />
-                {locale === "th" ? "รูปถ่าย" : "Photos"} ({photos.length})
+              <TabsTrigger
+                value="photos"
+                className="min-h-11 gap-1 px-2 text-xs sm:min-h-9"
+              >
+                <Camera className="size-3.5 shrink-0" />
+                <span className="truncate">
+                  {locale === "th" ? "รูปถ่าย" : "Photos"} ({photos.length})
+                </span>
               </TabsTrigger>
             </TabsList>
 
             {/* TAB 1: TIMELINE */}
             <TabsContent value="timeline" className="mt-3 space-y-2.5">
-              {sortedActivities.length === 0 ? (
+              {activitiesError ? (
+                <SectionErrorState
+                  error={activitiesError}
+                  resource="activities"
+                  operation="list"
+                  onRetry={() => refetchActivities()}
+                />
+              ) : null}
+              {activityProductsError ? (
+                <SectionErrorState
+                  error={activityProductsError}
+                  resource="activity_products"
+                  operation="list"
+                />
+              ) : null}
+              {!activitiesError && sortedActivities.length === 0 ? (
                 <div className="rounded-xl border border-dashed py-8 text-center text-sm text-muted-foreground">
                   {locale === "th"
                     ? "ยังไม่มีบันทึกการเข้าพบลูกค้ารายนี้"
@@ -431,11 +508,11 @@ export const Customer360Panel = () => {
                               : "DDC Sales"}
                           </span>
                         </div>
-                        <div className="text-sm font-semibold">
+                        <div className="text-sm font-semibold break-words">
                           {act.subject}
                         </div>
                         {act.discussion && (
-                          <p className="whitespace-pre-line text-xs text-foreground/90">
+                          <p className="whitespace-pre-line break-words text-xs text-foreground/90">
                             {act.discussion}
                           </p>
                         )}
@@ -506,6 +583,7 @@ export const Customer360Panel = () => {
                   type="button"
                   size="sm"
                   variant="outline"
+                  className="min-h-11 sm:min-h-9"
                   onClick={() => setAddingContact((v) => !v)}
                 >
                   <UserPlus className="size-4" />
@@ -520,26 +598,26 @@ export const Customer360Panel = () => {
                       value={ctName}
                       onChange={(e) => setCtName(e.target.value)}
                       placeholder="ชื่อ / ชื่อเล่น *"
-                      className="h-10"
+                      className="h-11 sm:h-10"
                     />
                     <Input
                       value={ctRole}
                       onChange={(e) => setCtRole(e.target.value)}
                       placeholder="ตำแหน่ง / บทบาท"
-                      className="h-10"
+                      className="h-11 sm:h-10"
                     />
                     <Input
                       inputMode="tel"
                       value={ctPhone}
                       onChange={(e) => setCtPhone(e.target.value)}
                       placeholder="เบอร์โทร"
-                      className="h-10"
+                      className="h-11 sm:h-10"
                     />
                     <Input
                       value={ctLine}
                       onChange={(e) => setCtLine(e.target.value)}
                       placeholder="LINE ID"
-                      className="h-10"
+                      className="h-11 sm:h-10"
                     />
                   </div>
                   <div className="flex justify-end gap-2">
@@ -547,6 +625,7 @@ export const Customer360Panel = () => {
                       type="button"
                       size="sm"
                       variant="ghost"
+                      className="min-h-11 sm:min-h-9"
                       onClick={() => setAddingContact(false)}
                     >
                       {locale === "th" ? "ยกเลิก" : "Cancel"}
@@ -554,6 +633,7 @@ export const Customer360Panel = () => {
                     <Button
                       type="button"
                       size="sm"
+                      className="min-h-11 sm:min-h-9"
                       disabled={savingContact}
                       onClick={handleQuickAddContact}
                     >
@@ -564,7 +644,14 @@ export const Customer360Panel = () => {
                 </div>
               )}
 
-              {contacts.length === 0 ? (
+              {contactsError ? (
+                <SectionErrorState
+                  error={contactsError}
+                  resource="contacts"
+                  operation="list"
+                  onRetry={() => refetchContacts()}
+                />
+              ) : contacts.length === 0 ? (
                 <p className="py-6 text-center text-sm text-muted-foreground">
                   {locale === "th" ? "ยังไม่มีผู้ติดต่อ" : "No contacts yet"}
                 </p>
@@ -578,7 +665,7 @@ export const Customer360Panel = () => {
                     return (
                       <div
                         key={String(ct.id)}
-                        className="flex items-center justify-between gap-2 rounded-xl border bg-background p-3"
+                        className="flex min-w-0 items-center justify-between gap-2 rounded-xl border bg-background p-3"
                       >
                         <div className="min-w-0">
                           <Link
@@ -602,7 +689,7 @@ export const Customer360Panel = () => {
                             <Button
                               size="icon"
                               variant="outline"
-                              className="size-9"
+                              className="size-11 sm:size-9"
                               render={<a href={toTelHref(phone)!} />}
                               aria-label="Call"
                             >
@@ -613,7 +700,7 @@ export const Customer360Panel = () => {
                             <Button
                               size="icon"
                               variant="outline"
-                              className="size-9 text-emerald-600"
+                              className="size-11 text-emerald-600 sm:size-9"
                               render={
                                 <a
                                   href={toLineUrl(ct.line_id)!}
@@ -636,9 +723,42 @@ export const Customer360Panel = () => {
 
             {/* TAB 3: CAPACITY & REPLACEMENT FREQUENCY */}
             <TabsContent value="capacity" className="mt-3 space-y-3">
+              {capacitiesError ? (
+                <SectionErrorState
+                  error={capacitiesError}
+                  resource="customer_capacity_profiles"
+                  operation="list"
+                  onRetry={() => refetchCapacities()}
+                />
+              ) : null}
+              {partUsagesError ? (
+                <SectionErrorState
+                  error={partUsagesError}
+                  resource="customer_part_usage"
+                  operation="list"
+                  onRetry={() => refetchPartUsages()}
+                />
+              ) : null}
+              {excelFleetsError ? (
+                <SectionErrorState
+                  error={excelFleetsError}
+                  resource="customer_fleets"
+                  operation="list"
+                  onRetry={() => refetchExcelFleets()}
+                />
+              ) : null}
+              {excelReqsError ? (
+                <SectionErrorState
+                  error={excelReqsError}
+                  resource="customer_requirements"
+                  operation="list"
+                  onRetry={() => refetchExcelReqs()}
+                />
+              ) : null}
+
               {latestCap ? (
-                <div className="space-y-2.5 rounded-xl border bg-background p-3.5">
-                  <div className="flex items-center justify-between text-xs">
+                <div className="space-y-2.5 rounded-xl border bg-background p-3 sm:p-3.5">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
                     <span className="font-semibold">
                       {locale === "th"
                         ? `ข้อมูล Cap. ล่าสุด (ฤดู ${latestCap.season_label})`
@@ -651,36 +771,36 @@ export const Customer360Panel = () => {
                       {locale === "th" ? "อัปเดต Cap." : "Update"}
                     </Link>
                   </div>
-                  <div className="grid grid-cols-3 gap-2 text-center">
-                    <div className="rounded-lg bg-muted/40 p-2.5">
-                      <div className="text-lg font-bold tabular-nums">
+                  <div className="grid grid-cols-3 gap-1.5 text-center sm:gap-2">
+                    <div className="rounded-lg bg-muted/40 p-2 sm:p-2.5">
+                      <div className="text-base font-bold tabular-nums sm:text-lg">
                         {capVehicles || "—"}
                       </div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-[11px] text-muted-foreground sm:text-xs">
                         {locale === "th" ? "รถ (คัน)" : "Vehicles"}
                       </div>
                     </div>
-                    <div className="rounded-lg bg-muted/40 p-2.5">
-                      <div className="text-lg font-bold tabular-nums">
+                    <div className="rounded-lg bg-muted/40 p-2 sm:p-2.5">
+                      <div className="text-base font-bold tabular-nums sm:text-lg">
                         {latestCap.tons_per_vehicle != null
                           ? Number(latestCap.tons_per_vehicle).toLocaleString(
                               "th-TH",
                             )
                           : "—"}
                       </div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-[11px] text-muted-foreground sm:text-xs">
                         {locale === "th" ? "ตัน/คัน" : "Tons/unit"}
                       </div>
                     </div>
-                    <div className="rounded-lg bg-muted/40 p-2.5">
-                      <div className="text-lg font-bold tabular-nums">
+                    <div className="rounded-lg bg-muted/40 p-2 sm:p-2.5">
+                      <div className="text-base font-bold tabular-nums sm:text-lg">
                         {latestCap.total_tons_per_season != null
                           ? Number(
                               latestCap.total_tons_per_season,
                             ).toLocaleString("th-TH")
                           : "—"}
                       </div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-[11px] text-muted-foreground sm:text-xs">
                         {locale === "th" ? "ตัน/ฤดู" : "Tons/season"}
                       </div>
                     </div>
@@ -716,9 +836,11 @@ export const Customer360Panel = () => {
                         key={String(u.id)}
                         className="flex flex-wrap items-center justify-between gap-2 rounded-xl border bg-background px-3 py-2 text-xs"
                       >
-                        <div>
-                          <div className="font-semibold">{u.part_label}</div>
-                          <div className="text-muted-foreground">
+                        <div className="min-w-0">
+                          <div className="font-semibold break-words">
+                            {u.part_label}
+                          </div>
+                          <div className="text-muted-foreground break-words">
                             ใช้ {u.qty_per_change ?? "—"} ชิ้น ทุกๆ{" "}
                             {u.change_interval_value ?? "—"}{" "}
                             {locale === "en" ? unit?.labelEn : unit?.labelTh}
@@ -751,7 +873,7 @@ export const Customer360Panel = () => {
                       : "Legacy Excel survey evidence"}
                   </div>
                   {excelFleets.map((f) => (
-                    <div key={String(f.id)}>
+                    <div key={String(f.id)} className="break-words">
                       🚜 {f.brands_raw?.replace(/\n/g, ", ") || "—"} · จำนวน:{" "}
                       {f.quantities_raw?.replace(/\n/g, " / ") || "—"}
                       {f.capacity_kton_raw
@@ -760,7 +882,10 @@ export const Customer360Panel = () => {
                     </div>
                   ))}
                   {excelReqs.map((r) => (
-                    <div key={String(r.id)} className="text-muted-foreground">
+                    <div
+                      key={String(r.id)}
+                      className="break-words text-muted-foreground"
+                    >
                       ⚙️ {r.product_family}: สเปค {r.specification_raw || "—"} ·
                       เดิม {r.old_brands_raw || "—"} · ใช้/ฤดู{" "}
                       {r.seasonal_usage_raw || "—"} ชิ้น
@@ -769,7 +894,11 @@ export const Customer360Panel = () => {
                 </div>
               )}
 
-              {!latestCap &&
+              {!capacitiesError &&
+                !partUsagesError &&
+                !excelFleetsError &&
+                !excelReqsError &&
+                !latestCap &&
                 partUsages.length === 0 &&
                 excelFleets.length === 0 && (
                   <p className="py-6 text-center text-sm text-muted-foreground">
@@ -782,7 +911,14 @@ export const Customer360Panel = () => {
 
             {/* TAB 4: FIELD PHOTOS GALLERY */}
             <TabsContent value="photos" className="mt-3">
-              {photos.length === 0 ? (
+              {photosError ? (
+                <SectionErrorState
+                  error={photosError}
+                  resource="activity_photos"
+                  operation="list"
+                  onRetry={() => refetchPhotos()}
+                />
+              ) : photos.length === 0 ? (
                 <p className="py-6 text-center text-sm text-muted-foreground">
                   {locale === "th"
                     ? "ยังไม่มีรูปถ่ายหน้างานสำหรับลูกค้ารายนี้"

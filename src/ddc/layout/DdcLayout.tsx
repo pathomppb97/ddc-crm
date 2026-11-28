@@ -349,14 +349,14 @@ const MobileBottomBar = () => {
   const isTimeline = Boolean(useMatch({ path: "/timeline/*" }));
 
   const tabClass = (active: boolean) =>
-    `flex flex-1 flex-col items-center justify-center gap-0.5 py-1.5 text-[11px] font-medium transition ${
+    `flex min-h-11 min-w-11 flex-1 flex-col items-center justify-center gap-0.5 py-1.5 text-[11px] font-medium transition ${
       active ? "text-primary font-semibold" : "text-muted-foreground"
     }`;
 
   return (
     <nav
       aria-label="Field mobile navigation"
-      className="fixed inset-x-0 bottom-0 z-40 flex h-16 items-center justify-around border-t bg-background/95 px-1 backdrop-blur md:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 flex min-h-16 items-center justify-around border-t bg-background/95 px-1 backdrop-blur md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <Link to="/" className={tabClass(isHome)}>
@@ -417,41 +417,67 @@ const Header = () => {
     action: "edit",
   });
   return (
-    <header className="sticky top-0 z-10 flex h-14 min-w-0 shrink-0 items-center gap-1 border-b bg-background/95 px-2 backdrop-blur md:gap-2 md:px-4">
-      <SidebarTrigger aria-label={translate("ra.action.open_menu")} />
-      <div className="flex min-w-0 flex-1 items-center gap-2">
-        <DdcSearch />
-        <div className="hidden md:block">
+    <header
+      className="sticky top-0 z-20 shrink-0 border-b bg-background/95 backdrop-blur"
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
+    >
+      <div className="flex h-14 min-w-0 items-center gap-1 px-2 md:gap-2 md:px-4">
+        <SidebarTrigger
+          className="size-11 md:size-8 shrink-0"
+          aria-label={translate("ra.action.open_menu")}
+        />
+        <Link
+          to="/"
+          className="mr-auto flex items-center gap-1.5 min-w-0 font-semibold md:hidden"
+        >
+          <img
+            src={ddcLogo}
+            alt=""
+            width={288}
+            height={84}
+            className="h-5 w-auto shrink-0"
+          />
+          <span className="truncate text-sm">DDC CRM</span>
+        </Link>
+        <div className="hidden min-w-0 flex-1 items-center gap-2 md:flex">
+          <DdcSearch />
           <GlobalSearchButton />
         </div>
+        <div className="flex shrink-0 items-center gap-0.5 sm:gap-1">
+          <NotificationsBell />
+          {import.meta.env.DEV &&
+            canAccess &&
+            ["localhost", "127.0.0.1"].includes(window.location.hostname) && (
+              <a
+                className="hidden rounded-md border px-3 py-1.5 text-sm font-medium hover:bg-muted md:inline-flex"
+                href="http://127.0.0.1:5178/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Page Admin
+              </a>
+            )}
+          <LocalesMenuButton />
+          <div className="hidden sm:flex items-center gap-1">
+            <ThemeModeToggle />
+            <RefreshButton />
+          </div>
+          <UserMenu>
+            <UserMenuLink
+              to={lanAccountsEnabled ? "/lan-account" : "/profile"}
+              icon={UserRound}
+              label={
+                lanAccountsEnabled
+                  ? { th: "บัญชี LAN Demo", en: "LAN Demo account" }
+                  : { th: "โปรไฟล์ของฉัน", en: "My profile" }
+              }
+            />
+          </UserMenu>
+        </div>
       </div>
-      <NotificationsBell />
-      {import.meta.env.DEV &&
-        canAccess &&
-        ["localhost", "127.0.0.1"].includes(window.location.hostname) && (
-          <a
-            className="hidden rounded-md border px-3 py-1.5 text-sm font-medium hover:bg-muted md:inline-flex"
-            href="http://127.0.0.1:5178/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Page Admin
-          </a>
-        )}
-      <LocalesMenuButton />
-      <ThemeModeToggle />
-      <RefreshButton />
-      <UserMenu>
-        <UserMenuLink
-          to={lanAccountsEnabled ? "/lan-account" : "/profile"}
-          icon={UserRound}
-          label={
-            lanAccountsEnabled
-              ? { th: "บัญชี LAN Demo", en: "LAN Demo account" }
-              : { th: "โปรไฟล์ของฉัน", en: "My profile" }
-          }
-        />
-      </UserMenu>
+      <div className="border-t px-3 py-2 md:hidden">
+        <DdcSearch />
+      </div>
     </header>
   );
 };
@@ -469,7 +495,7 @@ export const DdcLayout = ({
           <Header />
           <main
             id="main-content"
-            className="w-full min-w-0 max-w-screen-2xl flex-1 overflow-x-clip px-3 pb-20 md:px-4 md:pb-6"
+            className="w-full min-w-0 max-w-screen-2xl flex-1 overflow-x-clip px-3 pb-[calc(6.5rem+env(safe-area-inset-bottom))] md:px-4 md:pb-6"
           >
             <ErrorBoundary
               onError={(_, info) => setErrorInfo(info)}
@@ -489,7 +515,13 @@ export const DdcLayout = ({
           </main>
         </div>
         <MobileBottomBar />
-        <Notification mobileOffset={{ bottom: "76px" }} />
+        <Notification
+          mobileOffset={{
+            bottom: "calc(6.5rem + env(safe-area-inset-bottom))",
+            left: "12px",
+            right: "12px",
+          }}
+        />
       </SidebarProvider>
     </DataImportProvider>
   );

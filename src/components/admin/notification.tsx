@@ -5,10 +5,17 @@ import { Toaster, toast } from "sonner";
 import { useTheme } from "@/components/admin/use-theme";
 import {
   CloseNotificationContext,
+  useLocaleState,
   useNotificationContext,
   useTakeUndoableMutation,
   useTranslate,
 } from "ra-core";
+import {
+  formatUserErrorMessage,
+  isTechnicalNotificationMessage,
+  logCrmError,
+  shouldSuppressDuplicateToast,
+} from "@/ddc/errors/crmError";
 
 /**
  * Displays notifications triggered with the useNotify hook.
@@ -33,9 +40,11 @@ import {
  */
 export const Notification = (props: ToasterProps) => {
   const translate = useTranslate();
+  const [locale] = useLocaleState();
   const { notifications, takeNotification } = useNotificationContext();
   const takeMutation = useTakeUndoableMutation();
   const { theme } = useTheme();
+  const appLocale: "th" | "en" = locale === "en" ? "en" : "th";
 
   useEffect(() => {
     if (notifications.length) {
@@ -74,7 +83,10 @@ export const Notification = (props: ToasterProps) => {
           window.removeEventListener("beforeunload", beforeunload);
         };
 
-        const finalMessage = message
+        const rawStringMessage =
+          typeof message === "string" ? message : undefined;
+
+        let finalMessage = message
           ? typeof message === "string"
             ? translate(message, messageArgs)
             : React.isValidElement(message)
@@ -82,10 +94,40 @@ export const Notification = (props: ToasterProps) => {
               : undefined
           : undefined;
 
+        let toastId: string | undefined;
+        if (type === "error" || type === "warning") {
+          const textForCheck =
+            typeof finalMessage === "string"
+              ? rawStringMessage && rawStringMessage !== finalMessage
+                ? `${rawStringMessage} ${finalMessage}`
+                : finalMessage
+              : (rawStringMessage ?? "");
+          if (
+            type === "error" &&
+            isTechnicalNotificationMessage(textForCheck)
+          ) {
+            const normalized = logCrmError(textForCheck, {
+              operation: "notification",
+            });
+            finalMessage = formatUserErrorMessage(normalized, appLocale);
+            toastId = `crm-err:${normalized.dedupeKey}`;
+          } else {
+            const sig =
+              typeof finalMessage === "string"
+                ? finalMessage
+                : (rawStringMessage ?? type);
+            toastId = `crm-${type}:${sig}`;
+          }
+          if (shouldSuppressDuplicateToast(toastId)) {
+            return;
+          }
+        }
+
         const duration =
           autoHideDuration === null ? Infinity : autoHideDuration;
 
         toast[type](finalMessage, {
+          ...(toastId ? { id: toastId } : {}),
           duration,
           action: undoable
             ? {
@@ -98,7 +140,7 @@ export const Notification = (props: ToasterProps) => {
         });
       }
     }
-  }, [notifications, takeMutation, takeNotification, translate]);
+  }, [appLocale, notifications, takeMutation, takeNotification, translate]);
 
   const handleRequestClose = useCallback(() => {
     // Dismiss all toasts

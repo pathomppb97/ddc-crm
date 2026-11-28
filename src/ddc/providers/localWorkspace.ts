@@ -129,12 +129,31 @@ export async function openLocalWorkspace(
     );
   }
   let saved = structuredClone(stored?.db ?? seed);
+  let revision = stored?.revision ?? 0;
+  let seedAdditionVersion =
+    stored?.seedAdditionVersion ?? (stored ? undefined : addition?.version);
+  let customerDirectoryVersion = stored?.customerDirectoryVersion;
+  let needsCommit = false;
   // Ensure newly added tables and reference options exist in legacy browser snapshots
   // without touching any previously saved user records.
   if (stored) {
     for (const [resource, rows] of Object.entries(seed)) {
       if (!Array.isArray(saved[resource])) {
         saved[resource] = structuredClone(rows);
+        needsCommit = true;
+      }
+    }
+    if (Array.isArray(saved.activities)) {
+      for (const activity of saved.activities as Array<
+        Record<string, unknown>
+      >) {
+        if (activity.logged_at == null) {
+          activity.logged_at =
+            activity.start_at ??
+            activity.created_at ??
+            new Date().toISOString();
+          needsCommit = true;
+        }
       }
     }
     for (const refTable of ["option_categories", "master_options"] as const) {
@@ -152,14 +171,10 @@ export async function openLocalWorkspace(
       );
       if (missing.length > 0) {
         saved[refTable] = [...existing, ...structuredClone(missing)];
+        needsCommit = true;
       }
     }
   }
-  let revision = stored?.revision ?? 0;
-  let seedAdditionVersion =
-    stored?.seedAdditionVersion ?? (stored ? undefined : addition?.version);
-  let customerDirectoryVersion = stored?.customerDirectoryVersion;
-  let needsCommit = false;
   if (stored && addition && addition.version !== stored.seedAdditionVersion) {
     // Add missing source IDs only. Existing records, edits and deletions remain
     // untouched after this version has been applied. Keep the prior snapshot.

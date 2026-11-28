@@ -1,7 +1,9 @@
 import {
+  RecordContextProvider,
   useCanAccess,
   useCreatePath,
   useGetList,
+  useRecordContext,
   useTranslate,
   type Identifier,
 } from "ra-core";
@@ -11,8 +13,8 @@ import { Button } from "@/components/ui/button";
 import { getResourceDef } from "../resources/registry";
 import { FieldValue } from "./FieldValue";
 import { SectionCard } from "./GenericResource";
+import { SectionErrorState } from "./SectionErrorState";
 import { useLabel } from "./labels";
-import { RecordContextProvider } from "ra-core";
 
 /**
  * Document references (drawings, specifications, 8D / NCR / CAPA...) attached
@@ -29,16 +31,33 @@ export const DocumentsSection = ({
   const translate = useTranslate();
   const label = useLabel();
   const createPath = useCreatePath();
+  const parentRecord = useRecordContext();
   const def = getResourceDef("document_references")!;
+  const { canAccess: canRead, isPending: isCheckingRead } = useCanAccess({
+    resource: entityType,
+    action: "show",
+    record: parentRecord,
+  });
   const { canAccess } = useCanAccess({
-    resource: "document_references",
-    action: "create",
+    resource: entityType,
+    action: "edit",
+    record: parentRecord,
   });
-  const { data = [], isPending } = useGetList("document_references", {
-    filter: { entity_type: entityType, entity_id: entityId },
-    sort: { field: "created_at", order: "DESC" },
-    pagination: { page: 1, perPage: 100 },
-  });
+  const {
+    data = [],
+    isPending,
+    error,
+    refetch,
+  } = useGetList(
+    "document_references",
+    {
+      filter: { entity_type: entityType, entity_id: entityId },
+      sort: { field: "created_at", order: "DESC" },
+      pagination: { page: 1, perPage: 100 },
+    },
+    { enabled: canRead === true },
+  );
+  if (isCheckingRead || !canRead) return null;
   const typeField = def.fields.find((f) => f.source === "document_type_id")!;
   const to = `${createPath({ resource: "document_references", type: "create" })}?source=${encodeURIComponent(
     JSON.stringify({ entity_type: entityType, entity_id: entityId }),
@@ -56,7 +75,14 @@ export const DocumentsSection = ({
         ) : null
       }
     >
-      {isPending ? null : data.length === 0 ? (
+      {error ? (
+        <SectionErrorState
+          error={error}
+          resource="document_references"
+          operation="list"
+          onRetry={() => refetch()}
+        />
+      ) : isPending ? null : data.length === 0 ? (
         <p className="text-sm text-muted-foreground">
           {translate("ddc.common.no_documents")}
         </p>

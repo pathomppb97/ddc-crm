@@ -17,6 +17,7 @@ export type EditButtonProps = {
   record?: RaRecord;
   resource?: string;
   label?: string;
+  className?: string;
 };
 
 /**
@@ -41,7 +42,7 @@ export type EditButtonProps = {
  * );
  */
 export const EditButton = (props: EditButtonProps) => {
-  const { label: labelProp } = props;
+  const { label: labelProp, className } = props;
   const resource = useResourceContext(props);
   const record = useRecordContext(props);
   const createPath = useCreatePath();
@@ -68,7 +69,7 @@ export const EditButton = (props: EditButtonProps) => {
   });
   return (
     <LinkBase
-      className={cn(buttonVariants({ variant: "outline" }))}
+      className={cn(buttonVariants({ variant: "outline" }), className)}
       to={link}
       onClick={stopPropagation}
       aria-label={typeof label === "string" ? label : undefined}

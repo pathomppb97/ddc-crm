@@ -177,6 +177,13 @@ export const generateDdcDemoData = (now = new Date()): DdcDemoDb => {
   const lifecycles = ["prospect", "active", "active", "active", "on_hold"].map(
     (c) => optionId("customer_lifecycle_status", c),
   );
+  const customerGroups = [
+    "sugar_mill",
+    "dealer",
+    "repair_shop",
+    "parts_shop",
+    "farm_owner",
+  ].map((c) => optionId("customer_group", c));
   const provinces = [
     "กรุงเทพมหานคร",
     "ชลบุรี",
@@ -187,6 +194,8 @@ export const generateDdcDemoData = (now = new Date()): DdcDemoDb => {
   db.companies = Array.from({ length: 24 }, (_, i) => {
     const n = i + 1;
     const exportCustomer = n % 6 === 0;
+    const latitude = exportCustomer ? null : 13.75 + (i % 5) * 0.45;
+    const longitude = exportCustomer ? null : 100.5 + (i % 4) * 0.6;
     return {
       id: n,
       customer_code: `CUS-${String(n).padStart(6, "0")}`,
@@ -204,16 +213,26 @@ export const generateDdcDemoData = (now = new Date()): DdcDemoDb => {
         n % 4 === 0
           ? optionId("customer_category", "key_account")
           : optionId("customer_category", "standard"),
+      customer_group_id: customerGroups[i % customerGroups.length],
       territory_id: exportCustomer ? 3 : (i % 2) + 1,
       sales_id: reps[i % reps.length],
       phone_number: `+66 2 000 ${String(1000 + n)}`,
       email: `contact${n}@customer${n}.example.test`,
       website: `https://customer${n}.example.test`,
       address: `${n} ถนนตัวอย่าง`,
-      city: null,
+      city: exportCustomer ? null : "เมือง",
       province: exportCustomer ? null : provinces[i % provinces.length],
       zipcode: null,
       country: exportCustomer ? "VN" : "TH",
+      latitude,
+      longitude,
+      google_maps_url:
+        latitude != null && longitude != null
+          ? `https://maps.google.com/?q=${latitude.toFixed(4)},${longitude.toFixed(4)}`
+          : null,
+      location_note: exportCustomer
+        ? null
+        : `จุดสังเกตพื้นที่ตัวอย่าง ${provinces[i % provinces.length]}`,
       description: "ข้อมูลสังเคราะห์สำหรับทดสอบระบบ",
       tax_identifier: exportCustomer ? null : `0105599${String(100000 + n)}`,
       created_at: iso(-400 + i * 15),
@@ -256,12 +275,14 @@ export const generateDdcDemoData = (now = new Date()): DdcDemoDb => {
       id: i * 2 + k + 1,
       first_name: k === 0 ? `ผู้ติดต่อ${i + 1}` : `ฝ่ายจัดซื้อ${i + 1}`,
       last_name: "(ทดลอง)",
+      nickname: k === 0 ? `ต้น${i + 1}` : null,
       title: k === 0 ? "ผู้จัดการฝ่ายจัดซื้อ" : "เจ้าหน้าที่จัดซื้อ",
       department: "จัดซื้อ",
       is_primary: k === 0,
       company_id: company.id,
       company_name: company.name,
       sales_id: company.sales_id,
+      line_id: k === 0 ? `demo_line_${i + 1}` : null,
       email_jsonb: [
         { email: `buyer${k}@customer${i + 1}.example.test`, type: "Work" },
       ],
@@ -483,6 +504,7 @@ export const generateDdcDemoData = (now = new Date()): DdcDemoDb => {
     const offset = -60 + i * 2.5;
     const company = db.companies[i % db.companies.length];
     const companyDeal = db.deals.find((d) => d.company_id === company.id);
+    const startIso = iso(offset);
     return {
       id: i + 1,
       activity_type_id: optionId(
@@ -493,9 +515,13 @@ export const generateDdcDemoData = (now = new Date()): DdcDemoDb => {
       company_id: company.id,
       deal_id: i % 4 === 0 && companyDeal ? companyDeal.id : null,
       lead_id: null,
-      start_at: iso(offset),
+      start_at: startIso,
       end_at: iso(offset + 0.05),
+      logged_at: startIso,
       location: i % 3 === 0 ? company.province : null,
+      checkin_lat: company.latitude ?? null,
+      checkin_lng: company.longitude ?? null,
+      checkin_accuracy_m: company.latitude != null ? 15 : null,
       objective: "ข้อมูลสังเคราะห์",
       discussion: null,
       outcome: null,
@@ -504,7 +530,7 @@ export const generateDdcDemoData = (now = new Date()): DdcDemoDb => {
       follow_up_date: null,
       sales_id: company.sales_id,
       created_at: iso(offset - 3),
-      updated_at: iso(offset),
+      updated_at: startIso,
     };
   });
   db.activity_participants = [];
@@ -740,6 +766,105 @@ export const generateDdcDemoData = (now = new Date()): DdcDemoDb => {
   db.audit_log = [];
   db.company_addresses = [];
   db.company_territories = [];
+
+  const sourceCompanies = db.companies.slice(0, 6);
+  db.customer_source_rows = sourceCompanies.map((company, i) => ({
+    id: i + 1,
+    company_id: company.id,
+    source_file: "synthetic_customer_list_demo.xlsx",
+    sheet_name: "Requirement",
+    source_row: 5 + i,
+    region: company.territory_id === 2 ? "ภาคอีสาน (ทดลอง)" : "ภาคกลาง (ทดลอง)",
+    source_sequence: i + 1,
+    raw_cells: {
+      customer_code: company.customer_code,
+      company_name: company.name,
+      province: company.province,
+      synthetic: true,
+    },
+    review_notes: null,
+  }));
+  db.customer_fleets = sourceCompanies.map((company, i) => ({
+    id: i + 1,
+    company_id: company.id,
+    source_id: i + 1,
+    brands_raw: i % 2 === 0 ? "Demo Harvester H1" : "Synthetic Harvester S2",
+    quantities_raw: String(2 + (i % 4)),
+    capacity_kton_raw: String(15 + i * 5),
+  }));
+  db.customer_requirements = sourceCompanies.map((company, i) => ({
+    id: i + 1,
+    company_id: company.id,
+    source_id: i + 1,
+    product_family: i % 2 === 0 ? "Basecutter Blade" : "Chopper Blade",
+    old_brands_raw: "OEM / Aftermarket (ทดลอง)",
+    specification_raw: "ข้อมูลสังเคราะห์สำหรับทดสอบหน้าจอ",
+    target_cost_raw: String(120 + i * 10),
+    seasonal_usage_raw: String(400 + i * 100),
+    blades_per_machine_raw: i % 2 === 0 ? "12" : "8",
+  }));
+  db.customer_samples = sourceCompanies.slice(0, 3).map((company, i) => ({
+    id: i + 1,
+    company_id: company.id,
+    source_id: i + 1,
+    requirement_id: i + 1,
+    product_family: db.customer_requirements[i].product_family,
+    specification_raw: "ตัวอย่างทดสอบสังเคราะห์",
+    quantity_raw: "10",
+    sample_date_raw: day(-30 + i * 5),
+    testing_date_raw: day(-20 + i * 5),
+    customer_pic_raw: `ผู้ติดต่อ${i + 1}`,
+  }));
+  db.customer_purchase_history = sourceCompanies
+    .slice(0, 4)
+    .map((company, i) => ({
+      id: i + 1,
+      company_id: company.id,
+      source_id: i + 1,
+      requirement_id: i + 1,
+      season: i % 2 === 0 ? "25-26" : "26-27",
+      specification_raw: "ประวัติปริมาณสั่งซื้อสังเคราะห์",
+      quantity_raw: String(300 + i * 50),
+      sent_date_raw: day(-90 + i * 10),
+      review_notes: "ข้อมูลสังเคราะห์สำหรับทดสอบระบบ",
+    }));
+  db.customer_capacity_profiles = sourceCompanies.map((company, i) => ({
+    id: i + 1,
+    company_id: company.id,
+    season_label: "2569/70",
+    capacity_role: (["owner", "service_shop", "dealer_network"] as const)[
+      i % 3
+    ],
+    total_vehicles: 3 + i,
+    tons_per_vehicle: 12000,
+    total_tons_per_season: (3 + i) * 12000,
+    fleet_breakdown: [{ brand: "Demo Harvester", model: "H1", count: 3 + i }],
+    notes: "ข้อมูลสังเคราะห์สำหรับทดสอบ",
+    sales_id: company.sales_id,
+    created_at: iso(-60 + i * 5),
+    updated_at: iso(-10 + i),
+  }));
+  db.customer_part_usage = sourceCompanies.map((company, i) => {
+    const product = db.products[i % db.products.length];
+    return {
+      id: i + 1,
+      company_id: company.id,
+      product_id: product.id,
+      part_label: String(product.name),
+      qty_per_change: 12,
+      change_interval_value: 2000,
+      change_interval_unit: "tons",
+      estimated_season_qty: (3 + i) * 72,
+      current_brand: "Demo OEM",
+      notes: "ข้อมูลสังเคราะห์สำหรับทดสอบ",
+      recorded_activity_id:
+        db.activities.find((a) => a.company_id === company.id)?.id ?? null,
+      sales_id: company.sales_id,
+      created_at: iso(-45 + i * 5),
+      updated_at: iso(-8 + i),
+    };
+  });
+  db.activity_photos = [];
   db.erp_legal_entities = [];
   db.erp_external_ids = [];
   db.erp_sync_cursors = [];

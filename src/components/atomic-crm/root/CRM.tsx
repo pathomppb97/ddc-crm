@@ -44,6 +44,7 @@ import {
 } from "./defaultConfiguration";
 import { ddcI18nProvider as defaulti18nProvider } from "@/ddc/i18n/i18nProvider";
 import { StartPage } from "../login/StartPage.tsx";
+import { createDdcQueryClient } from "@/ddc/errors/queryClient";
 import { DdcLayout } from "@/ddc/layout/DdcLayout";
 import { DdcDashboard } from "@/ddc/features/DdcDashboard";
 import { FieldVisitPage } from "@/ddc/features/field/FieldVisitPage";
@@ -69,6 +70,7 @@ export type CRMProps = {
   i18nProvider?: CoreAdminProps["i18nProvider"];
   disableTelemetry?: boolean;
   store?: CoreAdminProps["store"];
+  queryClient?: CoreAdminProps["queryClient"];
   dashboard?: DashboardComponent;
   layout?: LayoutComponent;
 } & Partial<ConfigurationContextValue>;
@@ -130,9 +132,14 @@ export const CRM = ({
   authProvider = defaultAuthProviderBuilder(),
   i18nProvider = defaulti18nProvider,
   store = defaultStore,
+  queryClient,
   disableTelemetry,
   ...rest
 }: CRMProps) => {
+  const resolvedQueryClient = useMemo(
+    () => queryClient ?? createDdcQueryClient(),
+    [queryClient],
+  );
   useEffect(() => {
     if (
       disableTelemetry ||
@@ -221,6 +228,7 @@ export const CRM = ({
       authProvider={wrappedAuthProvider}
       i18nProvider={i18nProvider}
       store={store}
+      queryClient={resolvedQueryClient}
       loginPage={StartPage}
       requireAuth
       disableTelemetry

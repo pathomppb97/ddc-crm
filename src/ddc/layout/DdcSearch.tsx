@@ -30,8 +30,8 @@ export const DdcSearch = () => {
   });
 
   return (
-    <div className="relative w-full min-w-0 max-w-md">
-      <Search className="pointer-events-none absolute top-2.5 left-2 size-4 text-muted-foreground" />
+    <div className="relative w-full min-w-0 md:max-w-md">
+      <Search className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
       <Input
         type="search"
         value={text}
@@ -44,12 +44,12 @@ export const DdcSearch = () => {
         onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
         placeholder={translate("ddc.search.placeholder")}
         aria-label={translate("ddc.search.placeholder")}
-        className="pl-8"
+        className="h-11 pl-9 md:h-9"
       />
       {open && query.length >= 2 ? (
         <div
           role="listbox"
-          className="absolute z-20 mt-1 max-h-96 w-full overflow-auto rounded-md border bg-popover p-1 text-sm shadow"
+          className="absolute right-0 left-0 z-30 mt-1 max-h-80 w-full overflow-y-auto rounded-md border bg-popover p-1 text-sm shadow-md"
         >
           {data.length === 0 ? (
             <p className="p-2 text-muted-foreground">

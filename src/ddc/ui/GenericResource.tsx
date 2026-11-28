@@ -226,9 +226,12 @@ const ShowActions = ({
   if (def.readOnly) return null;
   return (
     <TopToolbar>
-      {canEdit && !locked ? <EditButton /> : null}
+      {canEdit && !locked ? (
+        <EditButton className="min-h-11 sm:min-h-9" />
+      ) : null}
       {canDelete && !locked ? (
         <DeleteButton
+          className="min-h-11 sm:min-h-9 cursor-pointer hover:bg-destructive/10! text-destructive! border-destructive! focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40"
           redirect={
             def.parent && record?.[def.parent.target] != null
               ? `/${def.parent.resource}/${String(record[def.parent.target])}/show`
@@ -243,6 +246,143 @@ const ShowActions = ({
 /** True when the record shown may not be changed any more (children included). */
 export const ParentLockedContext = createContext(false);
 
+const COMPANY_SHOW_GROUPS: Array<{
+  id: string;
+  title: { th: string; en: string };
+  fields: string[];
+}> = [
+  {
+    id: "core",
+    title: { th: "ข้อมูลหลักลูกค้า", en: "Core customer information" },
+    fields: [
+      "customer_code",
+      "name",
+      "legal_name",
+      "tax_identifier",
+      "org_type",
+      "parent_company_id",
+      "branch_code",
+    ],
+  },
+  {
+    id: "classification",
+    title: {
+      th: "การจัดกลุ่มและผู้รับผิดชอบ",
+      en: "Classification & ownership",
+    },
+    fields: [
+      "lifecycle_status_id",
+      "category_id",
+      "customer_group_id",
+      "territory_id",
+      "sales_id",
+    ],
+  },
+  {
+    id: "contact_location",
+    title: { th: "ข้อมูลติดต่อและที่ตั้ง", en: "Contact & location" },
+    fields: [
+      "phone_number",
+      "email",
+      "website",
+      "address",
+      "city",
+      "province",
+      "zipcode",
+      "country",
+      "latitude",
+      "longitude",
+      "google_maps_url",
+      "location_note",
+    ],
+  },
+  {
+    id: "summary",
+    title: { th: "รายละเอียดและสรุปกิจกรรม", en: "Notes & activity summary" },
+    fields: ["description", "nb_deals", "last_activity_at", "created_at"],
+  },
+];
+
+const isFullWidthShowField = (source: string, wide?: boolean, type?: string) =>
+  Boolean(wide) ||
+  type === "textarea" ||
+  type === "json" ||
+  type === "email" ||
+  type === "url" ||
+  source === "name" ||
+  source === "legal_name" ||
+  source === "location_note";
+
+const FieldDefinitionGrid = ({ fields }: { fields: ResourceDef["fields"] }) => {
+  const label = useLabel();
+  return (
+    <dl className="grid grid-cols-1 gap-x-4 gap-y-2.5 min-[360px]:grid-cols-2 sm:gap-x-6 sm:gap-y-3 xl:grid-cols-3">
+      {fields.map((f) => (
+        <div
+          key={f.source}
+          className={[
+            "min-w-0",
+            isFullWidthShowField(f.source, f.wide, f.type)
+              ? "col-span-full"
+              : "",
+          ].join(" ")}
+        >
+          <dt className="text-xs font-medium text-muted-foreground">
+            {label(f.label)}
+          </dt>
+          <dd className="mt-0.5 min-w-0 break-words text-sm">
+            <FieldValue field={f} />
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+};
+
+const CompanyDetailsSections = ({
+  fields,
+}: {
+  fields: ResourceDef["fields"];
+}) => {
+  const label = useLabel();
+  const bySource = new Map(fields.map((f) => [f.source, f]));
+  const assigned = new Set<string>();
+  const sections = COMPANY_SHOW_GROUPS.map((group) => {
+    const groupFields = group.fields
+      .map((src) => bySource.get(src))
+      .filter((f): f is NonNullable<typeof f> => Boolean(f));
+    for (const f of groupFields) assigned.add(f.source);
+    return { ...group, fields: groupFields };
+  });
+  const remaining = fields.filter((f) => !assigned.has(f.source));
+  if (remaining.length > 0 && sections.length > 0) {
+    sections[sections.length - 1].fields.push(...remaining);
+  }
+  return (
+    <Card className="min-w-0 overflow-hidden">
+      <CardContent className="space-y-4 px-3.5 pt-4 pb-4 sm:space-y-5 sm:px-6 sm:pt-5 sm:pb-6">
+        {sections
+          .filter((s) => s.fields.length > 0)
+          .map((section, idx) => (
+            <section
+              key={section.id}
+              aria-labelledby={`company-section-${section.id}`}
+              className={idx > 0 ? "border-t pt-3.5 sm:pt-4" : ""}
+            >
+              <h3
+                id={`company-section-${section.id}`}
+                className="mb-2 text-xs font-semibold tracking-wide text-muted-foreground uppercase"
+              >
+                {label(section.title)}
+              </h3>
+              <FieldDefinitionGrid fields={section.fields} />
+            </section>
+          ))}
+      </CardContent>
+    </Card>
+  );
+};
+
 const ShowBody = ({
   def,
   ext,
@@ -250,41 +390,23 @@ const ShowBody = ({
   def: ResourceDef;
   ext: ResourceExtensions;
 }) => {
-  const label = useLabel();
   const record = useRecordContext();
   const locked = Boolean(record && ext.isLocked?.(record));
+  const detailsNode =
+    def.name === "companies" ? (
+      <CompanyDetailsSections fields={def.fields} />
+    ) : (
+      <Card className="min-w-0 overflow-hidden">
+        <CardContent className="px-3.5 pt-4 pb-4 sm:px-6 sm:pt-6 sm:pb-6">
+          <FieldDefinitionGrid fields={def.fields} />
+        </CardContent>
+      </Card>
+    );
   return (
     <ParentLockedContext.Provider value={locked}>
-      <div className="flex flex-col gap-4">
+      <div className="flex min-w-0 flex-col gap-3 sm:gap-4">
         {ext.showPanel ? <ext.showPanel /> : null}
-        <ChildSections
-          def={def}
-          details={
-            <Card>
-              <CardContent className="pt-6">
-                <dl className="grid gap-x-8 gap-y-4 md:grid-cols-2 xl:grid-cols-3">
-                  {def.fields.map((f) => (
-                    <div
-                      key={f.source}
-                      className={
-                        f.wide || f.type === "textarea" || f.type === "json"
-                          ? "md:col-span-2 xl:col-span-3"
-                          : ""
-                      }
-                    >
-                      <dt className="text-xs font-medium text-muted-foreground">
-                        {label(f.label)}
-                      </dt>
-                      <dd className="mt-0.5 text-sm">
-                        <FieldValue field={f} />
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </CardContent>
-            </Card>
-          }
-        />
+        <ChildSections def={def} details={detailsNode} />
       </div>
     </ParentLockedContext.Provider>
   );
@@ -410,7 +532,12 @@ export const AddChildButton = ({
     JSON.stringify(prefill),
   )}`;
   return (
-    <Button variant="outline" size="sm" render={<Link to={to} />}>
+    <Button
+      variant="outline"
+      size="sm"
+      className="min-h-11 shrink-0 sm:min-h-9"
+      render={<Link to={to} />}
+    >
       <Plus className="size-4" />
       {label}
     </Button>
@@ -426,14 +553,16 @@ export const SectionCard = ({
   action?: ReactNode;
   children: ReactNode;
 }) => (
-  <Card>
-    <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0">
-      <CardTitle className="text-base">
+  <Card className="min-w-0 overflow-hidden">
+    <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2 space-y-0 px-3.5 py-3 sm:px-6 sm:py-4">
+      <CardTitle className="min-w-0 break-words text-base">
         <DesignHeading>{title}</DesignHeading>
       </CardTitle>
       {action}
     </CardHeader>
-    <CardContent>{children}</CardContent>
+    <CardContent className="min-w-0 px-3.5 pb-3.5 sm:px-6 sm:pb-6">
+      {children}
+    </CardContent>
   </Card>
 );
 
